@@ -1,0 +1,13 @@
+<div class="shared-flash-messages">  
+  <% flash.each do |key, message| %>
+    <% if key == "notice" %>
+      <div class="flash-success">
+        <%= message %>
+      </div>
+    <% else %>
+      <div class="flash-alert">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
