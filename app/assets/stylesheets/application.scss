@@ -12,3 +12,4 @@
 @use "users/registrations/new.scss";
 @use "users/shared/error_messages.scss";
 @use "shared/flash_messages.scss";
+@use "users/sessions/new.scss" as sessions;
