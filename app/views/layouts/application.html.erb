@@ -25,17 +25,7 @@
   </head>
 
   <body>
-    <% flash.each do |key, message| %>
-      <% if key == "notice" %>
-        <div class="alert alert-success">
-          <%= message %>
-        </div>
-      <% else %>
-        <div class="alert alert-danger">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render "shared/flash_messages"%>
     <%= yield %>
   </body>
 </html>

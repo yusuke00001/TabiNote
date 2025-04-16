@@ -28,6 +28,7 @@
   height: 35px;
   border: 1px solid #ddd;
   border-radius: 4px;
+  padding: 1px;
 }
 .users-registrations-new .card-style .submit {
   text-align: center;
@@ -45,6 +46,21 @@
 }
 
 .users-shared-error-messages .alert {
+  background-color: #f8d7da;
+  padding: 7.5px 12.5px;
+  border-radius: 1px;
+  border: 1px solid transparent;
+  font-size: 15px;
+}
+
+.shared-flash-messages .flash-success {
+  background-color: #d4edda;
+  padding: 7.5px 12.5px;
+  border-radius: 1px;
+  border: 1px solid transparent;
+  font-size: 15px;
+}
+.shared-flash-messages .flash-alert {
   background-color: #f8d7da;
   padding: 7.5px 12.5px;
   border-radius: 1px;

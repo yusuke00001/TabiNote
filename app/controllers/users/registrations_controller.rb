@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    flash[:notice] = ログインしました
+    flash[:notice] = "ログインしました"
     homes_path
   end
 
