@@ -1,0 +1,29 @@
+{
+  "name": "tabinote",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "sass app/assets/stylesheets/application.scss app/assets/builds/application.css --no-source-map",
+    "watch:css": "sass --watch app/assets/stylesheets:app/assets/builds"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusuke00001/TabiNote.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yusuke00001/TabiNote/issues"
+  },
+  "homepage": "https://github.com/yusuke00001/TabiNote#readme",
+  "devDependencies": {
+    "sass": "^1.86.3"
+  }
+}
