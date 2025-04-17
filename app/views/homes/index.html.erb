@@ -19,11 +19,17 @@
     </div>
     <h2 class="in-progress-trip-title"><%= t('.in-progress-trip-title') %></h2>
     <div class="no-in-progress-trip">
-      <p><%= t('.no-in-progress-trip')%></p>
+      <% if @trips_in_progress.presence %>
+      <% else %>
+        <p><%= t('.no-in-progress-trip')%></p>
+      <% end %>
     </div>
     <h2 class="past-trip-title"><%= t('.past-trip-title') %></h2>
     <div class="no-past-trip">
-      <p><%= t('.no-past-trip') %></p>
+      <% if @trips_past.presence %>
+      <% else%>
+        <p><%= t('.no-past-trip') %></p>
+      <% end %>
     </div>
     <div class="new-trip">
       <%= link_to t('.new-trip') %>
