@@ -4,6 +4,12 @@ ja:
       new:
         title: 新規登録画面
         submit: 登録
+    sessions:
+      new:
+        title: ログイン画面
+        submit: ログイン
     shared:
       links:
         login: ログインはこちら
+        sign_up: 新規登録はこちら
+        password_forget: パスワードを忘れた方はこちら
