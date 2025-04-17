@@ -105,4 +105,83 @@
   text-align: center;
 }
 
+.homes-index .card-style {
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  padding: 20px;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+}
+.homes-index .card-style .title {
+  text-align: center;
+}
+.homes-index .card-style .image-user-data {
+  display: flex;
+}
+.homes-index .card-style .image-user-data .image {
+  border: solid #ddd;
+  border-radius: 4px;
+  width: 200px;
+  margin-right: 30px;
+  margin-left: 40px;
+}
+.homes-index .card-style .image-user-data .user-data-card-style {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 300px;
+}
+.homes-index .card-style .image-user-data .user-data-card-style .user-data-title {
+  text-align: center;
+}
+.homes-index .card-style .image-user-data .user-data-card-style .user-name {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.homes-index .card-style .image-user-data .user-data-card-style .user-email {
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+.homes-index .card-style .in-progress-trip-title {
+  margin-left: 40px;
+  margin-top: 50px;
+}
+.homes-index .card-style .no-in-progress-trip {
+  margin: 0 auto;
+  width: 520px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 20px;
+}
+.homes-index .card-style .past-trip-title {
+  margin-left: 40px;
+}
+.homes-index .card-style .no-past-trip {
+  margin: 0 auto;
+  width: 520px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size: 20px;
+}
+.homes-index .card-style .new-trip {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+.homes-index .card-style .join-trip {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+
 /*# sourceMappingURL=application.css.map */

@@ -13,3 +13,13 @@ ja:
         login: ログインはこちら
         sign_up: 新規登録はこちら
         password_forget: パスワードを忘れた方はこちら
+  homes:
+    index:
+      title: マイページ
+      user-data-title: ユーザー情報
+      in-progress-trip-title: 進行中のしおり
+      no-in-progress-trip: 現在進行中のしおりはありません
+      past-trip-title: 過去のしおり一覧
+      no-past-trip: まだしおりが作成されていません
+      new-trip: 新しい旅を作成する
+      join-trip: 旅行に参加する

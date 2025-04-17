@@ -1,0 +1,80 @@
+.homes-index {
+  .card-style {
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    padding: 20px;
+    width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+    .title {
+      text-align: center;
+    }
+    .image-user-data {
+      display: flex;
+      .image {
+        border: solid #ddd;
+        border-radius: 4px;
+        width: 200px;
+        margin-right: 30px;
+        margin-left: 40px;
+      }
+      .user-data-card-style {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        width: 300px;
+        .user-data-title {
+         text-align: center;
+       }
+        .user-name {
+          margin-bottom: 20px;
+          margin-left: 20px;
+        }
+        .user-email {
+          margin-bottom: 20px;
+          margin-left: 20px;
+        }
+      }
+    }
+    .in-progress-trip-title {
+      margin-left: 40px;
+      margin-top: 50px;
+    }
+    .no-in-progress-trip {
+      margin: 0 auto;
+      width: 520px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      height: 70px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .past-trip-title {
+      margin-left: 40px;
+    }
+    .no-past-trip {
+      margin: 0 auto;
+      width: 520px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      height: 70px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      text-align: center;
+      font-size: 20px;
+    }
+    .new-trip {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+    .join-trip {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+  }
+}
