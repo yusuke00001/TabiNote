@@ -77,18 +77,22 @@
       text-align: center;
       margin-bottom: 30px;
       font-size: 20px;
+      .link-custom {
+       color: #007bff
+      }
       .add-icon {
         margin-left: 10px;
-        color: #007bff
       }
     }
     .join-trip {
       text-align: center;
       margin-bottom: 30px;
       font-size: 20px;
+      .link-custom {
+       color: #007bff
+      }
       .user-icon {
         margin-left: 50px;
-        color: #007bff
       }
     }
   }
