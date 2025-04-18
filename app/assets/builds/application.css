@@ -120,11 +120,9 @@
 }
 .homes-index .card-style .image-user-data {
   display: flex;
+  align-items: center;
 }
 .homes-index .card-style .image-user-data .image {
-  border: solid #ddd;
-  border-radius: 4px;
-  width: 200px;
   margin-right: 30px;
   margin-left: 40px;
 }
