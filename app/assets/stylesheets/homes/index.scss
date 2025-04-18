@@ -24,7 +24,16 @@
         width: 300px;
         .user-data-title {
          text-align: center;
-       }
+         margin-bottom: 20px;
+         margin-top: 10px;
+        }
+        .user-title {
+          font-size: 25px;
+        }
+        .user-edit-icon {
+          margin-left: 10px;
+          color: #007bff
+        }
         .user-name {
           margin-bottom: 20px;
           margin-left: 30px;
@@ -68,11 +77,19 @@
       text-align: center;
       margin-bottom: 30px;
       font-size: 20px;
+      .add-icon {
+        margin-left: 10px;
+        color: #007bff
+      }
     }
     .join-trip {
       text-align: center;
       margin-bottom: 30px;
       font-size: 20px;
+      .user-icon {
+        margin-left: 50px;
+        color: #007bff
+      }
     }
   }
 }
