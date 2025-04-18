@@ -26,6 +26,15 @@
 }
 .homes-index .card-style .image-user-data .user-data-card-style .user-data-title {
   text-align: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+.homes-index .card-style .image-user-data .user-data-card-style .user-title {
+  font-size: 25px;
+}
+.homes-index .card-style .image-user-data .user-data-card-style .user-edit-icon {
+  margin-left: 10px;
+  color: #007bff;
 }
 .homes-index .card-style .image-user-data .user-data-card-style .user-name {
   margin-bottom: 20px;
@@ -69,10 +78,22 @@
   margin-bottom: 30px;
   font-size: 20px;
 }
+.homes-index .card-style .new-trip .link-custom {
+  color: #007bff;
+}
+.homes-index .card-style .new-trip .add-icon {
+  margin-left: 10px;
+}
 .homes-index .card-style .join-trip {
   text-align: center;
   margin-bottom: 30px;
   font-size: 20px;
+}
+.homes-index .card-style .join-trip .link-custom {
+  color: #007bff;
+}
+.homes-index .card-style .join-trip .user-icon {
+  margin-left: 50px;
 }
 
 /*# sourceMappingURL=index.css.map */

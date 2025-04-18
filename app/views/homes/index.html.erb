@@ -7,7 +7,12 @@
       </div>
       <div class="user-data">
         <div class="user-data-card-style">
-          <h2 class="user-data-title"><%= t('.user-data-title')%></h2>
+          <div class="user-data-title">
+            <strong class="user-title"><%= t('.user-data-title') %></strong>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa-solid fa-user-pen user-edit-icon fa-lg"></i>
+            <% end %>
+          </div>
           <div class="user-name">
             <%= User.human_attribute_name(:name) %>:<%= current_user.name %>
           </div>
@@ -32,10 +37,16 @@
       <% end %>
     </div>
     <div class="new-trip">
-      <%= link_to t('.new-trip') %>
+      <%= link_to  class: "link-custom"  do %>
+        <%= t('.new-trip') %>
+        <i class="fa-solid fa-circle-plus add-icon fa-lg"></i>
+      <% end %>
     </div>
     <div class="join-trip">
-      <%= link_to t('.join-trip')%>
+      <%= link_to class: "link-custom" do %>
+        <%= t('.join-trip') %>
+        <i class="fa-solid fa-users user-icon fa-lg"></i>
+      <% end %>
     </div>
   </div>
 </div>
