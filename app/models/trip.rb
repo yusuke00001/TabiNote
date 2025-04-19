@@ -1,6 +1,7 @@
 class Trip < ApplicationRecord
+  has_many :trip_transportations
+  has_many :transportations, through: :trip_transportations, dependent: :destroy
   belongs_to :user
 
   enum :status, { in_progress: 1, completed: 2 }
-  enum :transportation, { car: 1, train: 2, walk: 3 }
 end

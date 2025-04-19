@@ -1,0 +1,119 @@
+.trips-new {
+  .card-style {
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 40px;
+    width: 400px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+    .form-group {
+      margin-bottom: 50px;
+    }
+    .form-label {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .text-field {
+      width: 100%; 
+      height: 25px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    .date-sub-title {
+      font-size: 15px;
+      margin-left: 20px;
+    }
+    .spot-limit-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .spot-limit-sub-title {
+      font-size: 10px;
+    }
+    .form-spot-limit {
+      display: flex;
+      width: 400px;
+      justify-content: space-between;
+      margin-bottom:50px;
+      .spot-field {
+        width: 150px;
+        height: 30px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+    }
+    .spot-time-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .form-spot-time {
+      display: flex;
+      width: 400px;
+      justify-content: space-between;
+      margin-bottom: 50px;
+      .time-field {
+        width: 150px;
+        height: 30px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+    }
+    .transportation-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .form-check-box {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 50px;
+      .check-box-car,
+      .check-box-train,
+      .check-box-bicycle {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      input[type="checkbox"] {
+        appearance: none;
+        vertical-align: middle;
+        width: 15px;
+        height: 15px;
+        border: 1px solid gray;
+        border-radius: 50%;
+        position: relative;
+        cursor: pointer;
+      }
+      input[type="checkbox"]:checked::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 15px;
+        height: 15px;
+        background: #555;
+        border-radius: 50%;
+      }
+      .check-box-label {
+        font-size: 20px;
+      }
+    }
+    .submit {
+      text-align: center;
+    }
+    .submit-botton {
+      font-size: 20px;
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+      border-radius: 4px;
+    }
+
+  }
+}
