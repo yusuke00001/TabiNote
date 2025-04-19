@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_17_080806) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_19_034233) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_17_080806) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "transportations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.boolean "car"
+    t.boolean "train"
+    t.boolean "bicycle"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trip_transportations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "transportation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transportation_id"], name: "index_trip_transportations_on_transportation_id"
+    t.index ["trip_id"], name: "index_trip_transportations_on_trip_id"
+  end
+
   create_table "trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,8 +64,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_17_080806) do
     t.string "destination", null: false
     t.datetime "start_time", null: false
     t.datetime "finish_time", null: false
-    t.integer "transportation", null: false
     t.integer "status", null: false
+    t.datetime "spot_suggestion_limit", null: false
+    t.datetime "spot_vote_limit", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_trips_on_user_id"
   end
@@ -68,5 +86,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_17_080806) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "trip_transportations", "transportations", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trips", "users", on_update: :cascade, on_delete: :cascade
 end

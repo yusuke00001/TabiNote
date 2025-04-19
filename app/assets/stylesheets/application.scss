@@ -13,4 +13,5 @@
 @use "users/shared/error_messages.scss";
 @use "shared/flash_messages.scss";
 @use "users/sessions/new.scss" as sessions;
-@use "homes/index.scss"
+@use "homes/index.scss";
+@use "trips/new.scss" as trips;

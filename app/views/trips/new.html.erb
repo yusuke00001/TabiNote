@@ -1,0 +1,73 @@
+<div class="trips-new">
+  <div class="card-style">
+    <%= form_with model: @trip do |f| %>
+    <div class="form-group">
+      <i class="fa-solid fa-book-open"></i>
+      <%= f.label :title , t('.spot-title'), class:"form-label" %>
+      <%= f.text_field :title, class:"text-field" %>
+    </div>
+    <div class="form-group">
+      <i class="fa-solid fa-calendar-days"></i>
+      <%= f.label :date, t('.date'), class:"form-label" %>
+      <i class="date-sub-title"><%= t('.date-sub-title') %></i>
+      <%= f.date_field :date, class:"text-field" %>
+    </div>
+    <div class="form-group">
+      <i class="fa-solid fa-plane"></i>
+      <%= f.label :distination, t('.distination'), class:"form-label" %>
+      <%= f.text_field :distination, class:"text-field" %>
+    </div>
+    <p class="spot-limit-title">スポットに関する設定</p>
+    <div class="form-spot-limit">
+      <div class="spot-suggestion-limit">
+        <i class="fa-solid fa-clock"></i>
+        <%= f.label :spot_suggestion_limit, t('.suggestion-limit')%><br>
+        <%= f.datetime_field :spot_suggestion_limit, class:"spot-field" %>
+      </div>
+      <div class="spot-vote-limit">
+        <i class="fa-solid fa-clock"></i>
+        <%= f.label :spot_vote_limit, t('.vote-limit') %><br>
+        <%= f.datetime_field :spot_vote_limit, class:"spot-field" %>
+      </div>
+    </div>
+    <p class="spot-time-title">旅程に関する設定</p>
+    <div class="form-spot-time">
+      <div class="start-time">
+        <i class="fa-solid fa-clock"></i>
+        <%= f.label :start_time, t('.start-time') %><br>
+        <%= f.time_field :start_time, class:"time-field" %>
+      </div>
+      <div class="finish-time">
+        <i class="fa-solid fa-clock"></i>
+        <%= f.label :finish_time, t('.finish-time') %><br>
+        <%= f.time_field :finish_time, class:"time-field" %>
+      </div>
+    </div>
+    <p class="transportation-title">交通手段(複数選択可)</p>
+    <div class="form-check-box">
+      <div class="check-box-car">
+        <%= f.check_box :car %>
+        <%= f.label :car, "車", class:"check-box-label" %>
+        <i class="fa-solid fa-car"></i>
+      </div>
+      <div class="check-box-train">
+        <%= f.check_box :train %>
+        <%= f.label :train, "電車", class:"check-box-label" %>
+        <i class="fa-solid fa-train-subway"></i>
+      </div>
+      <div class="check-box-bicycle">
+        <%= f.check_box :bicycle, class:"check-box" %>
+        <%= f.label :bicycle, "自転車", class:"check-box-label" %>
+        <i class="fa-solid fa-bicycle"></i>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :image, t('.image'), class:"form-label" %>
+      <%= f.file_field :image, class:"text-field" %>
+    </div>
+    <div class="submit">
+      <%= f.submit t('.submit'), class:"submit-botton" %>
+    </div>
+    <% end %>
+  </div>
+</div>

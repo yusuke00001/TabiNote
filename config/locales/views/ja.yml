@@ -23,3 +23,16 @@ ja:
       no-past-trip: まだしおりが作成されていません
       new-trip: 新しい旅を作成する
       join-trip: 旅行に参加する
+  trips:
+    new:
+      spot-title: しおりのタイトル
+      date: 旅行日程
+      date-sub-title: ※未定の場合は空欄可
+      distination: 行き先
+      suggestion-limit: 提案の締切
+      vote-limit: 投票の締切
+      start-time: 観光開始時間
+      finish-time: 観光終了時間
+      transportation: 交通手段
+      image: しおりの画像
+      submit: 作成
