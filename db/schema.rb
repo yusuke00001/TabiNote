@@ -61,7 +61,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_19_034233) do
     t.datetime "updated_at", null: false
     t.string "title", null: false
     t.date "date"
-    t.string "destination", null: false
+    t.string "distination", null: false
     t.datetime "start_time", null: false
     t.datetime "finish_time", null: false
     t.integer "status", null: false
