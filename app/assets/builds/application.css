@@ -206,6 +206,7 @@
 .trips-new .card-style {
   margin: 0 auto;
   margin-top: 100px;
+  margin-bottom: 100px;
   padding: 40px;
   width: 400px;
   border: 1px solid #ddd;
