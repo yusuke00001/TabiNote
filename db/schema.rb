@@ -40,9 +40,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_19_034233) do
   end
 
   create_table "transportations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.boolean "car"
-    t.boolean "train"
-    t.boolean "bicycle"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -61,10 +59,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_19_034233) do
     t.datetime "updated_at", null: false
     t.string "title", null: false
     t.date "date"
-    t.string "destination", null: false
+    t.string "distination", null: false
     t.datetime "start_time", null: false
     t.datetime "finish_time", null: false
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "spot_suggestion_limit", null: false
     t.datetime "spot_vote_limit", null: false
     t.bigint "user_id", null: false

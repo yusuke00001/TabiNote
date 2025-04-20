@@ -3,30 +3,30 @@
     <%= form_with model: @trip do |f| %>
     <div class="form-group">
       <i class="fa-solid fa-book-open"></i>
-      <%= f.label :title , t('.spot-title'), class:"form-label" %>
+      <%= f.label :title, class:"form-label" %>
       <%= f.text_field :title, class:"text-field" %>
     </div>
     <div class="form-group">
       <i class="fa-solid fa-calendar-days"></i>
-      <%= f.label :date, t('.date'), class:"form-label" %>
+      <%= f.label :date, class:"form-label" %>
       <i class="date-sub-title"><%= t('.date-sub-title') %></i>
       <%= f.date_field :date, class:"text-field" %>
     </div>
     <div class="form-group">
       <i class="fa-solid fa-plane"></i>
-      <%= f.label :distination, t('.distination'), class:"form-label" %>
+      <%= f.label :distination, class:"form-label" %>
       <%= f.text_field :distination, class:"text-field" %>
     </div>
     <p class="spot-limit-title"><%= t('.spot-limit-title') %></p>
     <div class="form-spot-limit">
       <div class="spot-suggestion-limit">
         <i class="fa-solid fa-clock"></i>
-        <%= f.label :spot_suggestion_limit, t('.suggestion-limit')%><br>
+        <%= f.label :spot_suggestion_limit %><br>
         <%= f.datetime_field :spot_suggestion_limit, class:"spot-field" %>
       </div>
       <div class="spot-vote-limit">
         <i class="fa-solid fa-clock"></i>
-        <%= f.label :spot_vote_limit, t('.vote-limit') %><br>
+        <%= f.label :spot_vote_limit %><br>
         <%= f.datetime_field :spot_vote_limit, class:"spot-field" %>
       </div>
     </div>
@@ -34,35 +34,26 @@
     <div class="form-spot-time">
       <div class="start-time">
         <i class="fa-solid fa-clock"></i>
-        <%= f.label :start_time, t('.start-time') %><br>
+        <%= f.label :start_time %><br>
         <%= f.time_field :start_time, class:"time-field" %>
       </div>
       <div class="finish-time">
         <i class="fa-solid fa-clock"></i>
-        <%= f.label :finish_time, t('.finish-time') %><br>
+        <%= f.label :finish_time %><br>
         <%= f.time_field :finish_time, class:"time-field" %>
       </div>
     </div>
     <p class="transportation-title"><%= t('.transportation-title') %></p>
     <div class="form-check-box">
-      <div class="check-box-car">
-        <%= f.check_box :car %>
-        <%= f.label :car, "車", class:"check-box-label" %>
-        <i class="fa-solid fa-car"></i>
-      </div>
-      <div class="check-box-train">
-        <%= f.check_box :train %>
-        <%= f.label :train, "電車", class:"check-box-label" %>
-        <i class="fa-solid fa-train-subway"></i>
-      </div>
-      <div class="check-box-bicycle">
-        <%= f.check_box :bicycle, class:"check-box" %>
-        <%= f.label :bicycle, "自転車", class:"check-box-label" %>
-        <i class="fa-solid fa-bicycle"></i>
-      </div>
+      <% Transportation.all.each do |transportation| %>
+        <div class="check-box-item">
+          <%= check_box_tag "trip[transportation_ids][]", transportation.id, id: "trip_transportation_#{transportation.id}" %>
+          <%= label_tag "trip_transportation_#{transportation.id}", transportation.name %>
+        </div>
+      <% end %>
     </div>
     <div class="form-group">
-      <%= f.label :image, t('.image'), class:"form-label" %>
+      <%= f.label :image, class:"form-label" %>
       <%= f.file_field :image, class:"text-field" %>
     </div>
     <div class="submit">

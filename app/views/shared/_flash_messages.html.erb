@@ -6,7 +6,8 @@
       </div>
     <% else %>
       <div class="flash-alert">
-        <%= message %>
+        <strong><i class="fa-solid fa-circle-exclamation"></i> 入力エラーがあります</strong>
+        <%= simple_format(message) %>
       </div>
     <% end %>
   <% end %>
