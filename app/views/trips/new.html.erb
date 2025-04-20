@@ -45,21 +45,12 @@
     </div>
     <p class="transportation-title"><%= t('.transportation-title') %></p>
     <div class="form-check-box">
-      <div class="check-box-car">
-        <%= f.check_box :car %>
-        <%= f.label :car, "車", class:"check-box-label" %>
-        <i class="fa-solid fa-car"></i>
-      </div>
-      <div class="check-box-train">
-        <%= f.check_box :train %>
-        <%= f.label :train, "電車", class:"check-box-label" %>
-        <i class="fa-solid fa-train-subway"></i>
-      </div>
-      <div class="check-box-bicycle">
-        <%= f.check_box :bicycle, class:"check-box" %>
-        <%= f.label :bicycle, "自転車", class:"check-box-label" %>
-        <i class="fa-solid fa-bicycle"></i>
-      </div>
+      <% Transportation.all.each do |transportation| %>
+        <div class="check-box-item">
+          <%= check_box_tag "trip[transportation_ids][]", transportation.id, id: "trip_transportation_#{transportation.id}" %>
+          <%= label_tag "trip_transportation_#{transportation.id}", transportation.name %>
+        </div>
+      <% end %>
     </div>
     <div class="form-group">
       <%= f.label :image, class:"form-label" %>

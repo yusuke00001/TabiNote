@@ -6,6 +6,7 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trips_params)
     if @trip.save
+      @trip.transportation_ids = params[:trip][:trasportation_ids]
       flash[:notice] = "しおりを作成しました"
       redirect_to
     else
