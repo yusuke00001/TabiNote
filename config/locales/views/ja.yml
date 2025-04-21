@@ -4,6 +4,12 @@ ja:
       new:
         title: 新規登録画面
         submit: 登録
+      edit:
+        title: ユーザー情報の編集
+        submit: 更新
+        back: マイページに戻る
+        delete: 削除
+        password-restriction: 文字以上で入力してください
     sessions:
       new:
         title: ログイン画面

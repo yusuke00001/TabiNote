@@ -8,6 +8,8 @@ ja:
         name: ユーザー名
         password: パスワード
         password_confirmation: パスワード確認
+        current_password: 現在のパスワード
+        avatar: プロフィール画像
       trip:
         title: しおりのタイトル
         date: 旅行日程
