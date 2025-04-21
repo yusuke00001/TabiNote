@@ -7,6 +7,12 @@ class TripsController < ApplicationController
     @trip = Trip.new(trips_params)
     if @trip.save
       @trip.transportation_ids = params[:trip][:trasportation_ids]
+      Member.create(
+        trip_id: @trip.id,
+        user_id: current_user.id,
+        host: :leader
+      )
+
       flash[:notice] = "しおりを作成しました"
       redirect_to
     else
@@ -18,6 +24,6 @@ class TripsController < ApplicationController
   private
 
   def trips_params
-    params.require(:trip).permit(:title, :date, :distination, :spot_suggestion_limit, :spot_vote_limit, :start_time, :finish_time, :image, :user_id).merge(user_id: current_user.id)
+    params.require(:trip).permit(:title, :date, :distination, :spot_suggestion_limit, :spot_vote_limit, :start_time, :finish_time, :image)
   end
 end

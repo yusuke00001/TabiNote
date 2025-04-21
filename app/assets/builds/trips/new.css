@@ -104,6 +104,11 @@
 .trips-new .card-style .form-check-box .check-box-label {
   font-size: 20px;
 }
+.trips-new .card-style .preview-avatar {
+  width: 200px;
+  height: auto;
+  border-radius: 50%;
+}
 .trips-new .card-style .submit {
   text-align: center;
 }
