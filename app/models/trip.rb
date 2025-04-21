@@ -1,8 +1,9 @@
 class Trip < ApplicationRecord
   has_many :trip_transportations
   has_many :transportations, through: :trip_transportations, dependent: :destroy
+  has_many :members
+  has_many :trips, through: :members, dependent: :destroy
   has_one_attached :image
-  belongs_to :user
 
   enum :status, { in_progress: 0, completed: 1 }
   validates :title, presence: true
