@@ -75,8 +75,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_21_042801) do
     t.integer "status", default: 0, null: false
     t.datetime "spot_suggestion_limit", null: false
     t.datetime "spot_vote_limit", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -98,5 +96,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_21_042801) do
   add_foreign_key "members", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_transportations", "transportations", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "trips", "users", on_update: :cascade, on_delete: :cascade
 end

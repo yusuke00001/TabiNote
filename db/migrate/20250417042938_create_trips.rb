@@ -10,7 +10,6 @@ class CreateTrips < ActiveRecord::Migration[8.0]
       t.integer :status, null: false, default: 0
       t.datetime :spot_suggestion_limit, null: false
       t.datetime :spot_vote_limit, null: false
-      t.references :user, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
     end
   end
 end

@@ -54,7 +54,10 @@
     </div>
     <div class="form-group">
       <%= f.label :image, class:"form-label" %>
-      <%= f.file_field :image, class:"text-field" %>
+      <%= f.file_field :image, class:"text-field", onchange: "loadImage(this);" %>
+    </div>
+    <div id="post_avatar">
+      <p id="preview"></p>
     </div>
     <div class="submit">
       <%= f.submit t('.submit'), class:"submit-botton" %>

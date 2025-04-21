@@ -48,6 +48,32 @@
       margin-left: 40px;
       margin-top: 50px;
     }
+    .trips-container {
+      display: flex;
+      justify-content: space-between;
+      .trips-card-style {
+        margin: 0 auto;
+        width: 200px;
+        border: 1px solid black;
+        box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+        .trip-title {
+          text-align: center;
+          font-size: 25px;
+          font-weight: bold;
+          padding: 10px;
+          border-bottom: 1px solid black;
+        }
+        .member {
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+        }
+        .member-list {
+          text-align: center;
+          margin-bottom: 20px;
+        }
+      }
+    }
     .no-in-progress-trip {
       margin: 0 auto;
       width: 520px;
@@ -78,7 +104,7 @@
       margin-bottom: 30px;
       font-size: 20px;
       .link-custom {
-       color: #007bff
+        color: #007bff
       }
       .add-icon {
         margin-left: 10px;
@@ -89,7 +115,7 @@
       margin-bottom: 30px;
       font-size: 20px;
       .link-custom {
-       color: #007bff
+        color: #007bff
       }
       .user-icon {
         margin-left: 50px;

@@ -29,6 +29,7 @@ ja:
       no-past-trip: まだしおりが作成されていません
       new-trip: 新しい旅を作成する
       join-trip: 旅行に参加する
+      member: 参加メンバー
   trips:
     new:
       spot-title: しおりのタイトル

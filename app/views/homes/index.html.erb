@@ -23,12 +23,35 @@
       </div>
     </div>
     <h2 class="in-progress-trip-title"><%= t('.in-progress-trip-title') %></h2>
-    <div class="no-in-progress-trip">
       <% if @trips_in_progress.presence %>
+        <div class="trips-container">
+          <% @trips_in_progress.each do |t| %>
+              <div class="trips-card-style">
+                <div class="trip-title">
+                  <%= t.title %>
+                </div>
+                <% if t.image.attached? %>
+                  <%= image_tag t.image.variant(resize_to_fill: [200,130]) %>
+                <% end %>
+                <div class="member">
+                  <%= t('.member')%>
+                </div>
+                <% t.members.each do |member| %>
+                  <div class="member-list">
+                    <% if member.host == "leader" %>
+                      <i class="fa-solid fa-crown"></i>
+                    <% end %>
+                    <%= member.user.name %>
+                  </div>
+                <% end %>
+              </div>
+          <% end %>
+        </div>
       <% else %>
+      <div class="no-in-progress-trip">
         <p><%= t('.no-in-progress-trip')%></p>
+      </div>
       <% end %>
-    </div>
     <h2 class="past-trip-title"><%= t('.past-trip-title') %></h2>
     <div class="no-past-trip">
       <% if @trips_past.presence %>
@@ -37,7 +60,7 @@
       <% end %>
     </div>
     <div class="new-trip">
-      <%= link_to  class: "link-custom"  do %>
+      <%= link_to new_trip_path, class: "link-custom"  do %>
         <%= t('.new-trip') %>
         <i class="fa-solid fa-circle-plus add-icon fa-lg"></i>
       <% end %>

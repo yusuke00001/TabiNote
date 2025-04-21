@@ -48,6 +48,32 @@
   margin-left: 40px;
   margin-top: 50px;
 }
+.homes-index .card-style .trips-container {
+  display: flex;
+  justify-content: space-between;
+}
+.homes-index .card-style .trips-container .trips-card-style {
+  margin: 0 auto;
+  width: 200px;
+  border: 1px solid black;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+}
+.homes-index .card-style .trips-container .trips-card-style .trip-title {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
+.homes-index .card-style .trips-container .trips-card-style .member {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.homes-index .card-style .trips-container .trips-card-style .member-list {
+  text-align: center;
+  margin-bottom: 20px;
+}
 .homes-index .card-style .no-in-progress-trip {
   margin: 0 auto;
   width: 520px;
