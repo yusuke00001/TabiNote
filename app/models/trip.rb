@@ -1,6 +1,7 @@
 class Trip < ApplicationRecord
   has_many :trip_transportations
   has_many :transportations, through: :trip_transportations, dependent: :destroy
+  has_many :members
   has_one_attached :image
   belongs_to :user
 
