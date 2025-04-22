@@ -2,44 +2,86 @@
   <div class="card-style">
     <%= form_with model: @trip do |f| %>
     <div class="form-group">
-      <i class="fa-solid fa-book-open"></i>
-      <%= f.label :title, class:"form-label" %>
+      <div class="icon-label">
+        <div>
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+        <div>
+          <%= f.label :title, class:"form-label" %>
+        </div>
+      </div>
       <%= f.text_field :title, class:"text-field" %>
     </div>
     <div class="form-group">
-      <i class="fa-solid fa-calendar-days"></i>
-      <%= f.label :date, class:"form-label" %>
-      <i class="date-sub-title"><%= t('.date-sub-title') %></i>
+      <div class="icon-label">
+        <div>
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div>
+          <%= f.label :date, class:"form-label" %>
+          <i class="date-sub-title"><%= t('.date-sub-title') %></i>
+        </div>
+      </div>
       <%= f.date_field :date, class:"text-field" %>
     </div>
     <div class="form-group">
-      <i class="fa-solid fa-plane"></i>
-      <%= f.label :distination, class:"form-label" %>
+      <div class="icon-label">
+        <div>
+          <i class="fa-solid fa-plane"></i>
+        </div>
+        <div>
+          <%= f.label :distination, class:"form-label" %>
+        </div>
+      </div>
       <%= f.text_field :distination, class:"text-field" %>
     </div>
     <p class="spot-limit-title"><%= t('.spot-limit-title') %></p>
     <div class="form-spot-limit">
       <div class="spot-suggestion-limit">
-        <i class="fa-solid fa-clock"></i>
-        <%= f.label :spot_suggestion_limit %><br>
+        <div class="icon-label">
+          <div>
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div>
+            <%= f.label :spot_suggestion_limit %>
+          </div>
+        </div>
         <%= f.datetime_field :spot_suggestion_limit, class:"spot-field" %>
       </div>
       <div class="spot-vote-limit">
-        <i class="fa-solid fa-clock"></i>
-        <%= f.label :spot_vote_limit %><br>
+        <div class="icon-label">
+          <div>
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div>
+            <%= f.label :spot_vote_limit %>
+          </div>
+        </div>
         <%= f.datetime_field :spot_vote_limit, class:"spot-field" %>
       </div>
     </div>
     <p class="spot-time-title"><%= t('.spot-time-title') %> </p>
     <div class="form-spot-time">
       <div class="start-time">
-        <i class="fa-solid fa-clock"></i>
-        <%= f.label :start_time %><br>
+        <div class="icon-label">
+          <div>
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div>
+            <%= f.label :start_time %>
+          </div>
+        </div>
         <%= f.time_field :start_time, class:"time-field" %>
       </div>
       <div class="finish-time">
-        <i class="fa-solid fa-clock"></i>
-        <%= f.label :finish_time %><br>
+        <div class="icon-label">
+          <div>
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div>
+            <%= f.label :finish_time %>
+          </div>
+        </div>
         <%= f.time_field :finish_time, class:"time-field" %>
       </div>
     </div>

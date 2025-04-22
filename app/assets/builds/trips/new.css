@@ -11,6 +11,11 @@
 .trips-new .card-style .form-group {
   margin-bottom: 50px;
 }
+.trips-new .card-style .form-group .icon-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .trips-new .card-style .form-label {
   font-size: 20px;
   font-weight: bold;
@@ -40,6 +45,11 @@
   justify-content: space-between;
   margin-bottom: 50px;
 }
+.trips-new .card-style .form-spot-limit .icon-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 .trips-new .card-style .form-spot-limit .spot-field {
   width: 150px;
   height: 30px;
@@ -56,6 +66,11 @@
   width: 400px;
   justify-content: space-between;
   margin-bottom: 50px;
+}
+.trips-new .card-style .form-spot-time .icon-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .trips-new .card-style .form-spot-time .time-field {
   width: 150px;
