@@ -7,7 +7,9 @@
     <% else %>
       <div class="flash-alert">
         <strong><i class="fa-solid fa-circle-exclamation"></i> 入力エラーがあります</strong>
-        <%= simple_format(message) %>
+        <% message.each do |msg|%>
+          <li><%= msg %></li>
+        <% end %>
       </div>
     <% end %>
   <% end %>

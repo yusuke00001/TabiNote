@@ -16,7 +16,7 @@ class TripsController < ApplicationController
       flash[:notice] = "しおりを作成しました"
       redirect_to
     else
-      flash.now[:alert] = @trip.errors.full_messages.join("\n")
+      flash.now[:alert] = @trip.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end
