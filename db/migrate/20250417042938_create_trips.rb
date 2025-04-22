@@ -8,8 +8,8 @@ class CreateTrips < ActiveRecord::Migration[8.0]
       t.datetime :start_time, null: false
       t.datetime :finish_time, null: false
       t.integer :status, null: false, default: 0
-      t.datetime :spot_suggestion_limit, null: false
-      t.datetime :spot_vote_limit, null: false
+      t.date :spot_suggestion_limit, null: false
+      t.date :spot_vote_limit, null: false
     end
   end
 end
