@@ -45,3 +45,11 @@ ja:
       transportation-title: 交通手段(複数選択可)
       image: しおりの画像
       submit: 作成
+    show:
+      suggestion-phase: 提案フェーズ
+      vote-phase: 投票フェーズ
+      suggestion-limit: 提案期限まであと
+      no-spot-suggestions: スポットが提案されていません
+      spot-add: スポットを追加する
+      member: 参加メンバー
+      member-edit: メンバーを編集する
