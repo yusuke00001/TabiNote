@@ -1,0 +1,112 @@
+.trips-show {
+  .card-style {
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+    .title {
+      text-align: center;
+      gap: 20px;
+      font-size: 30px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+    .trip-detail {
+      margin-left: 50px;
+      margin-bottom: 20px;
+      font-size: 20px;
+      .icon-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .trip-info {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        width: 300px;
+        height: 40px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+      }
+    }
+    .label-container {
+      display: flex;
+      text-align: center;
+      width: 400px;
+      margin: auto;
+      margin-top: 70px;
+    }
+    .label {
+      border: 1px solid black;
+      width: 200px;
+    }
+    .suggestion-vote-container {
+      display: flex;
+      width: 400px;
+      margin: auto;
+      margin-bottom: 50px;
+      .suggestion-vote-card-style {
+        width: 400px;
+        border: 1px solid black;
+        .suggestion-limit {
+          margin-top: 30px;
+          color: red;
+          text-align: center;
+          font-size: 25px;
+        }
+      }
+      .no-spot-suggestions {
+        margin-top: 100px;
+        margin-bottom: 100px;
+        text-align: center;
+        font-size: 20px;
+      }
+      .spot-add-container {
+        display: flex;
+        justify-content: right;
+        gap: 5px;
+        padding: 10px;
+        .spot-add {
+          color: blue;
+        }
+      }
+    }
+    .member-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 100px;
+      .member-card-style {
+        width: 300px;
+        border: 1px solid black;
+        border-radius: 8px;
+        padding: 10px;
+        .member-title {
+          text-align: center;
+          font-size: 25px;
+          font-weight: bold;
+          margin-bottom: 10px;
+        }
+        .member-icon {
+          color: yellow;
+        }
+        .member-name {
+          font-size: 20px;
+          margin-left: 30px;
+        }
+        .member-edit-link {
+          text-align: right;
+          margin-top: 20px;
+          font-size: 13px;
+        }
+        .member-edit {
+          color: blue;
+        }
+      }
+    }
+  }
+}

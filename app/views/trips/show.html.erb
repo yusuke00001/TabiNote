@@ -1,0 +1,84 @@
+<div class="trips-show">
+  <div class="card-style">
+    <div class="title">
+      <i class="fa-solid fa-book-open"></i>
+      <%= @trip.title %>
+      <i class="fa-solid fa-book-open"></i>
+    </div>
+    <div class="trip-detail">
+      <div class="icon-label">
+        <div>
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div>
+          <%= Trip.human_attribute_name(:date) %>
+        </div>
+      </div>
+      <div class="trip-info">
+        <%= @trip.date %>
+      </div>
+    </div>
+    <div class="trip-detail">
+      <div class="icon-label">
+        <div>
+          <i class="fa-solid fa-plane"></i>
+        </div>
+        <div>
+          <%= Trip.human_attribute_name(:distination) %>
+        </div>
+      </div>
+      <div class="trip-info">
+        <%= @trip.distination %>
+      </div>
+    </div>
+    <div class="label-container">
+      <div class="label">
+        <%= t('.suggestion-phase')%>
+      </div>
+      <div class="label">
+        <%= t('.vote-phase')%>
+      </div>
+    </div>
+    <div class="suggestion-vote-container">
+      <div class="suggestion-vote-card-style">
+        <div class="suggestion-limit">
+          <%= t('.suggestion-limit') %><%= (@trip.spot_suggestion_limit - Date.today).to_i %>日
+        </div>
+        <% if @spot_suggestios.presence %>
+        <% else %>
+          <div class="no-spot-suggestions">
+            <%= t('.no-spot-suggestions') %>
+          </div>
+        <% end %>
+        <%= link_to do %>
+          <div class="spot-add-container">
+            <div class="spot-add">
+              <%= t('.spot-add')%>
+            </div>
+            <div class="spot-add">
+              <i class="fa-solid fa-circle-plus"></i>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="member-container">
+      <div class="member-card-style">
+        <div class="member-title">
+          <%= t('.member') %>
+        </div>
+        <% @members.each do |member| %>
+          <div class="member-name">
+            <% if member.host == "leader" %>
+              <i class="fa-solid fa-crown member-icon"></i>
+            <% end %>
+            <%= member.user.name %>
+          </div>
+        <% end %>
+        <div class="member-edit-link">
+          <%= link_to t('.member-edit'), class:"member-edit" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
