@@ -111,8 +111,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_22_041728) do
     t.datetime "start_time", null: false
     t.datetime "finish_time", null: false
     t.integer "status", default: 0, null: false
-    t.datetime "spot_suggestion_limit", null: false
-    t.datetime "spot_vote_limit", null: false
+    t.date "spot_suggestion_limit", null: false
+    t.date "spot_vote_limit", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
