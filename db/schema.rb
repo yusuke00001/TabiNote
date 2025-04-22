@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_21_042801) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_22_041728) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -47,6 +47,44 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_21_042801) do
     t.datetime "updated_at", null: false
     t.index ["trip_id"], name: "index_members_on_trip_id"
     t.index ["user_id"], name: "index_members_on_user_id"
+  end
+
+  create_table "spot_suggestions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "deadline"
+    t.bigint "trip_id", null: false
+    t.bigint "spot_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_spot_suggestions_on_spot_id"
+    t.index ["trip_id"], name: "index_spot_suggestions_on_trip_id"
+    t.index ["user_id"], name: "index_spot_suggestions_on_user_id"
+  end
+
+  create_table "spot_votes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "deadline"
+    t.bigint "spot_suggestion_id", null: false
+    t.bigint "trip_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_suggestion_id"], name: "index_spot_votes_on_spot_suggestion_id"
+    t.index ["trip_id"], name: "index_spot_votes_on_trip_id"
+    t.index ["user_id"], name: "index_spot_votes_on_user_id"
+  end
+
+  create_table "spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "spot_name"
+    t.integer "phone_number"
+    t.string "opening_hours"
+    t.string "closing_day"
+    t.string "genre"
+    t.string "spot_value"
+    t.string "other"
+    t.string "URL"
+    t.string "stay_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "transportations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -94,6 +132,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_21_042801) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "members", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "members", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spot_suggestions", "spots", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spot_suggestions", "trips", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spot_suggestions", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spot_votes", "spot_suggestions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spot_votes", "trips", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spot_votes", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_transportations", "transportations", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
 end

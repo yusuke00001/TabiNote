@@ -3,6 +3,8 @@ class Trip < ApplicationRecord
   has_many :transportations, through: :trip_transportations, dependent: :destroy
   has_many :members
   has_many :users, through: :members, dependent: :destroy
+  has_many :spot_suggestions
+  has_many :spot_vote
   has_one_attached :image
 
   enum :status, { in_progress: 0, completed: 1 }
