@@ -26,7 +26,8 @@
       <% if @trips_in_progress.presence %>
         <div class="trips-container">
           <% @trips_in_progress.each do |t| %>
-              <div class="trips-card-style">
+            <div class="trips-card-style">
+              <%= link_to trip_path(t), class:"trip-link" do %>
                 <div class="trip-title">
                   <%= t.title %>
                 </div>
@@ -44,7 +45,8 @@
                     <%= member.user.name %>
                   </div>
                 <% end %>
-              </div>
+              <% end %>
+            </div>
           <% end %>
         </div>
       <% else %>

@@ -59,12 +59,17 @@
         width: 200px;
         border: 1px solid black;
         box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+        .trip-link {
+          text-decoration: none;
+          color: inherit;
+        }
         .trip-title {
           text-align: center;
           font-size: 25px;
           font-weight: bold;
           padding: 10px;
           border-bottom: 1px solid black;
+          color: #007bff;
         }
         .member {
           text-align: center;

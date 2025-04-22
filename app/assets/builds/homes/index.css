@@ -61,12 +61,17 @@
   border: 1px solid black;
   box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
 }
+.homes-index .card-style .trips-container .trips-card-style .trip-link {
+  text-decoration: none;
+  color: inherit;
+}
 .homes-index .card-style .trips-container .trips-card-style .trip-title {
   text-align: center;
   font-size: 25px;
   font-weight: bold;
   padding: 10px;
   border-bottom: 1px solid black;
+  color: #007bff;
 }
 .homes-index .card-style .trips-container .trips-card-style .member {
   text-align: center;
