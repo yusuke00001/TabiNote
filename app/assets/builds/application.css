@@ -190,6 +190,9 @@
   margin-right: 30px;
   margin-left: 40px;
 }
+.homes-index .card-style .image-user-data .img {
+  border-radius: 50%;
+}
 .homes-index .card-style .image-user-data .user-data-card-style {
   border: 1px solid #ddd;
   border-radius: 4px;

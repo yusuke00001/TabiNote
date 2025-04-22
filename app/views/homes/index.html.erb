@@ -3,7 +3,7 @@
     <h1 class="title"><%= t('.title')%></h1>
     <div class="image-user-data">
       <div class="image">
-        <%= image_tag current_user.get_user_avatar.variant(resize_to_fit: [180,180]) %>
+        <%= image_tag current_user.get_user_avatar.variant(resize_to_fit: [180,180]),class:"img" %>
       </div>
       <div class="user-data">
         <div class="user-data-card-style">
