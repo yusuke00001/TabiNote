@@ -7,12 +7,8 @@
     </div>
     <div class="trip-detail">
       <div class="icon-label">
-        <div>
-          <i class="fa-solid fa-calendar-days"></i>
-        </div>
-        <div>
-          <%= Trip.human_attribute_name(:date) %>
-        </div>
+        <i class="fa-solid fa-calendar-days"></i>
+        <%= Trip.human_attribute_name(:date) %>
       </div>
       <div class="trip-info">
         <%= @trip.date %>
@@ -20,12 +16,8 @@
     </div>
     <div class="trip-detail">
       <div class="icon-label">
-        <div>
-          <i class="fa-solid fa-plane"></i>
-        </div>
-        <div>
-          <%= Trip.human_attribute_name(:distination) %>
-        </div>
+        <i class="fa-solid fa-plane"></i>
+        <%= Trip.human_attribute_name(:distination) %>
       </div>
       <div class="trip-info">
         <%= @trip.distination %>

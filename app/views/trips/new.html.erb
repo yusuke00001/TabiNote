@@ -14,24 +14,16 @@
     </div>
     <div class="form-group">
       <div class="icon-label">
-        <div>
-          <i class="fa-solid fa-calendar-days"></i>
-        </div>
-        <div>
-          <%= f.label :date, class:"form-label" %>
-          <i class="date-sub-title"><%= t('.date-sub-title') %></i>
-        </div>
+        <i class="fa-solid fa-calendar-days"></i>
+        <%= f.label :date, class:"form-label" %>
+        <i class="date-sub-title"><%= t('.date-sub-title') %></i>
       </div>
       <%= f.date_field :date, class:"text-field" %>
     </div>
     <div class="form-group">
       <div class="icon-label">
-        <div>
-          <i class="fa-solid fa-plane"></i>
-        </div>
-        <div>
-          <%= f.label :distination, class:"form-label" %>
-        </div>
+        <i class="fa-solid fa-plane"></i>
+        <%= f.label :distination, class:"form-label" %>
       </div>
       <%= f.text_field :distination, class:"text-field" %>
     </div>
@@ -39,23 +31,15 @@
     <div class="form-spot-limit">
       <div class="spot-suggestion-limit">
         <div class="icon-label">
-          <div>
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <div>
-            <%= f.label :spot_suggestion_limit %>
-          </div>
+          <i class="fa-solid fa-clock"></i>
+          <%= f.label :spot_suggestion_limit %>
         </div>
         <%= f.date_field :spot_suggestion_limit, class:"spot-field" %>
       </div>
       <div class="spot-vote-limit">
         <div class="icon-label">
-          <div>
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <div>
-            <%= f.label :spot_vote_limit %>
-          </div>
+          <i class="fa-solid fa-clock"></i>
+          <%= f.label :spot_vote_limit %>
         </div>
         <%= f.date_field :spot_vote_limit, class:"spot-field" %>
       </div>
@@ -64,23 +48,15 @@
     <div class="form-spot-time">
       <div class="start-time">
         <div class="icon-label">
-          <div>
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <div>
-            <%= f.label :start_time %>
-          </div>
+          <i class="fa-solid fa-clock"></i>
+          <%= f.label :start_time %>
         </div>
         <%= f.time_field :start_time, class:"time-field" %>
       </div>
       <div class="finish-time">
         <div class="icon-label">
-          <div>
-            <i class="fa-solid fa-clock"></i>
-          </div>
-          <div>
-            <%= f.label :finish_time %>
-          </div>
+          <i class="fa-solid fa-clock"></i>
+          <%= f.label :finish_time %>
         </div>
         <%= f.time_field :finish_time, class:"time-field" %>
       </div>
