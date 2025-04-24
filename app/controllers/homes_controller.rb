@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def index
-    @trips_in_progress = Trip.joins(:members).where(members: { user_id: current_user.id }, status: :in_progress)
-    @trips_past = Trip.joins(:members).where(members: { user_id: current_user.id }, status: :completed)
+    @trips_in_progress = current_user.trips_in_progress
+    @trips_past = current_user.trips_past
   end
 end

@@ -6,8 +6,8 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trips_params)
     if @trip.save
-      @trip.transportation_ids = params[:trip][:trasportation_ids]
-      Member.create(
+      @trip.transportation_ids = params[:trip][:transportation_ids]
+      TripUser.create(
         trip_id: @trip.id,
         user_id: current_user.id,
         host: :leader
@@ -24,7 +24,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @spot_suggestions = @trip.spot_suggestions
-    @members =@trip.members
+    @trip_users = @trip.trip_users
   end
 
   private

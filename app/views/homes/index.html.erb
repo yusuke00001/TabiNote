@@ -37,12 +37,12 @@
                 <div class="member">
                   <%= t('.member')%>
                 </div>
-                <% t.members.each do |member| %>
+                <% t.trip_users.each do |trip_user| %>
                   <div class="member-list">
-                    <% if member.host == "leader" %>
+                    <% if trip_user.host == "leader" %>
                       <i class="fa-solid fa-crown"></i>
                     <% end %>
-                    <%= member.user.name %>
+                    <%= trip_user.user.name %>
                   </div>
                 <% end %>
               <% end %>

@@ -59,12 +59,12 @@
         <div class="member-title">
           <%= t('.member') %>
         </div>
-        <% @members.each do |member| %>
+        <% @trip.trip_users.each do |trip_user| %>
           <div class="member-name">
-            <% if member.host == "leader" %>
+            <% if trip_user.host == "leader" %>
               <i class="fa-solid fa-crown member-icon"></i>
             <% end %>
-            <%= member.user.name %>
+            <%= trip_user.user.name %>
           </div>
         <% end %>
         <div class="member-edit-link">
