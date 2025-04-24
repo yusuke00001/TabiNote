@@ -7,6 +7,11 @@ class TripsController < ApplicationController
     @trip = Trip.new(trips_params)
     if @trip.save
       @trip.transportation_ids = params[:trip][:transportation_ids]
+      TripUser.create(
+        trip_id: @trip.id,
+        user_id: current_user.id,
+        host: :leader
+      )
 
       flash[:notice] = "しおりを作成しました"
       redirect_to trip_path(@trip)
@@ -19,6 +24,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @spot_suggestions = @trip.spot_suggestions
+    @trip_users = @trip.trip_users
   end
 
   private
