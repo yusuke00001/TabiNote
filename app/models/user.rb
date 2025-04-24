@@ -4,9 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :trips
-  has_many :members
-  has_many :users, through: :members, dependent: :destroy
+  has_many :trip_users
+  has_many :trips, through: :trip_users, dependent: :destroy
   has_many :spot_suggestions
   has_many :spot_vote
   has_one_attached :avatar
