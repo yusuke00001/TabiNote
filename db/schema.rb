@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_22_041728) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_03_030726) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -113,6 +113,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_22_041728) do
     t.integer "status", default: 0, null: false
     t.date "spot_suggestion_limit", null: false
     t.date "spot_vote_limit", null: false
+    t.bigint "creator_id", null: false
+    t.index ["creator_id"], name: "fk_rails_709004fcc4"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -140,4 +142,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_22_041728) do
   add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "trips", "users", column: "creator_id", on_update: :cascade, on_delete: :cascade
 end
