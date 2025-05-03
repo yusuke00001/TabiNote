@@ -1,4 +1,7 @@
 class Trip < ApplicationRecord
+  attr_accessor :current_user_id
+  after_create :create_trip_user
+
   has_many :trip_transportations
   has_many :transportations, through: :trip_transportations, dependent: :destroy
   has_many :trip_users
@@ -14,4 +17,8 @@ class Trip < ApplicationRecord
   validates :spot_vote_limit, presence: true
   validates :start_time, presence: true
   validates :finish_time, presence: true
+
+  def create_trip_user
+    TripUser.create(trip_id: id, user_id: current_user_id, host: :leader)
+  end
 end
