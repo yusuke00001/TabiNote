@@ -2,7 +2,10 @@
 function loadImage(obj) {
   const allPreview = document.getElementById('post_avatar');
   const newPreview = document.createElement("p");
-  allPreview.querySelector("p").remove();
+  const oldPreview = allPreview.querySelector("p");
+  if (oldPreview) {
+    oldPreview.remove();
+  }
   newPreview.setAttribute("id","preview");
   allPreview.insertBefore(newPreview, allPreview.firstChild);
   const fileReader = new FileReader();

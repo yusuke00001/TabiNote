@@ -75,7 +75,6 @@
       <%= f.file_field :image, class:"text-field", onchange: "loadImage(this);" %>
     </div>
     <div id="post_avatar">
-      <p id="preview"></p>
     </div>
     <div class="submit">
       <%= f.hidden_field :creator_id, value: current_user.id %>
