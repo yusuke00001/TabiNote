@@ -11,7 +11,6 @@ class GoogleplacesApi
     http.use_ssl = true
 
     request = Net::HTTP::POST.new(uri.path)
-    request["Content-Type"] = "application/json"
     request["X-Goog-Api-Key"] = ENV["API_KEY"]
     request.body = { textQuery: keyword }.to_json # リクエスト本文にkeywordを追加＋json形式変換
 
