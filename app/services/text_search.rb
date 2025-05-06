@@ -2,7 +2,7 @@ require "net/http"
 require "json"
 require "uri"
 
-class GoogleplacesApi
+class TextSearch
   BASE_URL = "https://places.googleapis.com/v1/places:searchText"
 
   def self.search_spots(keyword:)
@@ -12,7 +12,9 @@ class GoogleplacesApi
 
     request = Net::HTTP::POST.new(uri.path)
     request["X-Goog-Api-Key"] = ENV["API_KEY"]
-    request.body = { textQuery: keyword }.to_json # リクエスト本文にkeywordを追加＋json形式変換
+    request["Content-Type"] = "application/json"
+    request["X-Goog-FieldMask"] = "places.id,places.displayName"
+    request.body = { textQuery: keyword, languageCode: "ja" }.to_json # リクエスト本文にkeywordを追加＋json形式変換
 
     response = http.request(request)
 
