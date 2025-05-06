@@ -2,6 +2,7 @@ class CreateSpots < ActiveRecord::Migration[8.0]
   def change
     create_table :spots do |t|
       t.string :spot_name
+      t.integer :unique_number
       t.integer :phone_number
       t.string :opening_hours
       t.string :closing_day
