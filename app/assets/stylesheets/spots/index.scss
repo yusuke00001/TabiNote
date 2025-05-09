@@ -19,6 +19,18 @@
     border: 1px solid #007bff;
     border-radius: 4px;
   }
+  .no_search_result {
+    text-align: center;
+    margin-top: 100px;
+  }
+  .no_search_result i {
+    font-size: 30px;
+  }
+  .no_search_result p {
+    margin-top: 40px;
+    font-size: 20px;
+    color: #666;
+  }
   .spot-container {
     margin: 0 auto;
     margin-top: 50px;
