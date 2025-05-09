@@ -1,5 +1,4 @@
 class Trip < ApplicationRecord
-  attr_accessor :current_user_id
   after_create :create_trip_user
 
   has_many :trip_transportations
@@ -19,6 +18,6 @@ class Trip < ApplicationRecord
   validates :finish_time, presence: true
 
   def create_trip_user
-    TripUser.create(trip_id: id, user_id: current_user_id, host: :leader)
+    TripUser.create(trip_id: id, user_id: created_user_id, host: :leader)
   end
 end

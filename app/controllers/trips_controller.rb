@@ -5,7 +5,6 @@ class TripsController < ApplicationController
 
   def create
     @trip = Trip.new(trips_params)
-    @trip.current_user_id = current_user.id
     if @trip.save
       @trip.transportation_ids = params[:trip][:transportation_ids]
 
