@@ -80,7 +80,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
 
   create_table "spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "spot_name"
-    t.integer "unique_number"
+    t.string "unique_number"
     t.integer "phone_number"
     t.string "opening_hours"
     t.string "closing_day"
@@ -89,6 +89,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.string "other"
     t.string "URL"
     t.string "stay_time"
+    t.string "address"
+    t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
