@@ -7,15 +7,15 @@ class PlaceDetails
 
   def self.search_spot_details(place_id:)
     uri = URI("#{BASE_URL}#{place_id}")
-    uri.query = URI.encode_www_form({ key: ENV["API_KEY"], languageCode: "ja" })
+    uri.query = URI.encode_www_form({ key: ENV["API_KEY"] })
 
     http = Net::HTTP.new(uri.host, uri.port)
     http.use_ssl = true
 
-    request = Net::HTTP::Get.new(uri)
+    request = Net::HTTP::GET.new(uri)
     request["X-Goog-Api-Key"] = ENV["API_KEY"]
     request["Content-Type"] = "application/json"
-    request["X-Goog-FieldMask"] = "formattedAddress,internationalPhoneNumber,regularOpeningHours,rating,userRatingCount,websiteUri,id,displayName,photos"
+    request["X-Goog-FieldMask"] = "*"
 
     response = http.request(request)
 
