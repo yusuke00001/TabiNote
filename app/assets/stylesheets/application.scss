@@ -16,4 +16,5 @@
 @use "users/sessions/new.scss" as sessions;
 @use "homes/index.scss";
 @use "trips/new.scss" as trips;
-@use "trips/show.scss"
+@use "trips/show.scss";
+@use "spots/index.scss" as spots;
