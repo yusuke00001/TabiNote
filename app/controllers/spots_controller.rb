@@ -34,14 +34,14 @@ class SpotsController < ApplicationController
       end
       # ページネーション
       @keyword = params[:keyword]
-      @current_page = (params[:page].to_i > 0) ? params[:page].to_i : 1
+      @current_page = (params[:page].to_i > 0) ? params[:page].to_i : Spot::DEFAULT_PAGE
       spots = keyword.spots
       total_spots = spots.count
-      @total_page = (total_spots.to_f / 10).ceil
-      @search_results = spots.offset((@current_page - 1) * 10).limit(10)
-      @next_page = @current_page * 10 < total_spots ? @current_page + 1 : nil
+      @total_page = (total_spots.to_f / Spot::PER_PAGE).ceil
+      @search_results = spots.offset((@current_page - 1) * Spot::PER_PAGE).limit(Spot::PER_PAGE)
+      @next_page = @current_page * Spot::PER_PAGE < total_spots ? @current_page + 1 : nil
       @previous_page = @current_page > 1 ? @current_page - 1 : nil
-      @first_page = @current_page > 1 ? 1 : nil
-      @last_page = @current_page * 10 < total_spots ? @total_page : nil
+      @first_page = @current_page > 1 ? Spot::MIN_PAGE : nil
+      @last_page = @current_page * Spot::PER_PAGE < total_spots ? @total_page : nil
   end
 end
