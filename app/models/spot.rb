@@ -10,7 +10,6 @@ class Spot < ApplicationRecord
   end
 
   def self.bulk_insert(spot_details_data)
-    binding.pry
     insert_all(spot_details_data)
   end
 end

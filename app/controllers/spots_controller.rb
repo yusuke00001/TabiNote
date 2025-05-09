@@ -2,9 +2,7 @@ class SpotsController < ApplicationController
   def index
     return if params[:keyword].blank?
       keyword = Keyword.search_keyword(params[:keyword])
-      if keyword
-        @search_results = keyword.spots
-      else
+      unless keyword
         spots_data = TextSearch.search_spots(keyword: params[:keyword])
 
         # キーワードテーブルのレコードを作成
@@ -28,14 +26,12 @@ class SpotsController < ApplicationController
           image_url: "https://places.googleapis.com/v1/#{spot_detail.dig("photos", 0, "name")}/media?maxWidthPx=800&key=#{ENV["API_KEY"]}"
           }
         end
-        binding.pry
         Spot.bulk_insert(spot_details_data)
         spots_data = Spot.where(unique_number: spots_unique_numbers)
         spots_data.each do |spot|
           KeywordSpot.create_keyword_spot(keyword_id: keyword.id, spot_id: spot.id)
         end
-        @search_results = keyword.spots
-        binding.pry
       end
+      @search_results = keyword.spots
   end
 end

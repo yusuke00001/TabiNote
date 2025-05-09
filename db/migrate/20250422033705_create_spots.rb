@@ -16,5 +16,6 @@ class CreateSpots < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
+    add_index :spots, [ :unique_number ], unique: true
   end
 end

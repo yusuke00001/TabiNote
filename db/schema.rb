@@ -93,6 +93,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["unique_number"], name: "index_spots_on_unique_number", unique: true
   end
 
   create_table "transportations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

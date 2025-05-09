@@ -16,7 +16,6 @@ class TextSearch
     request.body = { textQuery: keyword, languageCode: "ja" }.to_json # リクエスト本文にkeywordを追加＋json形式変換
 
     response = http.request(request)
-    binding.pry
 
     if response.is_a?(Net::HTTPSuccess)
       JSON.parse(response.body)["places"]
