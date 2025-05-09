@@ -53,3 +53,7 @@ ja:
       spot-add: スポットを追加する
       member: 参加メンバー
       member-edit: メンバーを編集する
+  spots:
+    index:
+      title: スポット検索ページ
+      search: 検索
