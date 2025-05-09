@@ -600,5 +600,34 @@
   height: 180px;
   border-radius: 8px;
 }
+.spots-index .pagination {
+  display: flex;
+  margin: 0 auto;
+  gap: 30px;
+  margin-top: 20px;
+  justify-content: center;
+  width: 600px;
+  font-size: 15px;
+  text-align: center;
+}
+.spots-index .pagination .current_page_link {
+  padding-top: 10px;
+  font-weight: bold;
+  color: white;
+  background: #007bff;
+  border: 1px solid #ddd;
+  width: 33px;
+  height: 30px;
+  text-decoration: none;
+}
+.spots-index .pagination .page_link {
+  padding-top: 10px;
+  color: blue;
+  background: #FFF;
+  border: 1px solid #ddd;
+  width: 33px;
+  height: 30px;
+  text-decoration: none;
+}
 
 /*# sourceMappingURL=application.css.map */

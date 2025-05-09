@@ -57,3 +57,8 @@ ja:
     index:
       title: スポット検索ページ
       search: 検索
+      first_page: "<<"
+      previous_page: "<"
+      next_page: ">"
+      last_page: ">>"
+

@@ -32,6 +32,16 @@ class SpotsController < ApplicationController
           KeywordSpot.create_keyword_spot(keyword_id: keyword.id, spot_id: spot.id)
         end
       end
-      @search_results = keyword.spots
+      # ページネーション
+      @keyword = params[:keyword]
+      @current_page = (params[:page].to_i > 0) ? params[:page].to_i : 1
+      spots = keyword.spots
+      total_spots = spots.count
+      @total_page = (total_spots.to_f / 10).ceil
+      @search_results = spots.offset((@current_page - 1) * 10).limit(10)
+      @next_page = @current_page * 10 < total_spots ? @current_page + 1 : nil
+      @previous_page = @current_page > 1 ? @current_page - 1 : nil
+      @first_page = @current_page > 1 ? 1 : nil
+      @last_page = @current_page * 10 < total_spots ? @total_page : nil
   end
 end
