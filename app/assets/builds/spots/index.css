@@ -52,6 +52,8 @@
 .spots-index .pagination {
   display: flex;
   margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
   gap: 30px;
   margin-top: 20px;
   justify-content: center;
