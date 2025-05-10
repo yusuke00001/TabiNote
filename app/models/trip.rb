@@ -6,6 +6,7 @@ class Trip < ApplicationRecord
   has_many :trip_users
   has_many :users, through: :trip_users, dependent: :destroy
   has_many :spot_suggestions
+  has_many :spots, through: :spot_suggestions, dependent: :destroy
   has_many :spot_vote
   has_one_attached :image
 

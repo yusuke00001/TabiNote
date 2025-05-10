@@ -1,0 +1,45 @@
+<div class="spots-show">
+  <div class="card-style">
+    <div class="title">
+      <%= @spot.spot_name %>
+    </div>
+    <div class="image">
+      <%= image_tag @spot.image_url, class:"image-size"%>
+    </div>
+    <div class="spot-group">
+      <span class="label"><%= Spot.human_attribute_name(:address) %></span>
+      <span class="body"><%= @spot.address %></span>
+    </div>
+    <div class="spot-group">
+      <span class="label"><%= Spot.human_attribute_name(:phone_number) %></span>
+      <span class="body"><%= @spot.phone_number %></span>
+    </div>
+    <div class="spot-group">
+      <span class="label"><%= Spot.human_attribute_name(:opening_hours) %>
+      <span class="body"><%= @spot.opening_hours %></span>
+    </div>
+    <div class="spot-group">
+      <span class="label"><%= Spot.human_attribute_name(:genre) %></span>
+      <span class="body"><%= @spot.genre %></span>
+    </div>
+    <div class="spot-group">
+      <span class="label"><%= Spot.human_attribute_name(:spot_value) %></span>
+      <span class="body"><%= @spot.spot_value %></span>
+    </div>
+    <div class="spot-group">
+      <span class="label"><%= Spot.human_attribute_name(:URL) %></span>
+      <span class="body"><%= link_to @spot.URL, @spot.URL, target: :_blank%></span>
+    </div>
+  </div>
+  <div class="search_page_link">
+    <%= link_to t(".search_page_link"), :back %>
+  </div>
+  <div class="spot-submit">
+    <%= form_with url: spot_suggestions_path do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :trip_id, value: @trip_id %>
+      <%= f.hidden_field :spot_id, value: @spot.id  %>
+      <%= f.submit t(".spot_suggestions_create"), class:"submit-botton" %>
+    <% end %>
+  </div>
+</div>

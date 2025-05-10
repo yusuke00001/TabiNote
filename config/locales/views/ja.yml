@@ -61,4 +61,6 @@ ja:
       previous_page: "<"
       next_page: ">"
       last_page: ">>"
-
+    show:
+      search_page_link: 検索ページに戻る
+      spot_suggestions_create: スポットを提案する

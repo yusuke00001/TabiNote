@@ -9,12 +9,13 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
-@use "users/registrations/new.scss";
-@use "users/registrations/edit.scss" as registrations;
-@use "users/shared/error_messages.scss";
-@use "shared/flash_messages.scss";
-@use "users/sessions/new.scss" as sessions;
-@use "homes/index.scss";
-@use "trips/new.scss" as trips;
-@use "trips/show.scss";
-@use "spots/index.scss" as spots;
+@use "users/registrations/new.scss" as registrations_new;
+@use "users/registrations/edit.scss" as registrations_edit;
+@use "users/shared/error_messages.scss" as shared_error_messages;
+@use "shared/flash_messages.scss" as shared_flash_messages;
+@use "users/sessions/new.scss" as users_sessions;
+@use "homes/index.scss" as homes_index;
+@use "trips/new.scss" as trips_new;
+@use "trips/show.scss" as trips_show;
+@use "spots/index.scss" as spots_index;
+@use "spots/show.scss" as spots_show;

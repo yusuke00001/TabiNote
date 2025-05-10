@@ -1,5 +1,6 @@
 class SpotsController < ApplicationController
   def index
+    @trip_id = params[:trip_id]
     return if params[:keyword].blank?
       keyword = Keyword.search_keyword(params[:keyword])
       unless keyword
@@ -44,7 +45,9 @@ class SpotsController < ApplicationController
       @first_page = @current_page > 1 ? Spot::MIN_PAGE : nil
       @last_page = @current_page * Spot::PER_PAGE < total_spots ? @total_page : nil
   end
+
   def show
     @spot = Spot.find(params[:id])
+    @trip_id = params[:trip_id]
   end
 end

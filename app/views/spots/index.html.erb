@@ -3,6 +3,7 @@
     <%= form_with url: spots_path, method: :get  do |f| %>
       <div class="form-group">
         <%= f.text_field :keyword, placeholder: "検索キーワード", class:"text-field" %>
+        <%= f.hidden_field :trip_id, value: @trip_id %>
         <%= f.submit t('.search'), class: "submit"%>
       </div>
     <% end %>
