@@ -7,9 +7,10 @@ class SpotSuggestionsController < ApplicationController
       flash[:notice] = "スポットの提案に成功しました"
       redirect_to trip_path(trip)
     else
-      flash.now[:alert] = "スポットの提案に失敗しました"
+      flash[:alert] = "スポットの提案に失敗しました"
       redirect_to spot_path(spot)
     end
+    binding.pry
   end
 
   private

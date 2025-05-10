@@ -19,3 +19,10 @@ ja:
         start_time: 観光開始時間
         finish_time: 観光終了時間
         image: しおりの画像
+      spot:
+        address: 住所
+        phone_number: 電話番号
+        opening_hours: 営業時間
+        genre: ジャンル
+        spot_value: ユーザー評価
+        URL: ホームページ

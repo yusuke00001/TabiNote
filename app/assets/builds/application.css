@@ -602,7 +602,6 @@
 .spots-index .spot-container .spot-name-address .spot-name {
   text-align: center;
   font-size: 30px;
-  font-weight: bold;
 }
 .spots-index .spot-container .spot-name-address .spot-address {
   font-size: 20px;
@@ -642,6 +641,65 @@
   width: 33px;
   height: 30px;
   text-decoration: none;
+}
+
+.spots-show .card-style {
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 600px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+}
+.spots-show .card-style .title {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 40px;
+  border-bottom: 1px solid #ddd;
+}
+.spots-show .card-style .image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.spots-show .card-style .image-size {
+  width: 200px;
+  height: 200px;
+}
+.spots-show .card-style .spot-group {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+}
+.spots-show .card-style .spot-group .label {
+  width: 150px;
+  font-size: 20px;
+}
+.spots-show .card-style .spot-group .body {
+  margin-left: 20px;
+  font-size: 15px;
+}
+.spots-show .search_page_link {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 20px;
+  text-align: right;
+}
+.spots-show .spot-submit {
+  width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.spots-show .submit-botton {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-bottom: 100px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=application.css.map */
