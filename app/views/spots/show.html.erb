@@ -37,7 +37,7 @@
   <div class="spot-submit">
     <%= form_with url: spot_suggestions_path do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
-      <%= f.hidden_field :trip_id, value: @trip_id %>
+      <%= f.hidden_field :trip_id, value: params[:id] %>
       <%= f.hidden_field :spot_id, value: @spot.id  %>
       <%= f.submit t(".spot_suggestions_create"), class:"submit-botton" %>
     <% end %>

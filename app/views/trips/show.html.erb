@@ -42,7 +42,7 @@
             <%= t('.no-spot-suggestions') %>
           </div>
         <% end %>
-        <%= link_to spots_path(trip_id: @trip.id) do %>
+        <%= link_to trip_spots_path(@trip) do %>
           <div class="spot-add-container">
             <div class="spot-add">
               <%= t('.spot-add')%>

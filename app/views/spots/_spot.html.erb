@@ -2,7 +2,7 @@
   <%= image_tag spot.image_url, class:"image" %>
   <div class="spot-name-address">
     <div class="spot-name">
-      <%= link_to spot.spot_name, spot_path(spot, trip_id: @trip_id), data: { turbo_frame: "_top"} %>
+      <%= link_to spot.spot_name, trip_spot_path(trip_id: params[:trip_id], id: spot.id), data: { turbo_frame: "_top"} %>
     </div>
     <p class="spot-address"><%= spot.address %></p>
   </div>
