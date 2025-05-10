@@ -12,23 +12,23 @@
         <%= render partial: "spot", collection: @search_results %>
         <div class="pagination">
           <% if @first_page %>
-            <%= link_to t('.first_page'), spots_path(page: @first_page, keyword: @keyword), class:"page_link", data: { turbo_frame: "_top"} %>
+            <%= link_to t('.first_page'), spots_path(page: @first_page, keyword: @keyword, trip_id: @trip_id), class:"page_link", data: { turbo_frame: "_top"} %>
           <% end %>
           <% if @previous_page %>
-            <%= link_to t('.previous_page'), spots_path(page: @previous_page, keyword: @keyword), class:"page_link", data: { turbo_frame: "_top" } %>
+            <%= link_to t('.previous_page'), spots_path(page: @previous_page, keyword: @keyword, trip_id: @trip_id), class:"page_link", data: { turbo_frame: "_top" } %>
           <% end %>
           <% (1..@total_page).each do |page| %>
             <% if page == @current_page %>
               <span class="current_page_link"><%= @current_page %></span>
             <% else %>
-              <%= link_to page, spots_path(page: page, keyword: @keyword), class:"page_link", data: { turbo_frame: "_top"} %>
+              <%= link_to page, spots_path(page: page, keyword: @keyword, trip_id: @trip_id), class:"page_link", data: { turbo_frame: "_top"} %>
             <% end %>
           <% end %>
           <% if @next_page %>
-            <%= link_to t('.next_page'), spots_path(page: @next_page, keyword: @keyword), class:"page_link", data: { turbo_frame: "_top"} %>
+            <%= link_to t('.next_page'), spots_path(page: @next_page, keyword: @keyword, trip_id: @trip_id), class:"page_link", data: { turbo_frame: "_top"} %>
           <% end %>
           <% if @last_page %>
-            <%= link_to t('.last_page'), spots_path(page: @last_page, keyword: @keyword), class:"page_link", data: { turbo_frame: "_top"} %>
+            <%= link_to t('.last_page'), spots_path(page: @last_page, keyword: @keyword, trip_id: @trip_id), class:"page_link", data: { turbo_frame: "_top"} %>
           <% end %>
         </div>
       </turbo-frame>
