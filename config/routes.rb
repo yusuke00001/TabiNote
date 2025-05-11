@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get "/homes", to: "homes#index"
   resources :trips do
     resources :spots
+    resources :spot_suggestions
   end
-  resources :spot_suggestions
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

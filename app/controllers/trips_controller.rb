@@ -19,6 +19,7 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @spot_suggestions = @trip.spots
+    @spot_suggestion_by_user = SpotSuggestion.where(trip_id: @trip.id).index_by(&:spot_id)
   end
 
   private

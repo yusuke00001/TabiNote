@@ -35,7 +35,7 @@
     <%= link_to t(".search_page_link"), :back %>
   </div>
   <div class="spot-submit">
-    <%= form_with url: spot_suggestions_path do |f| %>
+    <%= form_with url: trip_spot_suggestions_path do |f| %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <%= f.hidden_field :trip_id, value: params[:trip_id] %>
       <%= f.hidden_field :spot_id, value: @spot.id  %>
