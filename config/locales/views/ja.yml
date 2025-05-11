@@ -53,6 +53,8 @@ ja:
       spot-add: スポットを追加する
       member: 参加メンバー
       member-edit: メンバーを編集する
+      spot-suggestions: 現在提案されているスポット
+      spot_delete: スポットの削除
   spots:
     index:
       title: スポット検索ページ

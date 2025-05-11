@@ -7,5 +7,6 @@ class CreateSpotSuggestions < ActiveRecord::Migration[8.0]
       t.references :user, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.timestamps
     end
+    add_index :spot_suggestions, [ :trip_id, :spot_id ], unique: true
   end
 end

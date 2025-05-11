@@ -62,6 +62,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spot_id"], name: "index_spot_suggestions_on_spot_id"
+    t.index ["trip_id", "spot_id"], name: "index_spot_suggestions_on_trip_id_and_spot_id", unique: true
     t.index ["trip_id"], name: "index_spot_suggestions_on_trip_id"
     t.index ["user_id"], name: "index_spot_suggestions_on_user_id"
   end
