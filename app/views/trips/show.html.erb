@@ -36,9 +36,20 @@
         <div class="suggestion-limit">
           <%= t('.suggestion-limit') %><%= (@trip.spot_suggestion_limit - Date.today).to_i %>日
         </div>
-        <% if @spot_suggestios.presence %>
+        <% if @spot_suggestions.present? %>
+          <div class="spot-suggestions-headline">
+            <%= t(".spot-suggestions") %>
+          </div>
+          <div class="spot-image-container">
+            <% @spot_suggestions.each do |spot| %>
+                <div class="spot-image">
+                  <%= link_to spot.spot_name.truncate(8), trip_spot_path(spot) %><br>
+                  <%= image_tag spot.image_url, class:"image" %>
+                </div>
+            <% end %>
+          </div>
         <% else %>
-          <div class="no-spot-suggestions">
+          <div class="no-spot-suggestions-headline">
             <%= t('.no-spot-suggestions') %>
           </div>
         <% end %>

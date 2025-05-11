@@ -10,7 +10,6 @@ class SpotSuggestionsController < ApplicationController
       flash[:alert] = "スポットの提案に失敗しました"
       redirect_to spot_path(spot)
     end
-    binding.pry
   end
 
   private

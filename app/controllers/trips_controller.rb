@@ -19,7 +19,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @spot_suggestions = @trip.spots
-    @trip_users = @trip.trip_users
   end
 
   private
