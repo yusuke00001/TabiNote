@@ -55,3 +55,10 @@ production:
     encoding: utf8
     pool: 5
     url: <%= ENV['JAWSDB_URL'] %>
+  cable:
+    adapter: mysql2
+    encoding: utf8
+    pool: 5
+    url: <%= ENV['JAWSDB_URL'] %>
+    database: tabi_note_production_cable
+    migrations_paths: db/cable_migrate
