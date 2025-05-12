@@ -7,7 +7,7 @@
     <% else %>
       <div class="flash-alert">
         <strong><i class="fa-solid fa-circle-exclamation"></i> 入力エラーがあります</strong>
-        <% message.each do |msg|%>
+        <% Array(message).each do |msg|%>
           <li><%= msg %></li>
         <% end %>
       </div>
