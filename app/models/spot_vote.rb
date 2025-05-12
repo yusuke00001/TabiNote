@@ -1,5 +1,5 @@
 class SpotVote < ApplicationRecord
   belongs_to :user
-  belogns_to :trip
-  belogns_to :suggestion_id
+  belongs_to :trip
+  belongs_to :suggestion_id
 end
