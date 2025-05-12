@@ -10,7 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "sass app/assets/stylesheets/application.scss app/assets/builds/application.css --no-source-map",
-    "watch:css": "sass --watch app/assets/stylesheets:app/assets/builds"
+    "watch:css": "sass --watch app/assets/stylesheets:app/assets/builds",
+    "build": "esbuild app/javascript/application.js --bundle --sourcemap --outdir=app/assets/builds"
   },
   "repository": {
     "type": "git",
