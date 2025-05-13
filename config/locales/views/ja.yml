@@ -55,6 +55,7 @@ ja:
       member-edit: メンバーを編集する
       spot-suggestions: 現在提案されているスポット
       spot_delete: スポットの削除
+      vote-limit: 投票期限まであと
   spots:
     index:
       title: スポット検索ページ

@@ -5,9 +5,14 @@ Rails.application.routes.draw do
   }
   get "/homes", to: "homes#index"
   resources :trips do
+    member do
+      get "suggestion"
+      get "vote"
+    end
     resources :spots
     resources :spot_suggestions
   end
+
   root "homes#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

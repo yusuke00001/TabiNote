@@ -40,10 +40,22 @@
       width: 400px;
       margin: auto;
       margin-top: 70px;
-    }
-    .label {
-      border: 1px solid black;
-      width: 200px;
+      .suggestion-vote-link {
+        border: 1px solid black;
+        width: 200px;
+      }
+      .suggestion-vote-hilight-link {
+        background-color: #99FFFF;
+        border: 1px solid black;
+        width: 200px;
+      }
+      .suggestion-vote-link a,
+      .suggestion-vote-hilight-link a {
+        font-size: 20px;
+        font-weight: bold;
+        color: inherit;
+        text-decoration: none;
+      }
     }
     .suggestion-vote-container {
       display: flex;
@@ -53,13 +65,13 @@
       .suggestion-vote-card-style {
         width: 400px;
         border: 1px solid black;
-        .suggestion-limit {
+        .suggestion-vote-limit {
           margin-top: 30px;
           color: red;
           text-align: center;
           font-size: 25px;
         }
-        .spot-suggestions-headline {
+        .spot-suggestion-vote-headline {
           margin-top: 30px;
           margin-bottom: 30px;
           text-align: center;
@@ -88,7 +100,7 @@
           }
         }
       }
-      .no-spot-suggestions-headline {
+      .no-spot-suggestion-vote-headline {
         margin-top: 100px;
         margin-bottom: 100px;
         text-align: center;
