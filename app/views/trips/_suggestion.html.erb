@@ -24,7 +24,7 @@
             <%= t('trips.show.no-spot-suggestions') %>
           </div>
         <% end %>
-        <%= link_to trip_spots_path(trip) do %>
+        <%= link_to trip_spots_path(trip), data: { turbo_frame: "_top"} do %>
           <div class="spot-add-container">
             <div class="spot-add">
               <%= t('trips.show.spot-add')%>
