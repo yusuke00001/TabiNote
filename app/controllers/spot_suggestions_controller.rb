@@ -2,13 +2,14 @@ class SpotSuggestionsController < ApplicationController
   def create
     spot_suggestion = SpotSuggestion.new(spot_suggestions_params)
     trip = Trip.find(params[:trip_id])
-    spot = Spot.find(params[:spot_id])
+    spot = Spot.find(params[:spot_suggestion][:spot_id])
+    binding.pry
     if spot_suggestion.save
       flash[:notice] = "スポットの提案に成功しました"
       redirect_to trip_path(trip)
     else
       flash[:alert] = "スポットの提案に失敗しました"
-      redirect_to spot_path(spot)
+      redirect_to trip_spot_path(spot, trip)
     end
   end
 
@@ -27,6 +28,6 @@ class SpotSuggestionsController < ApplicationController
   private
 
   def spot_suggestions_params
-    params.permit(:user_id, :trip_id, :spot_id)
+    params.require(:spot_suggestion).permit(:user_id, :spot_id).merge(trip_id: params[:trip_id])
   end
 end
