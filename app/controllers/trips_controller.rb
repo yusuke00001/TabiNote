@@ -22,6 +22,19 @@ class TripsController < ApplicationController
     @spot_suggestion_by_user = SpotSuggestion.where(trip_id: @trip.id).index_by(&:spot_id)
   end
 
+  def suggestion
+    @trip = Trip.find(params[:id])
+    @spot_suggestions = @trip.spots
+    @spot_suggestion_by_user = SpotSuggestion.where(trip_id: @trip.id).index_by(&:spot_id)
+    render partial: "trips/suggestion"
+  end
+
+  def vote
+    @trip = Trip.find(params[:id])
+    @spot_votes = @trip.spots
+    render partial: "trips/vote"
+  end
+
   private
 
   def trips_params

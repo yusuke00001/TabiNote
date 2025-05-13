@@ -1,0 +1,31 @@
+<turbo-frame id="phase">
+  <div class="label-container">
+    <div class="suggestion-vote-link">
+      <%= link_to t('trips.show.suggestion-phase'), suggestion_trip_path(@trip), data: { turbo_frame: "phase"} %>
+    </div>
+    <div class="suggestion-vote-hilight-link">
+      <%= link_to t('trips.show.vote-phase'), vote_trip_path(@trip), data: { turbo_frame: "phase"} %>
+    </div>
+  </div>
+  <div class="suggestion-vote-container">
+    <div class="suggestion-vote-card-style">
+      <div class="suggestion-vote-limit">
+        <%= t('trips.show.vote-limit') %><%= (@trip.spot_vote_limit - Date.today).to_i  %>日
+      </div>
+      <% if @spot_votes.present? %>
+        <div class="spot-image-container">
+          <% @spot_votes.each do |spot| %>
+            <div class="spot-image">
+              <%= link_to spot.spot_name.truncate(8), trip_spot_path(spot) %><br>
+              <%= image_tag spot.image_url, class:"image" %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="no-spot-suggestion-vote-headline">
+          <%= t('trips.show.no-spot-suggestions') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</turbo-frame>
