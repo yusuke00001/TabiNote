@@ -47,6 +47,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @trip = Trip.find(params[:trip_id])
     @spot = Spot.find(params[:id])
   end
 end
