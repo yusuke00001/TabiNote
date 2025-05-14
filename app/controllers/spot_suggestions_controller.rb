@@ -3,7 +3,6 @@ class SpotSuggestionsController < ApplicationController
     spot_suggestion = SpotSuggestion.new(spot_suggestions_params)
     trip = Trip.find(params[:trip_id])
     spot = Spot.find(params[:spot_suggestion][:spot_id])
-    binding.pry
     if spot_suggestion.save
       flash[:notice] = "スポットの提案に成功しました"
       redirect_to trip_path(trip)
