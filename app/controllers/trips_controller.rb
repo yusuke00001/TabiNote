@@ -19,7 +19,6 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @spot_suggestions = @trip.spot_suggestions
-    @spot_suggestion_by_user = SpotSuggestion.where(trip_id: @trip.id).index_by(&:spot_id)
   end
 
   def suggestion

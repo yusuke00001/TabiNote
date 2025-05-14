@@ -24,7 +24,7 @@
       </div>
     </div>
     <turbo-frame id="phase">
-      <%= render partial: "suggestion", locals: { trip: @trip, spot_suggestions: @spot_suggestions, spot_suggestion_by_user: @spot_suggestion_by_user } %>
+      <%= render partial: "suggestion", locals: { trip: @trip, spot_suggestions: @spot_suggestions, show_delete_link: true } %>
     </turbo-frame>  
     <div class="member-container">
       <div class="member-card-style">

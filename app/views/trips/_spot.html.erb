@@ -1,7 +1,7 @@
 <div class="spot-image">
   <%= link_to spot_suggestion.spot.spot_name.truncate(8), trip_spot_path(spot_suggestion.spot) %><br>
   <%= image_tag spot_suggestion.spot.image_url, class:"image" %>
-  <% if spot_suggestion.user.id == current_user.id %>
+  <% if show_delete_link && spot_suggestion.user.id == current_user.id %>
     <%= link_to trip_spot_suggestion_path(trip_id: params[:id], spot_id: spot_suggestion.spot.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"spot-delete-link" do %>
       <i class="fa-solid fa-xmark"></i>
       <%= t('trips.show.spot_delete')%>
