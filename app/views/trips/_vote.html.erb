@@ -12,9 +12,9 @@
       <div class="suggestion-vote-limit">
         <%= t('trips.show.vote-limit') %><%= (trip.spot_vote_limit - Date.today).to_i  %>日
       </div>
-      <% if spot_votes.present? %>
+      <% if spot_suggestions.present? %>
         <div class="spot-image-container">
-          <%= render partial: "spot", collection: spot_votes, :as => "spot" %>
+          <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion" %>
         </div>
       <% else %>
         <div class="no-spot-suggestion-vote-headline">
