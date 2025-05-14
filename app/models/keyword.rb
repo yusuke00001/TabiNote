@@ -2,11 +2,13 @@ class Keyword < ApplicationRecord
   has_many :keyword_spots
   has_many :spots, through: :keyword_spots, dependent: :destroy
 
-  def self.search_keyword(keyword)
-    find_by(word: keyword)
-  end
+  def self.find_by_create_and_spot(word:)
+    keyword = find_by(word: word)
+    unless keyword.present?
+      spots_data = TextSearch.search_spots(keyword: word)
+      keyword = create(word: word)
+      Spot.register_spots(spots_data: spots_data, keyword: keyword)
 
-  def self.create_keyword(keyword)
-    create(word: keyword)
+    end
   end
 end
