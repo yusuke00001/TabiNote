@@ -10,6 +10,8 @@ class CreateTrips < ActiveRecord::Migration[8.0]
       t.integer :status, null: false, default: 0
       t.date :spot_suggestion_limit, null: false
       t.date :spot_vote_limit, null: false
+      t.bigint :created_user_id, null: false
     end
+    add_foreign_key :trips, :users, column: :created_user_id, on_update: :cascade, on_delete: :cascade
   end
 end

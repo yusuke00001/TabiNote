@@ -7,5 +7,6 @@ class CreateSpotVotes < ActiveRecord::Migration[8.0]
       t.references :user, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.timestamps
     end
+    add_index :spot_votes, [ :trip_id, :spot_suggestion_id, :user_id ], unique: true
   end
 end
