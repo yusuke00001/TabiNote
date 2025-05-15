@@ -5,7 +5,7 @@ class SpotSuggestionsController < ApplicationController
       flash[:notice] = "スポットの提案に成功しました"
       redirect_to trip_path(spot_suggestion.trip_id)
     else
-      flash[:alert] = "スポットの提案に失敗しました"
+      flash[:alert] = spot_suggestion.errors.full_messages
       redirect_back fallback_location: trip_spots_path(spot_suggestion.trip_id)
     end
   end
