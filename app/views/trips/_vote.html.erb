@@ -14,7 +14,7 @@
       </div>
       <% if spot_suggestions.present? %>
         <div class="spot-image-container">
-          <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { show_delete_link: false } %>
+          <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false } %>
         </div>
       <% else %>
         <div class="no-spot-suggestion-vote-headline">

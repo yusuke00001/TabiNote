@@ -17,7 +17,7 @@
             <%= t("trips.show.spot-suggestions") %>
           </div>
           <div class="spot-image-container">
-            <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { show_delete_link: true} %>
+            <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: true} %>
           </div>
         <% else %>
           <div class="no-spot-suggestion-vote-headline">
