@@ -13,9 +13,14 @@
         <%= t('trips.show.vote-limit') %><%= (trip.spot_vote_limit - Date.today).to_i  %>日
       </div>
       <% if spot_suggestions.present? %>
-        <div class="spot-image-container">
-          <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false } %>
-        </div>
+        <%= form_with model: [@trip, SpotVote.new] do |f| %>
+          <div class="spot-image-container">
+            <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: true } %>
+          </div>
+          <div class="submit-form">
+            <%= f.submit t('trips.show.submit'), class:"submit-button" %>
+          </div>
+        <% end %>
       <% else %>
         <div class="no-spot-suggestion-vote-headline">
           <%= t('trips.show.no-spot-suggestions') %>

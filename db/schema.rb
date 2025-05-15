@@ -104,6 +104,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trip_transportations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "transportation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["transportation_id"], name: "index_trip_transportations_on_transportation_id"
+    t.index ["trip_id"], name: "index_trip_transportations_on_trip_id"
+  end
+
   create_table "trip_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "host"
     t.bigint "user_id", null: false
@@ -152,6 +161,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
   add_foreign_key "spot_votes", "spot_suggestions", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_votes", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_votes", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "trip_transportations", "transportations", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "users", on_update: :cascade
   add_foreign_key "trips", "users", column: "created_user_id", on_update: :cascade, on_delete: :cascade
