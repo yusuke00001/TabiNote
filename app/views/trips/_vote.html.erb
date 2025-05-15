@@ -13,7 +13,7 @@
         <%= t('trips.show.vote-limit') %><%= (trip.spot_vote_limit - Date.today).to_i  %>日
       </div>
       <% if spot_suggestions.present? %>
-        <%= form_with url: trip_spot_votes_path(trip) do |f| %>
+        <%= form_with url: trip_spot_votes_path(trip), data: { turbo: false } do |f| %>
           <div class="spot-image-container">
             <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: true } %>
           </div>
