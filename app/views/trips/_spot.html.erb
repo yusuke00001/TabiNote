@@ -2,6 +2,7 @@
   <% if show_check_box %>
     <%= check_box_tag "spot_suggestion_ids[]", spot_suggestion.id, false  %>
   <% end %>
+  
   <%= link_to spot_suggestion.spot.spot_name.truncate(8), trip_spot_path(trip, spot_suggestion.spot), data: { turbo_frame: "_top" } %><br>
   <%= image_tag spot_suggestion.spot.image_url, class:"image" %>
   <% if show_delete_link && spot_suggestion.user.id == current_user.id %>
