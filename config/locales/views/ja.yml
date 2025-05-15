@@ -56,6 +56,7 @@ ja:
       spot-suggestions: 現在提案されているスポット
       spot_delete: スポットの削除
       vote-limit: 投票期限まであと
+      submit: 投票する
   spots:
     index:
       title: スポット検索ページ

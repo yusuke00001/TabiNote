@@ -37,17 +37,17 @@
     .label-container {
       display: flex;
       text-align: center;
-      width: 400px;
+      width: 500px;
       margin: auto;
       margin-top: 70px;
       .suggestion-vote-link {
         border: 1px solid black;
-        width: 200px;
+        width: 250px;
       }
       .suggestion-vote-hilight-link {
         background-color: #99FFFF;
         border: 1px solid black;
-        width: 200px;
+        width: 250px;
       }
       .suggestion-vote-link a,
       .suggestion-vote-hilight-link a {
@@ -59,11 +59,11 @@
     }
     .suggestion-vote-container {
       display: flex;
-      width: 400px;
+      width: 500px;
       margin: auto;
       margin-bottom: 50px;
       .suggestion-vote-card-style {
-        width: 400px;
+        width: 500px;
         border: 1px solid black;
         .suggestion-vote-limit {
           margin-top: 30px;
@@ -80,23 +80,36 @@
         }
         .spot-image-container {
           display: flex;
+          white-space: nowrap;
           flex-wrap: wrap;
-          width: 400px;
+          width: 500px;
           justify-content: center;
           .spot-image {
             padding:10px;
-            width: 110px;
+            width: 120px;
             text-align: center;
             .image {
               display: block;
-              width: 110px;
-              height: 110px;
+              width: 120px;
+              height: 120px;
             }
             .spot-delete-link {
               text-decoration: none;
               font-size: 10px;
               color: red;
             }
+          }
+        }
+        .submit-form {
+          text-align: center;
+          margin-top: 20px;
+          margin-bottom: 30px;
+          .submit-button {
+            font-size: 20px;
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+            border-radius: 4px;
           }
         }
       }
