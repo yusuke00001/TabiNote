@@ -15,7 +15,7 @@ class Spot < ApplicationRecord
       PlaceDetails.search_spot_details(place_id: new_spot)
     end
 
-    insert_all(
+    insert_all!(
       spot_details_data = spot_details.map do |spot_detail| {
         unique_number: spot_detail["id"],
         spot_name: spot_detail.dig("displayName", "text"),
@@ -28,7 +28,7 @@ class Spot < ApplicationRecord
     )
     spot_ids = where(unique_number: spots_unique_numbers).ids
     spot_ids.each do |spot_id|
-      KeywordSpot.create(keyword_id: keyword.id, spot_id: spot_id)
+      KeywordSpot.create!(keyword_id: keyword.id, spot_id: spot_id)
     end
   end
 end
