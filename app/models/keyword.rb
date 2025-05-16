@@ -6,7 +6,7 @@ class Keyword < ApplicationRecord
     keyword = find_by(word: word)
     unless keyword.present?
       spots_data = TextSearch.search_spots(keyword: word)
-      keyword = create(word: word)
+      keyword = create!(word: word)
       Spot.register_spots(spots_data: spots_data, keyword: keyword)
 
     end
