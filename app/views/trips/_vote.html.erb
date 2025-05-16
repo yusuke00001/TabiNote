@@ -14,8 +14,23 @@
       </div>
       <% if spot_suggestions.present? %>
         <%= form_with url: trip_spot_votes_path(trip), data: { turbo: false } do |f| %>
-          <div class="spot-image-container">
-            <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: true } %>
+          <% if voted_spot_suggestions %>
+            <div class="spot-card-style">
+              <div class="voted-spot-title">
+                <%= t('trips.show.voted-spot') %>
+              </div>
+              <div class="spot-image-container">
+                <%= render partial: "spot", collection: voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false } %>
+              </div>
+            </div>
+          <% end %>
+          <div class="spot-card-style">
+            <div class="spot-suggestion-vote-headline ">
+              <%= t('trips.show.spot-suggestions') %>
+            </div>
+            <div class="spot-image-container">
+              <%= render partial: "spot", collection: not_voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: true } %>
+            </div>
           </div>
           <div class="submit-form">
             <%= f.submit t('trips.show.submit'), class:"submit-button" %>

@@ -30,7 +30,10 @@ class TripsController < ApplicationController
   def vote
     @trip = Trip.find(params[:id])
     @spot_suggestions = @trip.spot_suggestions
-    render partial: "trips/vote", locals: { trip: @trip, spot_suggestions: @spot_suggestions }
+    voted_spot_suggestion_ids = SpotVote.where(trip_id: @trip, user_id: current_user.id).pluck(:spot_suggestion_id)
+    @voted_spot_suggestions = @spot_suggestions.select { |s| voted_spot_suggestion_ids.include?(s.id) }
+    @not_voted_spot_suggestions = @spot_suggestions.reject { |s| voted_spot_suggestion_ids.include?(s.id) }
+    render partial: "trips/vote", locals: { trip: @trip, spot_suggestions: @spot_suggestions, voted_spot_suggestions: @voted_spot_suggestions, not_voted_spot_suggestions: @not_voted_spot_suggestions }
   end
 
   private
