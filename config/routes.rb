@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :spots
     resources :spot_suggestions
     resources :spot_votes
+    resources :trip_users
   end
 
   root "homes#index"
