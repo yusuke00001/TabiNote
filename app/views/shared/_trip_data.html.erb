@@ -1,0 +1,23 @@
+<div class="title">
+  <i class="fa-solid fa-book-open"></i>
+  <%= @trip.title %>
+  <i class="fa-solid fa-book-open"></i>
+</div>
+<div class="trip-detail">
+  <div class="icon-label">
+    <i class="fa-solid fa-calendar-days"></i>
+    <%= Trip.human_attribute_name(:date) %>
+  </div>
+  <div class="trip-info">
+    <%= @trip.date %>
+  </div>
+</div>
+<div class="trip-detail">
+  <div class="icon-label">
+    <i class="fa-solid fa-plane"></i>
+    <%= Trip.human_attribute_name(:distination) %>
+  </div>
+  <div class="trip-info">
+    <%= @trip.distination %>
+  </div>
+</div>
