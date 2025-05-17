@@ -1,83 +1,92 @@
 .trip-users-index {
-  .trip-data-container {
-    width: 600px;
-    margin: 0 auto;
-    .title {
-      text-align: center;
-      gap: 20px;
-      font-size: 30px;
-      margin-top: 30px;
-      margin-bottom: 30px;
-    }
-    .trip-detail {
-      margin-left: 50px;
-      margin-bottom: 20px;
-      font-size: 20px;
-      .icon-label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-      .trip-info {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        width: 300px;
-        height: 40px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        box-shadow: 0 4px 9px rgba(0,0,0,0.1);
-      }
-    }
-  }
   .card-style {
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
-    width: 500px;
+    width: 600px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0,0,0,0.1);
-    .title {
-      text-align: center;
-      margin-top: 30px;
-      margin-bottom: 30px;
-      font-size: 25px;
-      font-weight: bold;
-    }
-    .container {
-      display: flex;
+    .trip-data-container {
+      width: 600px;
       margin: 0 auto;
+      .title {
+        text-align: center;
+        gap: 20px;
+        font-size: 30px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      .trip-detail {
+        margin-left: 50px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        .icon-label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .trip-info {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          width: 300px;
+          height: 40px;
+          border: 1px solid #ddd;
+          border-radius: 8px;
+          box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+        }
+      }
+    }
+    .trip-users-card-style {
+      margin: 0 auto;
+      margin-top: 100px;
+      margin-bottom: 100px;
       width: 500px;
-      align-items: center;
-      margin-bottom: 30px;
-      .icon-name-container {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+      .title {
+        text-align: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 25px;
+        font-weight: bold;
+      }
+      .container {
         display: flex;
-        width: 100%;
+        margin: 0 auto;
+        width: 500px;
         align-items: center;
-        margin-left: 10px;
-        gap: 20px;
-        .crown-icon {
-          color: yellow;
-          width: 40px;
-          flex-shrink: 0;
+        margin-bottom: 30px;
+        .icon-name-container {
+          display: flex;
+          width: 100%;
+          align-items: center;
+          margin-left: 10px;
+          gap: 20px;
+          .crown-icon {
+            color: yellow;
+            width: 40px;
+            flex-shrink: 0;
+          }
+          .user-icon {
+            width: 40px;
+            flex-shrink: 0;
+            margin-left: 5px;
+          }
+          .user-name {
+            font-size: 20px;
+          }
+         }
+        .update-delete-container {
+          display: flex;
+          justify-content: right;
+          align-items: center;
+          margin-right: 15px;
+          width: 400px;
+          gap: 20px;
         }
-        .user-icon {
-          width: 40px;
-          flex-shrink: 0;
-          margin-left: 5px;
-        }
-        .user-name {
-          font-size: 20px;
-        }
-       }
-      .update-delete-container {
-        display: flex;
-        justify-content: right;
-        align-items: center;
-        margin-right: 15px;
-        width: 400px;
-        gap: 20px;
       }
     }
   }
