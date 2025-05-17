@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :trip_users
-  has_many :users, through: :trip_users, dependent: :destroy
+  has_many :trips, through: :trip_users, dependent: :destroy
   has_many :spot_suggestions
   has_many :spot_vote
   has_one_attached :avatar
@@ -21,10 +21,10 @@ class User < ApplicationRecord
   end
 
   def trips_in_progress
-    Trip.where(status: :in_progress)
+    trips.where(status: :in_progress)
   end
 
   def trips_past
-    Trip.where(status: :completed)
+    trips.where(status: :completed)
   end
 end

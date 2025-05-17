@@ -1,21 +1,24 @@
 class TripUsersController < ApplicationController
   def index
-    @trip = Trip.find(params[:trip])
+    @trip = Trip.find(params[:trip_id])
     @trip_users = @trip.trip_users
+    @current_user_trip_user = @trip_users.find_by(user_id: current_user.id)
   end
 
-  def update
-    member = TripUser.find_by!(trip_id: params[:trip_id], user_id: params[:user_id])
-    current_leader = TripUser.find_by!(trip_id: params[:trip], user_id: current_user.id)
+  def change_leader
+    member = TripUser.find(params[:id])
+    current_leader = TripUser.find_by!(trip_id: params[:trip_id], user_id: current_user.id)
     current_leader.update!(host: :member)
     member.update!(host: :leader)
+
+    redirect_back fallback_location: homes_path
   end
 
   def destroy
-    trip_user = TripUser.find_by!(trip_id: params[:trip_id], user_id: params[:user_id])
+    trip_user = TripUser.find(params[:id])
     trip = trip_user.trip
     if trip_user.destroy
-      flash[:notice] = "#{trip.name}から退会しました"
+      flash[:notice] = "#{trip.title}から退会しました"
       redirect_to homes_path
     else
       flash[:alert] = "退会できませんでした"

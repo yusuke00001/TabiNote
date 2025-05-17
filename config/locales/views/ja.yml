@@ -69,3 +69,9 @@ ja:
     show:
       search_page_link: 検索ページに戻る
       spot_suggestions_create: スポットを提案する
+  trip_users:
+    index:
+      title: 参加メンバー
+      update-leader: 幹事にする
+      delete: 削除する
+      exit: 退会する

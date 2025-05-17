@@ -1,0 +1,42 @@
+<div class="trip-users-index">
+  <div class="card-style">
+   <div class="trip-data-container">
+     <%= render "shared/trip_data", trip: @trip  %>
+   </div>
+   <div class="trip-users-card-style">
+     <div class="title">
+       <%= t('.title') %>
+     </div>
+     <% @trip_users.each do |trip_user| %>
+       <div class="container">
+         <div class="icon-name-container">
+           <% if trip_user.leader? %>
+             <i class="fa-solid fa-crown crown-icon fa-2x"></i>
+           <% else %>
+             <i class="fa-solid fa-user user-icon fa-2x"></i>
+           <% end %>
+           <div class="user-name">
+             <%= trip_user.user.name %>
+           </div>
+         </div>
+         <div class="update-delete-container">
+           <% if @current_user_trip_user.leader? && trip_user.id != current_user.id  %>
+             <%= link_to change_leader_trip_trip_user_path(trip_id: @trip.id, id: trip_user.id ), data: { confirm: "本当に変更しますか？"} do %>
+               <i class="fa-solid fa-crown member-icon fa-lg"></i>
+               <%= t('.update-leader') %>
+             <% end %>
+             <%= link_to trip_trip_user_path(trip_id: @trip.id, id: trip_user.id), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+               <i class="fa-solid fa-xmark"></i>
+               <%= t('.delete') %>
+             <% end %>
+           <% elsif trip_user.user_id == current_user.id && trip_user.member? %>
+             <%= link_to trip_trip_user_path(trip_id: @trip.id, id: trip_user.id), method: :delete, data: { confirm: "本当に削除しますか？" } do%>
+               <i class="fa-solid fa-xmark"></i>
+               <%= t('.exit') %>
+             <% end %>
+           <% end %>
+         </div>
+       </div>
+     <% end %>
+   </div>
+</div>
