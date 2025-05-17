@@ -29,7 +29,7 @@
                <i class="fa-solid fa-xmark"></i>
                <%= t('.delete') %>
              <% end %>
-           <% elsif trip_user.user_id == current_user.id && trip_user.id != current_user.id %>
+           <% elsif trip_user.user_id == current_user.id && trip_user.member? %>
              <%= link_to trip_trip_user_path(trip_id: @trip.id, id: trip_user.id), method: :delete, data: { confirm: "本当に削除しますか？" } do%>
                <i class="fa-solid fa-xmark"></i>
                <%= t('.exit') %>
