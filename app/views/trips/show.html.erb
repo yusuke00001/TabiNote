@@ -1,6 +1,6 @@
 <div class="trips-show">
   <div class="card-style">
-    <%= render "shared/trip_data" %>
+    <%= render "shared/trip_data", trip: @trip %>
     <turbo-frame id="phase">
       <%= render partial: "suggestion", locals: { trip: @trip, spot_suggestions: @spot_suggestions, show_delete_link: true } %>
     </turbo-frame>  
@@ -18,7 +18,7 @@
           </div>
         <% end %>
         <div class="member-edit-link">
-          <%= link_to t('.member-edit'), class:"member-edit" %>
+          <%= link_to t('.member-edit'), trip_trip_users_path(@trip), class:"member-edit" %>
         </div>
       </div>
     </div>
