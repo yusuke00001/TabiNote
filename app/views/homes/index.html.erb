@@ -32,7 +32,7 @@
                   <%= t.title %>
                 </div>
                 <% if t.image.attached? %>
-                  <%= image_tag t.image.variant(resize_to_fill: [200,130]) %>
+                  <%= image_tag t.image.variant(resize_to_fill: [190,130]) %>
                 <% end %>
                 <div class="member">
                   <%= t('.member')%>
@@ -40,7 +40,9 @@
                 <% t.trip_users.each do |trip_user| %>
                   <div class="member-list">
                     <% if trip_user.host == "leader" %>
-                      <i class="fa-solid fa-crown"></i>
+                      <i class="fa-solid fa-crown crown-icon "></i>
+                    <% else %>
+                      <i class="fa-solid fa-user user-icon "></i>  
                     <% end %>
                     <%= trip_user.user.name %>
                   </div>
