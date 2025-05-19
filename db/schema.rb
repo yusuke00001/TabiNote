@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_19_023018) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -52,6 +52,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.string "word", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "solid_queue_jobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "queue_name", null: false
+    t.string "job_class", null: false
+    t.datetime "scheduled_at", precision: nil
+    t.datetime "finished_at", precision: nil
+    t.text "arguments"
+    t.integer "priority", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["finished_at"], name: "index_solid_queue_jobs_on_finished_at"
+    t.index ["queue_name"], name: "index_solid_queue_jobs_on_queue_name"
+    t.index ["scheduled_at"], name: "index_solid_queue_jobs_on_scheduled_at"
   end
 
   create_table "spot_suggestions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
