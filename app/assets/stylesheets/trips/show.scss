@@ -6,7 +6,7 @@
     width: 600px;
     border: 1px solid #ddd;
     border-radius: 8px;
-    box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
     .title {
       text-align: center;
       gap: 20px;
@@ -31,7 +31,7 @@
         height: 40px;
         border: 1px solid #ddd;
         border-radius: 8px;
-        box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
       }
     }
     .label-container {
@@ -62,11 +62,9 @@
       width: 500px;
       margin: auto;
       margin-bottom: 50px;
-    
       .suggestion-vote-card-style {
         width: 500px;
         border: 1px solid black;
-    
         .suggestion-vote-limit {
           margin-top: 30px;
           margin-bottom: 30px;
@@ -74,7 +72,6 @@
           text-align: center;
           font-size: 30px;
         }
-    
         .spot-suggestion-vote-headline {
           margin-top: 30px;
           margin-bottom: 30px;
@@ -82,7 +79,6 @@
           font-size: 30px;
           font-weight: bold;
         }
-    
         .voted-spot-title {
           text-align: center;
           margin-top: 30px;
@@ -90,71 +86,66 @@
           font-size: 30px;
           font-weight: bold;
         }
-      }
-    
-      .spot-card-style {
-        border: 1px solid black;
-        margin-bottom: 30px;
-      }
-    
-      .spot-image-container {
-        display: flex;
-        white-space: nowrap;
-        flex-wrap: wrap;
-        width: 500px;
-        justify-content: center;
-        margin-bottom: 30px;
-        gap: 20px;
-    
-        .spot-image {
+        .spot-card-style {
           border: 1px solid black;
-          padding: 10px;
-          width: 120px;
-          text-align: center;
-    
-          .image {
-            display: block;
+          margin-bottom: 30px;
+        }
+        .spot-image-container {
+          display: flex;
+          white-space: nowrap;
+          flex-wrap: wrap;
+          width: 500px;
+          justify-content: center;
+          margin-bottom: 30px;
+          gap: 20px;
+          .spot-image {
+            border: 1px solid black;
+            padding: 10px;
             width: 120px;
-            height: 120px;
-          }
-    
-          .spot-delete-link {
-            text-decoration: none;
-            font-size: 10px;
-            color: red;
+            text-align: center;
+            .image {
+              display: block;
+              width: 120px;
+              height: 120px;
+            }
+            .spot-delete-link {
+              text-decoration: none;
+              font-size: 10px;
+              color: red;
+            }
           }
         }
-      }
-    
-      .submit-form {
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 30px;
-    
-        .submit-button {
+        .submit-form {
+          text-align: center;
+          margin-top: 20px;
+          margin-bottom: 30px;
+          .submit-button {
+            font-size: 20px;
+            background-color: #007bff;
+            color: white;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+          }
+        }
+        .not-voted-spot {
+          text-align: center;
           font-size: 20px;
-          background-color: #007bff;
-          color: white;
-          border: 1px solid #007bff;
-          border-radius: 4px;
+          margin-bottom: 50px;
         }
-      }
-    
-      .no-spot-suggestion-vote-headline {
-        margin-top: 100px;
-        margin-bottom: 100px;
-        text-align: center;
-        font-size: 20px;
-      }
-    
-      .spot-add-container {
-        display: flex;
-        justify-content: right;
-        gap: 5px;
-        padding: 10px;
-    
-        .spot-add {
-          color: blue;
+        .no-spot-suggestion-vote-headline {
+          margin-top: 100px;
+          margin-bottom: 100px;
+          text-align: center;
+          font-size: 20px;
+        }
+        .spot-add-container {
+          display: flex;
+          justify-content: right;
+          gap: 5px;
+          padding: 10px;
+          .spot-add {
+            color: blue;
+          }
         }
       }
     }
@@ -197,9 +188,9 @@
           text-align: right;
           margin-top: 20px;
           font-size: 13px;
-        }
-        .member-edit {
-          color: blue;
+          .member-edit {
+            color: blue;
+          }
         }
       }
     }
