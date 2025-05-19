@@ -3,7 +3,6 @@
     margin: 0 auto;
     margin-top: 50px;
     margin-bottom: 100px;
-    padding: 20px;
     width: 600px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -53,10 +52,13 @@
     }
     .trips-container {
       display: flex;
-      justify-content: space-between;
+      width: 600px;
+      margin: 0 auto;
+      gap: 10px;
+      flex-wrap: wrap;
       .trips-card-style {
         margin: 0 auto;
-        width: 200px;
+        width: 190px;
         border: 1px solid black;
         box-shadow: 0 4px 9px rgba(0,0,0,0.1);
         .trip-link {
@@ -77,8 +79,24 @@
           font-weight: bold;
         }
         .member-list {
-          text-align: center;
-          margin-bottom: 20px;
+          margin-left: 20px;
+          display: flex;
+          align-items: center;
+          width: 170px;
+          gap: 10px;
+          .crown-icon {
+            color: yellow;
+            width: 20px;
+            text-align: center;
+            display: inline-block;
+            flex-shrink: 0;
+          }
+          .user-icon {
+            width: 20px;
+            text-align: center;
+            display: inline-block;
+            flex-shrink: 0;
+          }
         }
       }
     }
