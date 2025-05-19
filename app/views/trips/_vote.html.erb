@@ -19,9 +19,15 @@
               <div class="voted-spot-title">
                 <%= t('trips.show.voted-spot') %>
               </div>
-              <div class="spot-image-container">
-                <%= render partial: "spot", collection: voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false } %>
-              </div>
+              <% if voted_spot_suggestions.present? %>
+                <div class="spot-image-container">
+                  <%= render partial: "spot", collection: voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false } %>
+                </div>
+              <% else %>
+                <div class="not-voted-spot">
+                  <%= t('trips.show.not-voted-spot') %>
+                </div>
+              <% end %>
             </div>
           <% end %>
           <div class="spot-card-style">
