@@ -10,9 +10,11 @@
           <%= t('.member') %>
         </div>
         <% @trip.trip_users.each do |trip_user| %>
-          <div class="member-name">
+          <div class="member-list">
             <% if trip_user.host == "leader" %>
-              <i class="fa-solid fa-crown member-icon"></i>
+              <i class="fa-solid fa-crown crown-icon "></i>
+            <% else %>
+              <i class="fa-solid fa-user user-icon "></i>  
             <% end %>
             <%= trip_user.user.name %>
           </div>
