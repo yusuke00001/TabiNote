@@ -58,7 +58,7 @@ ja:
       vote-limit: 投票期限まであと
       submit: 投票する
       voted-spot: 現在投票しているスポット
-      not-voted-spot: まだ投票していません
+      not-voted-spot: まだ投票したスポットはありません
   spots:
     index:
       title: スポット検索ページ
