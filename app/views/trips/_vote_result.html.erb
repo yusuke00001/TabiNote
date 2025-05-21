@@ -1,0 +1,13 @@
+<div class="suggestion-vote-container">
+  <div class="suggestion-vote-card-style">
+    <div class="vote-result-title">
+      <%= t('trips.show.vote-result')%>
+    </div>
+    <div class="vote-result-headline">
+      <%= t('trips.show.vote-result-headline') %>
+    </div>
+    <div class="spot-image-container">
+      <%= render partial: "spot", collection: voted_result, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false} %>
+    </div>
+  </div>
+</div>

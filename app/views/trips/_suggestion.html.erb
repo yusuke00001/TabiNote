@@ -9,21 +9,28 @@
   </div>
   <div class="suggestion-vote-container">
     <div class="suggestion-vote-card-style">
+      <% if trip.spot_suggestion_limit > Date.today %>
         <div class="suggestion-vote-limit">
           <%= t('trips.show.suggestion-limit') %><%= (trip.spot_suggestion_limit - Date.today).to_i %>日
         </div>
-        <% if spot_suggestions.present? %>
-          <div class="spot-suggestion-vote-headline">
-            <%= t("trips.show.spot-suggestions") %>
-          </div>
-          <div class="spot-image-container">
-            <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: true, show_check_box: false} %>
-          </div>
-        <% else %>
-          <div class="no-spot-suggestion-vote-headline">
-            <%= t('trips.show.no-spot-suggestions') %>
-          </div>
-        <% end %>
+      <% else %>
+        <div class="suggestion-vote-limit">
+          <%= t('trips.show.suggestion-end') %>
+        </div>
+      <% end %>
+      <% if spot_suggestions.present? %>
+        <div class="spot-suggestion-vote-headline">
+          <%= t("trips.show.spot-suggestions") %>
+        </div>
+        <div class="spot-image-container">
+          <%= render partial: "spot", collection: spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: true, show_check_box: false} %>
+        </div>
+      <% else %>
+        <div class="no-spot-suggestion-vote-headline">
+          <%= t('trips.show.no-spot-suggestions') %>
+        </div>
+      <% end %>
+      <% if trip.spot_suggestion_limit > Date.today %>
         <%= link_to trip_spots_path(trip), data: { turbo_frame: "_top"} do %>
           <div class="spot-add-container">
             <div class="spot-add">
@@ -34,6 +41,7 @@
             </div>
           </div>
         <% end %>
+      <% end %>
     </div>
   </div>
 </turbo-frame>
