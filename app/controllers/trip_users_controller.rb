@@ -6,11 +6,9 @@ class TripUsersController < ApplicationController
   end
 
   def change_leader
-    member = TripUser.find(params[:id])
-    current_leader = TripUser.find_by!(trip_id: params[:trip_id], user_id: current_user.id)
-    current_leader.update!(host: :member)
-    member.update!(host: :leader)
-
+    new_leader = TripUser.find(params[:id])
+    TripUser.change_leader(new_leader_id: new_leader.id, trip_id: params[:trip_id], user_id: current_user.id)
+    flash[:notice] = "#{new_leader.user.name}さんが幹事になりました"
     redirect_back fallback_location: homes_path
   end
 
