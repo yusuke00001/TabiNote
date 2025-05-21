@@ -14,7 +14,6 @@ class Spot < ApplicationRecord
     spot_details = new_spots.map do |new_spot|
       PlaceDetails.search_spot_details(place_id: new_spot)
     end
-
     insert_all!(
       spot_details_data = spot_details.map do |spot_detail| {
         unique_number: spot_detail["id"],
