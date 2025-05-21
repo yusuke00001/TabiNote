@@ -2,7 +2,7 @@
   <div class="card-style">
     <%= render "shared/trip_data", trip: @trip %>
       <turbo-frame id="phase">
-        <% if @trip.spot_suggestion_limit > Date.today || @trip.spot_vote_limit > Date.today %>
+        <% if @trip.spot_vote_limit > Date.today %>
           <%= render partial: "suggestion", locals: { trip: @trip, spot_suggestions: @spot_suggestions, show_delete_link: true } %>
         <% else %>
           <%= render partial: "vote_result", locals: { trip: @trip, voted_result: @voted_result } %>
