@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
     word = params[:keyword]
     return if word.blank?
 
-    Keyword.find_by_create_and_spot(word: word)
+    Keyword.find_or_create_and_spot(word: word)
     # ページネーション
     keyword = Keyword.find_by(word: word)
     @keyword = params[:keyword]
