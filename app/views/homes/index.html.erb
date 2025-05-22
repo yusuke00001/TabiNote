@@ -37,12 +37,14 @@
                 <div class="member">
                   <%= t('.member')%>
                 </div>
-                <% t.trip_users.each do |trip_user| %>
+                <% t.trip_users.sort_by { |a| a.host == "leader" ? 0 : 1 }.each do |trip_user| %>
                   <div class="member-list">
                     <% if trip_user.host == "leader" %>
                       <i class="fa-solid fa-crown crown-icon "></i>
+                    <% elsif trip_user.user.id == current_user.id %>
+                      <i class="fa-solid fa-user current-user-icon "></i>  
                     <% else %>
-                      <i class="fa-solid fa-user user-icon "></i>  
+                      <i class="fa-solid fa-user user-icon "></i>
                     <% end %>
                     <%= trip_user.user.name %>
                   </div>

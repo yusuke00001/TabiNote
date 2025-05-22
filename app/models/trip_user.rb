@@ -13,4 +13,11 @@ class TripUser < ApplicationRecord
       new_leader.update!(host: :leader)
     end
   end
+
+  def self.leader_first(trip:)
+    trip_users = trip.trip_users.to_a
+    leader = trip_users.find { |trip_user| trip_user.host == "leader" }
+    trip_users.delete(leader)
+    trip_users.unshift(leader)
+  end
 end
