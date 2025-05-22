@@ -12,6 +12,8 @@
           <div class="icon-name-container">
             <% if trip_user.leader? %>
               <i class="fa-solid fa-crown crown-icon fa-2x"></i>
+            <% elsif trip_user.user.id == current_user.id %>
+              <i class="fa-solid fa-user current-user-icon fa-2x"></i>
             <% else %>
               <i class="fa-solid fa-user user-icon fa-2x"></i>
             <% end %>
