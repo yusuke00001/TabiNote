@@ -2,7 +2,7 @@ class Keyword < ApplicationRecord
   has_many :keyword_spots
   has_many :spots, through: :keyword_spots, dependent: :destroy
 
-  def self.find_or_create_and_spot(word:)
+  def self.find_or_create_keyword_and_fetch_spots(word:)
     transaction do
       keyword = find_by(word: word)
       unless keyword.present?
