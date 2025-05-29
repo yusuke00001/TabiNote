@@ -3,7 +3,15 @@ class SpotsController < ApplicationController
     word = params[:keyword]
     return if word.blank?
 
-    Keyword.find_or_create_keyword_and_fetch_spots(word: word)
+    begin
+      ActiveRecord::Base.transaction do
+        Keyword.find_or_create_keyword_and_fetch_spots(word: word)
+      end
+    rescue
+      flash[:alert]  = "正しく検索を行うことができませんでした。再度検索を行ってください"
+      redirect_back fallback_location: homes_path and return
+    end
+
     # ページネーション
     keyword = Keyword.find_by(word: word)
     @keyword = params[:keyword]
