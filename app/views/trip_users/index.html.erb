@@ -12,7 +12,7 @@
           <div class="icon-name-container">
             <% if trip_user.leader? %>
               <i class="fa-solid fa-crown crown-icon fa-2x"></i>
-            <% elsif trip_user.user.id == current_user.id %>
+            <% elsif trip_user.current_user?(current_user) %>
               <i class="fa-solid fa-user current-user-icon fa-2x"></i>
             <% else %>
               <i class="fa-solid fa-user user-icon fa-2x"></i>
@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="update-delete-container">
-            <% if @current_user_trip_user.leader? && trip_user.user_id != current_user.id  %>
+            <% if trip_user.show_leader_change_link?(current_user: current_user, current_user_host: @current_user_host) %>
               <%= link_to change_leader_trip_trip_user_path(trip_id: @trip.id, id: trip_user.id ), data: { confirm: "本当に変更しますか？"} do %>
                 <i class="fa-solid fa-crown member-icon fa-lg"></i>
                 <%= t('.update-leader') %>
@@ -31,7 +31,7 @@
                 <i class="fa-solid fa-xmark"></i>
                 <%= t('.delete') %>
               <% end %>
-            <% elsif trip_user.user_id == current_user.id && trip_user.member? %>
+            <% elsif trip_user.show_current_user_delete_link?(current_user: current_user) %>
               <%= link_to trip_trip_user_path(trip_id: @trip.id, id: trip_user.id), method: :delete, data: { confirm: "本当に削除しますか？" } do%>
                 <i class="fa-solid fa-xmark"></i>
                 <%= t('.exit') %>
