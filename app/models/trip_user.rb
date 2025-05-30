@@ -24,6 +24,7 @@ class TripUser < ApplicationRecord
   def current_user?(current_user)
     self.user_id == current_user.id
   end
+
   def show_leader_change_link?(current_user:, current_user_host:)
     self.user_id != current_user.id && current_user_host == "leader"
   end

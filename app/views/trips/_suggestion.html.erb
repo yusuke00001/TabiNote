@@ -9,9 +9,9 @@
   </div>
   <div class="suggestion-vote-container">
     <div class="suggestion-vote-card-style">
-      <% if trip.spot_suggestion_limit > Date.today %>
+      <% if trip.within_spot_suggestion_limit? %>
         <div class="suggestion-vote-limit">
-          <%= t('trips.show.suggestion-limit') %><%= (trip.spot_suggestion_limit - Date.today).to_i %>日
+          <%= t('trips.show.suggestion-limit') %><%= trip.until_spot_suggestion_limit %>日
         </div>
       <% else %>
         <div class="suggestion-vote-limit">
@@ -30,7 +30,7 @@
           <%= t('trips.show.no-spot-suggestions') %>
         </div>
       <% end %>
-      <% if trip.spot_suggestion_limit > Date.today %>
+      <% if trip.within_spot_suggestion_limit? %>
         <%= link_to trip_spots_path(trip), data: { turbo_frame: "_top"} do %>
           <div class="spot-add-container">
             <div class="spot-add">
