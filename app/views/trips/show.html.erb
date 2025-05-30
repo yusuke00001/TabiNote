@@ -1,13 +1,13 @@
 <div class="trips-show">
   <div class="card-style">
     <%= render "shared/trip_data", trip: @trip %>
-    <turbo-frame id="phase">
-      <% if @trip.within_spot_vote_limit? %>
-        <%= render partial: "suggestion", locals: { trip: @trip, spot_suggestions: @spot_suggestions, show_delete_link: true } %>
-      <% else %>
-        <%= render partial: "vote_result", locals: { trip: @trip, voted_result: @voted_result } %>
-      <% end %>
-    </turbo-frame>
+      <turbo-frame id="phase">
+        <% if @trip.spot_vote_limit > Date.today %>
+          <%= render partial: "suggestion", locals: { trip: @trip, spot_suggestions: @spot_suggestions, show_delete_link: true } %>
+        <% else %>
+          <%= render partial: "vote_result", locals: { trip: @trip, voted_result: @voted_result } %>
+        <% end %>
+      </turbo-frame>
     <div class="member-container">
       <div class="member-card-style">
         <div class="member-title">

@@ -20,16 +20,4 @@ class TripUser < ApplicationRecord
     trip_users.delete(leader)
     trip_users.unshift(leader)
   end
-
-  def current_user?(current_user)
-    self.user_id == current_user.id
-  end
-
-  def show_leader_change_link?(current_user:, current_user_host:)
-    self.user_id != current_user.id && current_user_host == "leader"
-  end
-
-  def show_current_user_delete_link?(current_user:)
-    self.user_id == current_user.id && self.host == "member"
-  end
 end
