@@ -3,7 +3,7 @@ class TripUsersController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     # @trip_usersは配列化している
     @trip_users = TripUser.leader_first(trip: @trip)
-    @current_user_trip_user = @trip_users.find { |trip_user| trip_user.user_id == current_user.id }
+    @current_user_host = @trip_users.find { |trip_user| trip_user.user_id == current_user.id }.host
   end
 
   def change_leader
