@@ -7,6 +7,7 @@ class Spot < ApplicationRecord
   PER_PAGE = 10
   DEFAULT_PAGE = 1
   MIN_PAGE = 1
+  OTHER_CATEGORY_ID = 6
 
   def self.register_spots(spots_data:, keyword:)
     spots_unique_numbers = spots_data.map { |spot_data| spot_data["id"] }
@@ -32,7 +33,7 @@ class Spot < ApplicationRecord
       if genres[spot_type[:name]].nil?
         {
           unique_number: spot_type[:unique_number],
-          category_id: 6
+          category_id: OTHER_CATEGORY_ID
         }
       else
         {
@@ -49,7 +50,7 @@ class Spot < ApplicationRecord
       first_category_id = sorted[0].first
       second_category_id = sorted[1].first
 
-      if first_category_id == 6
+      if first_category_id == OTHER_CATEGORY_ID
         most_category_id = second_category_id
       else
         most_category_id = first_category_id
