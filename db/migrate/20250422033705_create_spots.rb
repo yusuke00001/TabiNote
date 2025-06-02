@@ -9,7 +9,7 @@ class CreateSpots < ActiveRecord::Migration[8.0]
       t.string :genre
       t.string :spot_value
       t.string :other
-      t.string :URL
+      t.text :URL
       t.string :stay_time
       t.string :address
       t.text :image_url

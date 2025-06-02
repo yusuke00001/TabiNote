@@ -14,17 +14,64 @@ class Spot < ApplicationRecord
     spot_details = new_spots.map do |new_spot|
       PlaceDetails.search_spot_details(place_id: new_spot)
     end
-    insert_all!(
-      spot_details_data = spot_details.map do |spot_detail| {
+
+    spot_types = spot_details.flat_map do |spot_detail|
+      spot_detail["types"].map do |type| {
         unique_number: spot_detail["id"],
-        spot_name: spot_detail.dig("displayName", "text"),
-        URL: spot_detail["websiteUri"],
-        spot_value: spot_detail["rating"],
-        address: spot_detail["formattedAddress"],
-        image_url: "https://places.googleapis.com/v1/#{spot_detail.dig("photos", 0, "name")}/media?maxWidthPx=800&key=#{ENV["API_KEY"]}"
+        name: type
+      }
+      end
+    end
+
+    # nameに対応するcategoryのidを取得
+    genre_names = spot_types.map { |spot_type| spot_type[:name] }.uniq
+    genres = Genre.where(name: genre_names).pluck(:name, :category_id).to_h
+
+    # unique_numberとcategory_idの配列を作成(Genresテーブルに存在しないnameの場合はcategory_idに6を代入)
+    spot_genres = spot_types.map do |spot_type|
+      if genres[spot_type[:name]].nil?
+        {
+          unique_number: spot_type[:unique_number],
+          category_id: 6
+        }
+      else
+        {
+          unique_number: spot_type[:unique_number],
+          category_id: genres[spot_type[:name]]
         }
       end
-    )
+    end
+
+    grouped = spot_genres.group_by { |spot| spot[:unique_number] }
+
+    spot_category = grouped.map do |unique_number, records|
+      sorted = records.group_by { |record| record[:category_id] }.sort_by { |_, category_id| category_id.size }
+      first_category_id = sorted[0].first
+      second_category_id = sorted[1].first
+
+      if first_category_id == 6
+        most_category_id = second_category_id
+      else
+        most_category_id = first_category_id
+      end
+      { unique_number: unique_number, category_id: most_category_id }
+    end
+    # 一度配列化することでハッシュ化ができる
+    spot_category_hash = spot_category.map { |spot| [ spot[:unique_number], spot[:category_id] ] }.to_h
+
+    spots_insert_all_data = spot_details.map do |spot_detail| {
+      unique_number: spot_detail["id"],
+      spot_name: spot_detail.dig("displayName", "text"),
+      URL: spot_detail["websiteUri"],
+      spot_value: spot_detail["rating"],
+      address: spot_detail["formattedAddress"],
+      image_url: "https://places.googleapis.com/v1/#{spot_detail.dig("photos", 0, "name")}/media?maxWidthPx=800&key=#{ENV["API_KEY"]}",
+      category_id: spot_category_hash[spot_detail["id"]]
+    }
+    end
+
+    insert_all!(spots_insert_all_data)
+
     spot_ids = where(unique_number: spots_unique_numbers).ids
     spot_ids.each do |spot_id|
       KeywordSpot.create!(keyword_id: keyword.id, spot_id: spot_id)

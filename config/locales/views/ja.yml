@@ -62,6 +62,7 @@ ja:
       not-voted-spot: まだ投票したスポットはありません
       vote-result: 投票結果
       vote-result-headline: 以下のスポットが選ばれました
+      plan-create: プランの作成
   spots:
     index:
       title: スポット検索ページ

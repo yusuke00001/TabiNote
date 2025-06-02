@@ -4,10 +4,12 @@ require "uri"
 
 class DistanceMatrix
   BASE_URL = "https://maps.googleapis.com/maps/api/distancematrix/json"
-  def self.spot_distance(origin:, destination:, mode:)
+  def self.spot_distance(origins:, destinations:, mode:)
+    origins = origins.map { |origin| "place_id:#{origin}" }
+    destinations = destinations.map { |destination| "place_id:#{destination}" }
     params = {
-      origins: origin,
-      destinations: destination,
+      origins: origins.join("|"),
+      destinations: destinations.join("|"),
       mode: mode,
       language: "ja",
       key: ENV["API_KEY"]
@@ -17,7 +19,14 @@ class DistanceMatrix
 
     response = Net::HTTP.get_response(uri)
     if response.is_a?(Net::HTTPSuccess)
-      JSON.parse(response.body)
+      data = JSON.parse(response.body)
+      distance = data["rows"].map do |row|
+        row["elements"].map { |n| n["distance"]["value"] }
+      end
+      duration = data["rows"].map do |row|
+        row["elements"].map { |n| n["duration"]["value"]/60 }
+      end
+      { distance: distance, duration: duration }
     else
       []
     end

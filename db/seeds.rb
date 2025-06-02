@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require "csv"
+
+CSV.foreach("db/seed_files/genres.csv") do |row|
+Genre.create!(name: row[0], category_id: row[1])
+end

@@ -15,7 +15,7 @@ class PlaceDetails
     request = Net::HTTP::Get.new(uri)
     request["X-Goog-Api-Key"] = ENV["API_KEY"]
     request["Content-Type"] = "application/json"
-    request["X-Goog-FieldMask"] = "formattedAddress,internationalPhoneNumber,regularOpeningHours,rating,userRatingCount,websiteUri,id,displayName,photos"
+    request["X-Goog-FieldMask"] = "formattedAddress,internationalPhoneNumber,regularOpeningHours,rating,userRatingCount,websiteUri,id,displayName,photos,types"
 
     response = http.request(request)
 

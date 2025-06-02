@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_28_060135) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,6 +39,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "categories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "stay_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genre_spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.bigint "genres_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genres_id"], name: "index_genre_spots_on_genres_id"
+    t.index ["spot_id"], name: "index_genre_spots_on_spot_id"
+  end
+
+  create_table "genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_genres_on_category_id"
+  end
+
   create_table "keyword_spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "spot_id", null: false
     t.bigint "keyword_id", null: false
@@ -50,6 +74,31 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
 
   create_table "keywords", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "word", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.bigint "plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id", "spot_id"], name: "index_plan_spots_on_plan_id_and_spot_id", unique: true
+    t.index ["plan_id"], name: "index_plan_spots_on_plan_id"
+    t.index ["spot_id"], name: "index_plan_spots_on_spot_id"
+  end
+
+  create_table "plan_trips", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "trip_id", null: false
+    t.bigint "plan_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id", "trip_id"], name: "index_plan_trips_on_plan_id_and_trip_id", unique: true
+    t.index ["plan_id"], name: "index_plan_trips_on_plan_id"
+    t.index ["trip_id"], name: "index_plan_trips_on_trip_id"
+  end
+
+  create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,12 +138,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
     t.string "genre"
     t.string "spot_value"
     t.string "other"
-    t.string "URL"
+    t.text "URL"
     t.string "stay_time"
     t.string "address"
     t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "fk_rails_bb6f27e9e4"
     t.index ["unique_number"], name: "index_spots_on_unique_number", unique: true
   end
 
@@ -153,14 +204,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_06_020453) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "genre_spots", "genres", column: "genres_id", on_update: :cascade
+  add_foreign_key "genre_spots", "spots", on_update: :cascade
+  add_foreign_key "genres", "categories", on_update: :cascade
   add_foreign_key "keyword_spots", "keywords", on_update: :cascade, on_delete: :cascade
   add_foreign_key "keyword_spots", "spots", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "plan_spots", "plans", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "plan_spots", "spots", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "plan_trips", "plans", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "plan_trips", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_suggestions", "spots", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_suggestions", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_suggestions", "users", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_votes", "spot_suggestions", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_votes", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "spot_votes", "users", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "spots", "categories"
   add_foreign_key "trip_transportations", "transportations", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "trips", on_update: :cascade, on_delete: :cascade
