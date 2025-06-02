@@ -37,7 +37,7 @@
                 <div class="member">
                   <%= t('.member')%>
                 </div>
-                <% t.trip_users.sort_by { |a| a.host == "leader" ? 0 : 1 }.each do |trip_user| %>
+                <% t.leader_first.each do |trip_user| %>
                   <div class="member-list">
                     <% if trip_user.host == "leader" %>
                       <i class="fa-solid fa-crown crown-icon "></i>

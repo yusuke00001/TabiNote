@@ -14,7 +14,7 @@ class TripUser < ApplicationRecord
     end
   end
 
-  def self.leader_first(trip:)
+  def leader_first
     trip_users = trip.trip_users.to_a
     leader = trip_users.find { |trip_user| trip_user.host == "leader" }
     trip_users.delete(leader)
