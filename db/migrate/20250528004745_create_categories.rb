@@ -10,6 +10,6 @@ class CreateCategories < ActiveRecord::Migration[8.0]
     Category.create!(name: "leisure_land", stay_time: 300)
     Category.create!(name: "nature", stay_time: 50)
     Category.create!(name: "restaurant", stay_time: 60)
-    Category.create!(name: "another")
+    Category.create!(name: "other")
   end
 end
