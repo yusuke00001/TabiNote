@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :spots
     resources :spot_suggestions
     resources :spot_votes
+    resources :plans
     resources :trip_users do
       member do
         get "change_leader"
