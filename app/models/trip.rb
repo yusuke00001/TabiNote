@@ -37,4 +37,11 @@ class Trip < ApplicationRecord
   def until_spot_vote_limit
     (self.spot_vote_limit - Date.today).to_i
   end
+
+  def leader_first
+    trip_users = self.trip_users.to_a
+    leader = trip_users.find { |trip_user| trip_user.host == "leader" }
+    trip_users.delete(leader)
+    trip_users.unshift(leader)
+  end
 end

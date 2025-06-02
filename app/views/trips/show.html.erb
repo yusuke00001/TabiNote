@@ -13,7 +13,7 @@
         <div class="member-title">
           <%= t('.member') %>
         </div>
-        <% @trip_users.each do |trip_user| %>
+        <% @trip.leader_first.each do |trip_user| %>
           <div class="member-list">
             <% if trip_user.host == "leader" %>
               <i class="fa-solid fa-crown crown-icon "></i>
