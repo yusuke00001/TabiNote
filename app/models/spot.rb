@@ -76,7 +76,6 @@ class Spot < ApplicationRecord
       category_id: category_id
     }
     end
-binding.pry
     insert_all!(spots_insert_all_data)
 
     spot_ids = where(unique_number: spots_unique_numbers).ids
