@@ -47,8 +47,8 @@ class Spot < ApplicationRecord
 
     spot_category = grouped.map do |unique_number, records|
       sorted = records.group_by { |record| record[:category_id] }.sort_by { |_, category_id| category_id.size }
-      first_category_id = sorted[0].first
-      second_category_id = sorted[1].first
+      first_category_id = sorted[0]&.first
+      second_category_id = sorted[1]&.first
 
       if first_category_id == OTHER_CATEGORY_ID
         most_category_id = second_category_id
