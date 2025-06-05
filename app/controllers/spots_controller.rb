@@ -7,7 +7,7 @@ class SpotsController < ApplicationController
       ActiveRecord::Base.transaction do
         Keyword.find_or_create_keyword_and_fetch_spots(word: word)
       end
-    rescue
+    rescue => e
       Rails.logger.error "スポット検索でエラー発生: #{e.class} - #{e.message}"
       flash[:alert]  = "正しく検索を行うことができませんでした。再度検索を行ってください"
       redirect_back fallback_location: homes_path and return
