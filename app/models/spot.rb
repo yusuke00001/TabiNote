@@ -47,8 +47,8 @@ class Spot < ApplicationRecord
 
     spot_category = grouped.map do |unique_number, records|
       sorted = records.group_by { |record| record[:category_id] }.sort_by { |_, category_id| category_id.size }
-      first_category_id = sorted[0].first
-      second_category_id = sorted[1].first
+      first_category_id = sorted[0]&.first
+      second_category_id = sorted[1]&.first
 
       if first_category_id == OTHER_CATEGORY_ID
         most_category_id = second_category_id
@@ -60,17 +60,19 @@ class Spot < ApplicationRecord
     # 一度配列化することでハッシュ化ができる
     spot_category_hash = spot_category.map { |spot| [ spot[:unique_number], spot[:category_id] ] }.to_h
 
-    spots_insert_all_data = spot_details.map do |spot_detail| {
+    spots_insert_all_data = spot_details.map do |spot_detail|
+      # 開発環境ではcategory_idがnilになることがあったため
+      category_id = spot_category_hash[spot_detail["id"]] || OTHER_CATEGORY_ID
+      {
       unique_number: spot_detail["id"],
       spot_name: spot_detail.dig("displayName", "text"),
       URL: spot_detail["websiteUri"],
       spot_value: spot_detail["rating"],
       address: spot_detail["formattedAddress"],
       image_url: "https://places.googleapis.com/v1/#{spot_detail.dig("photos", 0, "name")}/media?maxWidthPx=800&key=#{ENV["API_KEY"]}",
-      category_id: spot_category_hash[spot_detail["id"]]
+      category_id: category_id
     }
     end
-
     insert_all!(spots_insert_all_data)
 
     spot_ids = where(unique_number: spots_unique_numbers).ids
