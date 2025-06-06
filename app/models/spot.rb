@@ -61,6 +61,7 @@ class Spot < ApplicationRecord
     spot_category_hash = spot_category.map { |spot| [ spot[:unique_number], spot[:category_id] ] }.to_h
 
     spots_insert_all_data = spot_details.map do |spot_detail|
+      # 開発環境ではcategory_idがnilになることがあったため
       category_id = spot_category_hash[spot_detail["id"]] || OTHER_CATEGORY_ID
       if category_id.nil?
         Rails.logger.warn("category_idが見つかりません: #{spot_detail["id"]}")
