@@ -6,7 +6,7 @@
     <div class="vote-result-headline">
       <%= t('trips.show.vote-result-headline') %>
     </div>
-    <%= form_with url: trip_plans_path(trip), method: :post do |f| %>
+    <%= form_with url: trip_plans_path(trip), data: { turbo: false }, method: :post do |f| %>
       <div class="spot-image-container">
         <%= render partial: "spot", collection: voted_result, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false} %>
       </div>
