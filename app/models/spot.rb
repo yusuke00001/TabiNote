@@ -3,6 +3,9 @@ class Spot < ApplicationRecord
   has_many :trips, through: :spot_suggestions, dependent: :destroy
   has_many :keyword_spots
   has_many :keywords, through: :keyword_spots, dependent: :destroy
+  has_many :plan_spots
+  has_many :plans, through: :plan_spots
+  belongs_to :category
 
   PER_PAGE = 10
   DEFAULT_PAGE = 1
