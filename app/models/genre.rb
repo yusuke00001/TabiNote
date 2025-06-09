@@ -3,6 +3,8 @@ class Genre < ApplicationRecord
   has_many :spots, through: :genre_spots
   belongs_to :category
 
+  validates :name, uniqueness: true
+
   def self.insert_all(spot_types_summary)
     insert_all!(
     spot_types_summary
