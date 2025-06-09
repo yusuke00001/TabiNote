@@ -10,7 +10,7 @@
   <div class="suggestion-vote-container">
     <div class="suggestion-vote-card-style">
       <div class="suggestion-vote-limit">
-        <%= t('trips.show.vote-limit') %><%= trip.until_spot_vote_limit %>日
+        <%= t('trips.show.vote-limit') %><%= trip.until_spot_vote_limit_date %>日
       </div>
       <% if spot_suggestions.present? %>
         <%= form_with url: trip_spot_votes_path(trip), data: { turbo: false } do |f| %>
