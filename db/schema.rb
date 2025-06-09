@@ -46,15 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_06_060655) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "genre_spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "spot_id", null: false
-    t.bigint "genres_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["genres_id"], name: "index_genre_spots_on_genres_id"
-    t.index ["spot_id"], name: "index_genre_spots_on_spot_id"
-  end
-
   create_table "genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "category_id", null: false
@@ -197,8 +188,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_06_060655) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "genre_spots", "genres", column: "genres_id", on_update: :cascade
-  add_foreign_key "genre_spots", "spots", on_update: :cascade
   add_foreign_key "genres", "categories", on_update: :cascade
   add_foreign_key "keyword_spots", "keywords", on_update: :cascade, on_delete: :cascade
   add_foreign_key "keyword_spots", "spots", on_update: :cascade, on_delete: :cascade
