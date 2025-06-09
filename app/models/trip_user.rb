@@ -11,6 +11,10 @@ class TripUser < ApplicationRecord
     end
   end
 
+  def self.current_user_is_leader?(trip:, current_user:)
+    find_by!(trip_id: trip.id, user_id: current_user.id).is_leader?
+  end
+
   def sort_leader_first
     trip_users = trip.trip_users.to_a
     leader = trip_users.find { |trip_user| trip_user.is_leader? }
