@@ -11,6 +11,11 @@ class Genre < ApplicationRecord
     )
   end
 
+  def self.genre_category_hash(spot_types)
+    genre_names = spot_types.map { |spot_type| spot_type[:name] }.uniq
+    where(name: genre_names).pluck(:name, :category_id).to_h
+  end
+
   # APIから取得したtypeの順番に沿った対応するspot_id
   def self.find_genre_id(spot_types_summary)
     where(type: spot_types_summary)
