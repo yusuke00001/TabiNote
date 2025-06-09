@@ -37,9 +37,9 @@
                 <div class="member">
                   <%= t('.member')%>
                 </div>
-                <% t.leader_first.each do |trip_user| %>
+                <% t.sort_leader_first.each do |trip_user| %>
                   <div class="member-list">
-                    <% if trip_user.host == "leader" %>
+                    <% if trip_user.is_leader? == true %>
                       <i class="fa-solid fa-crown crown-icon "></i>
                     <% elsif trip_user.user.id == current_user.id %>
                       <i class="fa-solid fa-user current-user-icon "></i>  

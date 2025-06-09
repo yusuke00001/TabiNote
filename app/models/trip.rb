@@ -19,7 +19,7 @@ class Trip < ApplicationRecord
   validates :finish_time, presence: true
 
   def create_trip_user
-    TripUser.create!(trip_id: id, user_id: created_user_id, host: :leader)
+    TripUser.create!(trip_id: id, user_id: created_user_id, is_leader?: true)
   end
 
   def within_spot_suggestion_limit?
@@ -38,9 +38,9 @@ class Trip < ApplicationRecord
     (self.spot_vote_limit - Date.today).to_i
   end
 
-  def leader_first
+  def sort_leader_first
     trip_users = self.trip_users.to_a
-    leader = trip_users.find { |trip_user| trip_user.host == "leader" }
+    leader = trip_users.find { |trip_user| trip_user.is_leader? }
     trip_users.delete(leader)
     trip_users.unshift(leader)
   end
