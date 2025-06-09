@@ -19,20 +19,34 @@ class Spot < ApplicationRecord
       PlaceDetails.search_spot_details(place_id: new_spot)
     end
 
-    spot_types = spot_details.flat_map do |spot_detail|
-      spot_detail["types"].map do |type| {
-        unique_number: spot_detail["id"],
-        name: type
-      }
-      end
-    end
+    # spotのunique_numberとgenreのtype関係性
+    spot_types = self.unique_number_to_type(spot_details)
 
-    # nameに対応するcategoryのidを取得
-    genre_names = spot_types.map { |spot_type| spot_type[:name] }.uniq
-    genres = Genre.where(name: genre_names).pluck(:name, :category_id).to_h
+    # Genresのnameとcategory_idのハッシュを取得
+    genres = Genre.genre_category_hash(spot_types)
 
     # unique_numberとcategory_idの配列を作成(Genresテーブルに存在しないnameの場合はcategory_idに6を代入)
-    spot_genres = spot_types.map do |spot_type|
+    spot_genres = self.unique_number_to_category_id(spot_types: spot_types, genres: genres)
+
+    grouped = spot_genres.group_by { |spot| spot[:unique_number] }
+
+    # spotに対応するcategoryを決定
+    spot_category = self.determine_spot_main_category(grouped)
+
+    # 一度配列化することでハッシュ化ができる
+    spot_category_hash = spot_category.map { |spot| [ spot[:unique_number], spot[:category_id] ] }.to_h
+
+    spots_insert_all_data = self.spots_insert_all_data(spot_details: spot_details, spot_category_hash: spot_category_hash)
+
+    insert_all!(spots_insert_all_data)
+
+    spot_ids = where(unique_number: spots_unique_numbers).ids
+
+    KeywordSpot.create_keyword_spots(keyword_id: keyword.id, spot_ids: spot_ids)
+  end
+
+  def self.unique_number_to_category_id(spot_types:, genres:)
+    spot_types.map do |spot_type|
       if genres[spot_type[:name]].nil?
         {
           unique_number: spot_type[:unique_number],
@@ -45,10 +59,10 @@ class Spot < ApplicationRecord
         }
       end
     end
+  end
 
-    grouped = spot_genres.group_by { |spot| spot[:unique_number] }
-
-    spot_category = grouped.map do |unique_number, records|
+  def self.determine_spot_main_category(grouped)
+    grouped.map do |unique_number, records|
       sorted = records.group_by { |record| record[:category_id] }.sort_by { |_, category_id| category_id.size }
       first_category_id = sorted[0]&.first
       second_category_id = sorted[1]&.first
@@ -60,11 +74,20 @@ class Spot < ApplicationRecord
       end
       { unique_number: unique_number, category_id: most_category_id }
     end
-    # 一度配列化することでハッシュ化ができる
-    spot_category_hash = spot_category.map { |spot| [ spot[:unique_number], spot[:category_id] ] }.to_h
+  end
 
-    spots_insert_all_data = spot_details.map do |spot_detail|
-      # 開発環境ではcategory_idがnilになることがあったため
+  def self.unique_number_to_type(spot_details)
+    spot_details.flat_map do |spot_detail|
+      spot_detail["types"].map do |type| {
+        unique_number: spot_detail["id"],
+        name: type
+      }
+      end
+    end
+  end
+
+  def self.spots_insert_all_data(spot_details:, spot_category_hash:)
+    spot_details.map do |spot_detail|
       category_id = spot_category_hash[spot_detail["id"]] || OTHER_CATEGORY_ID
       {
       unique_number: spot_detail["id"],
@@ -74,13 +97,7 @@ class Spot < ApplicationRecord
       address: spot_detail["formattedAddress"],
       image_url: "https://places.googleapis.com/v1/#{spot_detail.dig("photos", 0, "name")}/media?maxWidthPx=800&key=#{ENV["API_KEY"]}",
       category_id: category_id
-    }
-    end
-    insert_all!(spots_insert_all_data)
-
-    spot_ids = where(unique_number: spots_unique_numbers).ids
-    spot_ids.each do |spot_id|
-      KeywordSpot.create!(keyword_id: keyword.id, spot_id: spot_id)
+      }
     end
   end
 end
