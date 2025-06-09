@@ -22,19 +22,19 @@ class Trip < ApplicationRecord
     TripUser.create!(trip_id: id, user_id: created_user_id, is_leader?: true)
   end
 
-  def within_spot_suggestion_limit?
+  def within_spot_suggestion_limit_date?
     self.spot_suggestion_limit >= Date.today
   end
 
-  def within_spot_vote_limit?
+  def within_spot_vote_limit_date?
     self.spot_vote_limit >= Date.today
   end
 
-  def until_spot_suggestion_limit
+  def until_spot_suggestion_limit_date
     (self.spot_suggestion_limit - Date.today).to_i
   end
 
-  def until_spot_vote_limit
+  def until_spot_vote_limit_date
     (self.spot_vote_limit - Date.today).to_i
   end
 
