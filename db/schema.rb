@@ -149,7 +149,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_06_060655) do
   end
 
   create_table "trip_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "host"
+    t.boolean "is_leader?", default: false, null: false
     t.bigint "user_id", null: false
     t.bigint "trip_id", null: false
     t.datetime "created_at", null: false

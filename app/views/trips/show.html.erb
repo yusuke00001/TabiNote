@@ -13,9 +13,9 @@
         <div class="member-title">
           <%= t('.member') %>
         </div>
-        <% @trip.leader_first.each do |trip_user| %>
+        <% @trip.sort_leader_first.each do |trip_user| %>
           <div class="member-list">
-            <% if trip_user.host == "leader" %>
+            <% if trip_user.is_leader? == true %>
               <i class="fa-solid fa-crown crown-icon "></i>
             <% elsif trip_user.user_id == current_user.id %>
               <i class="fa-solid fa-user current-user-icon "></i>
