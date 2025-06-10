@@ -100,4 +100,40 @@ class Spot < ApplicationRecord
       }
     end
   end
+
+  def self.spots_data_sort(spots_unique_numbers)
+    spots_data = where(unique_number: spots_unique_numbers).index_by(&:unique_number)
+    spots_unique_numbers.map { |s| spots_data[s] }
+  end
+
+  def self.spots_all_combination(spots_combination:, category_ids:, category_stay_time_sort:, total_hours:, best_route:, spot_distance:, travel_max_time:)
+    (0..spots_combination.size - 1).each do |removed|
+      total_hours, best_route = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, travel_max_time: travel_max_time, total_hours: total_hours, best_route: best_route)
+      if total_hours < travel_max_time
+        return best_route
+      end
+    end
+  end
+
+  def self.combinations_with_removal(spots_combination:, removed:, category_ids:, category_stay_time_sort:, total_hours:, best_route:, spot_distance:, travel_max_time:)
+    spots_combination.combination(removed).each do |removed_spot|
+      spots_combination_new = spots_combination - removed_spot
+      category_ids_new = category_ids.each_with_index.reject { |_, index| removed_spot.include?(index) }.map(&:first)
+      total_stay_time = category_ids_new.map { |id| category_stay_time_sort[id] }.sum
+      total_hours, best_route = self.spots_combination_permutation(spots_combination: spots_combination_new, total_hours: total_hours, best_route: best_route, total_stay_time: total_stay_time, spot_distance: spot_distance, travel_max_time: travel_max_time)
+    end
+    [ total_hours, best_route ]
+  end
+
+  def self.spots_combination_permutation(spots_combination:, total_hours:, best_route:, total_stay_time:, spot_distance:, travel_max_time:)
+    spots_combination.permutation.each do |n|
+      total_move_time = 0
+      n.each_cons(2) { |a, b| total_move_time += spot_distance[:duration][a][b] }
+      if total_move_time + total_stay_time < total_hours
+        total_hours = total_move_time + total_stay_time
+        best_route = n
+      end
+    end
+    [ total_hours, best_route ]
+  end
 end
