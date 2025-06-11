@@ -27,10 +27,12 @@
         justify-content: space-around;
         margin: 0 auto;
         width: 500px;
+        flex-wrap: wrap;
         .spot {
           border: 1px solid black;
           border-radius: 10px;
           width: 150px;
+          
         }
         .image {
           width: 100px;
