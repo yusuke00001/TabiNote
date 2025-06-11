@@ -40,7 +40,7 @@ class Trip < ApplicationRecord
 
   def sort_leader_first
     trip_users = self.trip_users.to_a
-    leader = trip_users.find { |trip_user| trip_user.is_leader? }
+    leader = trip_users.find { |trip_user| trip_user.is_leader }
     trip_users.delete(leader)
     trip_users.unshift(leader)
   end
