@@ -20,7 +20,7 @@
             </div>
           </div>
           <div class="update-delete-container">
-            <% if trip_user.show_leader_change_link?(current_user: current_user, current_user_is_leader: @current_user_is_leader) %>
+            <% if trip_user.show_leader_change_link?(current_user: current_user, trip: @trip) %>
               <%= link_to change_leader_trip_trip_user_path(trip_id: @trip.id, id: trip_user.id ), data: { confirm: "本当に変更しますか？"} do %>
                 <i class="fa-solid fa-crown member-icon fa-lg"></i>
                 <%= t('.update-leader') %>
