@@ -1,0 +1,79 @@
+.plans-index {
+  .card-style {
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    .created-plan {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 30px;
+    }
+    .plans-container {
+      p {
+        font-size: 25px;
+        font-weight: bold;
+      } 
+      text-align: center;
+      width: 600px;
+      margin: 0 auto;
+      margin-bottom: 50px;
+      .spots-container {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        width: 500px;
+        .spot {
+          border: 1px solid black;
+          border-radius: 10px;
+          width: 150px;
+        }
+        .image {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+    .guide-book {
+      display: table;
+      width: 550px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      border: 1px solid black;
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+
+      .guide-headline {
+        display: table-row;
+        background-color: #d3d3d3;
+        text-align: center;
+        font-weight: bold;
+      }
+      .guide-row {
+        display: table-row;
+      }
+      .time-cell {
+        padding: 10px;
+        display: table-cell;
+        border-right: 1px solid black;
+        text-align: center;
+        width: 150px;
+        font-size: 20px;
+      }
+      .content-cell {
+        padding: 10px;
+        display: table-cell;
+        text-align: center;
+        width: 400px;
+        font-size: 20px;
+      }
+      .spot_link {
+        color: blue;
+      }
+    }
+  }
+}
