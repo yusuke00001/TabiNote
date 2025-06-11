@@ -6,18 +6,18 @@ class TripUser < ApplicationRecord
     transaction do
       current_leader = find_by!(trip_id: trip_id, user_id: user_id)
       new_leader = find(new_leader_id)
-      current_leader.update!(is_leader?: :false)
-      new_leader.update!(is_leader?: :true)
+      current_leader.update!(is_leader: :false)
+      new_leader.update!(is_leader: :true)
     end
   end
 
   def current_user_is_leader?(trip:, current_user:)
-    TripUser.find_by!(trip_id: trip.id, user_id: current_user.id).is_leader?
+    TripUser.find_by!(trip_id: trip.id, user_id: current_user.id).is_leader
   end
 
   def sort_leader_first
     trip_users = trip.trip_users.to_a
-    leader = trip_users.find { |trip_user| trip_user.is_leader? }
+    leader = trip_users.find { |trip_user| trip_user.is_leader }
     trip_users.delete(leader)
     trip_users.unshift(leader)
   end
@@ -31,6 +31,6 @@ class TripUser < ApplicationRecord
   end
 
   def show_current_user_delete_link?(current_user:)
-    self.user_id == current_user.id && self.is_leader? == false
+    self.user_id == current_user.id && self.is_leader == false
   end
 end
