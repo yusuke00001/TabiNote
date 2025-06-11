@@ -8,7 +8,7 @@
       <% @trip.sort_leader_first.each do |trip_user| %>
         <div class="container">
           <div class="icon-name-container">
-            <% if trip_user.is_leader? %>
+            <% if trip_user.is_leader %>
               <i class="fa-solid fa-crown crown-icon fa-2x"></i>
             <% elsif trip_user.current_user?(current_user) %>
               <i class="fa-solid fa-user current-user-icon fa-2x"></i>
