@@ -1,7 +1,6 @@
 class TripUsersController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
-    @current_user_is_leader = TripUser.current_user_is_leader?(trip: @trip, current_user: current_user)
   end
 
   def change_leader
