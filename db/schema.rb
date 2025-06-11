@@ -73,7 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_06_060655) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "order"
-    t.string "duration"
+    t.integer "duration"
     t.bigint "spot_id", null: false
     t.bigint "plan_id", null: false
     t.index ["plan_id"], name: "index_plan_spots_on_plan_id"
@@ -83,6 +83,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_06_060655) do
   create_table "plans", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.bigint "trip_id", null: false
     t.index ["trip_id"], name: "index_plans_on_trip_id"
   end

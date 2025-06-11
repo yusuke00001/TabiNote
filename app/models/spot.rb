@@ -136,4 +136,8 @@ class Spot < ApplicationRecord
     end
     [ total_hours, best_route ]
   end
+
+  def move_duration(plan)
+    self.plan_spots.find_by(plan_id: plan.id).duration
+  end
 end

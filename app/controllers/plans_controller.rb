@@ -1,4 +1,9 @@
 class PlansController < ApplicationController
+  def index
+    @trip = Trip.find(params[:trip_id])
+    @plan = Plan.find(params[:plan_id])
+    @spots = @plan.spots.order(order: :asc)
+  end
   def create
     trip = Trip.find(params[:trip_id])
     spot_distance = DistanceMatrix.spot_distance(origins: params[:spot_unique_numbers], destinations: params[:spot_unique_numbers], mode: "driving")
@@ -24,11 +29,12 @@ class PlansController < ApplicationController
     ActiveRecord::Base.transaction do
       orderd_spots = best_route.map { |i| spots_data_sort[i] }
       durations = best_route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
-      plan = Plan.create!(trip_id: trip.id)
+      plan_title = Plan.where(trip_id: trip.id).count + 1
+      plan = Plan.create!(trip_id: trip.id, title: plan_title)
       plan_spots_insert_all_data = PlanSpot.create_plan_spots_insert_all_data(orderd_spots: orderd_spots, durations: durations, plan: plan)
       PlanSpot.insert_all!(plan_spots_insert_all_data)
       flash[:notice] = "プランを作成しました"
-      # redirect_to
+      redirect_to trip_plans_path(trip_id: trip.id, plan_id: plan.id)
       return
     end
   end

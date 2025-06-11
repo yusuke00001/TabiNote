@@ -81,3 +81,12 @@ ja:
       delete: 削除する
       exit: 退会する
       trip_show: しおり詳細ページに戻る
+  plans:
+    index:
+      title: 提案するプラン
+      created-plan: 以下のプランを作成しました🎉🎉
+      guide-book-title: 旅のしおり
+      time: 時間
+      content: 内容
+      move-time: 移動時間
+      finish: 終了
