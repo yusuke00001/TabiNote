@@ -19,7 +19,7 @@ class Trip < ApplicationRecord
   validates :finish_time, presence: true
 
   def create_trip_user
-    TripUser.create!(trip_id: id, user_id: created_user_id, is_leader?: true)
+    TripUser.create!(trip_id: id, user_id: created_user_id, is_leader: true)
   end
 
   def within_spot_suggestion_limit_date?
