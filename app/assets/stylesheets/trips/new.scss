@@ -56,6 +56,15 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        margin-bottom: 10px;
+      }
+      .calendar-field {
+        width: 150px;
+        font-size: 20px;
+        height: 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
       }
       .spot-field {
         width: 150px;

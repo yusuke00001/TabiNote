@@ -18,7 +18,7 @@
         <%= f.label :date, class:"form-label" %>
         <i class="date-sub-title"><%= t('.date-sub-title') %></i>
       </div>
-      <%= f.text_field :date, class: "calendarpickr calendar-field" %>
+      <%= f.text_field :date, class: "calendarpickr calendar-field", placeholder: "年/月/日" %>
     </div>
     <div class="form-group">
       <div class="icon-label">
@@ -34,14 +34,14 @@
           <i class="fa-solid fa-clock"></i>
           <%= f.label :spot_suggestion_limit %>
         </div>
-        <%= f.date_field :spot_suggestion_limit, class:"spot-field" %>
+        <%= f.text_field :spot_suggestion_limit, class: "calendarpickr calendar-field", placeholder: "年/月/日" %>
       </div>
       <div class="spot-vote-limit">
         <div class="icon-label">
           <i class="fa-solid fa-clock"></i>
           <%= f.label :spot_vote_limit %>
         </div>
-        <%= f.date_field :spot_vote_limit, class:"spot-field" %>
+        <%= f.text_field :spot_vote_limit, class: "calendarpickr calendar-field", placeholder: "年/月/日" %>
       </div>
     </div>
     <p class="spot-time-title"><%= t('.spot-time-title') %> </p>
@@ -51,14 +51,14 @@
           <i class="fa-solid fa-clock"></i>
           <%= f.label :start_time %>
         </div>
-        <%= f.text_field :start_time, class: "timepickr time-field" %>
+        <%= f.text_field :start_time, class: "timepickr time-field", placeholder: "--:--" %>
       </div>
       <div class="finish-time">
         <div class="icon-label">
           <i class="fa-solid fa-clock"></i>
           <%= f.label :finish_time %>
         </div>
-        <%= f.text_field :finish_time, class: "timepickr time-field" %>
+        <%= f.text_field :finish_time, class: "timepickr time-field", placeholder: "--:--" %>
       </div>
     </div>
     <p class="transportation-title"><%= t('.transportation-title') %></p>
