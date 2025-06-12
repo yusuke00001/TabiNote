@@ -18,7 +18,7 @@
         <%= f.label :date, class:"form-label" %>
         <i class="date-sub-title"><%= t('.date-sub-title') %></i>
       </div>
-      <%= f.date_field :date, class:"text-field" %>
+      <%= f.text_field :date, class: "calendarpickr calendar-field" %>
     </div>
     <div class="form-group">
       <div class="icon-label">
@@ -51,14 +51,14 @@
           <i class="fa-solid fa-clock"></i>
           <%= f.label :start_time %>
         </div>
-        <%= f.time_field :start_time, class:"time-field" %>
+        <%= f.text_field :start_time, class: "timepickr time-field" %>
       </div>
       <div class="finish-time">
         <div class="icon-label">
           <i class="fa-solid fa-clock"></i>
           <%= f.label :finish_time %>
         </div>
-        <%= f.time_field :finish_time, class:"time-field" %>
+        <%= f.text_field :finish_time, class: "timepickr time-field" %>
       </div>
     </div>
     <p class="transportation-title"><%= t('.transportation-title') %></p>

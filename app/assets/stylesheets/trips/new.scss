@@ -14,6 +14,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
+        margin-bottom: 20px;
       }
     }
     .form-label {
@@ -27,6 +28,13 @@
       border-radius: 4px;
       padding: 10px;
       margin-top: 10px;
+    }
+    .calendar-field {
+      font-size: 20px;
+      height: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
     }
     .date-sub-title {
       font-size: 15px;
@@ -73,9 +81,11 @@
       }
       .time-field {
         width: 150px;
-        height: 30px;
+        height: 20px;
+        font-size: 20px;
         border: 1px solid #ddd;
         border-radius: 4px;
+        padding: 10px;
         margin-top: 10px;
       }
     }
