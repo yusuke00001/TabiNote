@@ -3,4 +3,6 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "preview_image"
 import Rails from "@rails/ujs"
+import "flatpickr/calendarpickr"
+import "flatpickr/timepickr"
 Rails.start()
