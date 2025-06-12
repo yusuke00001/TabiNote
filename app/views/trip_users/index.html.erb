@@ -5,7 +5,7 @@
       <div class="title">
         <%= t('.title') %>
       </div>
-      <% @trip.sort_leader_first.each do |trip_user| %>
+      <% @trip_users.each do |trip_user| %>
         <div class="container">
           <div class="icon-name-container">
             <% if trip_user.is_leader %>

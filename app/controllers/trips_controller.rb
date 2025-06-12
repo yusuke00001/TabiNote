@@ -18,6 +18,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @trip_users = @trip.trip_users.order(is_leader: :desc)
     @spot_suggestions = @trip.spot_suggestions
     spot_votes = @trip.spot_votes.pluck(:spot_suggestion_id)
     ng_spot = spot_votes.group_by { |s| s }.select { |_, value| value.size >= 2 }.keys
