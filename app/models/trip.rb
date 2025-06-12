@@ -38,10 +38,7 @@ class Trip < ApplicationRecord
     (self.spot_vote_limit - Date.today).to_i
   end
 
-  def sort_leader_first
-    trip_users = self.trip_users.to_a
-    leader = trip_users.find { |trip_user| trip_user.is_leader }
-    trip_users.delete(leader)
-    trip_users.unshift(leader)
+  def trip_users_sort_by_leader
+    self.trip_users.order(is_leader: :desc)
   end
 end

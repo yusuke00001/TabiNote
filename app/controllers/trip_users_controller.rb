@@ -1,6 +1,7 @@
 class TripUsersController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
+    @trip_users = @trip.trip_users.order(is_leader: :desc)
   end
 
   def change_leader
