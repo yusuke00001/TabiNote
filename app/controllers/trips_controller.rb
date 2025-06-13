@@ -16,6 +16,17 @@ class TripsController < ApplicationController
     end
   end
 
+  def decided_plan
+    trip = Trip.find(params[:id])
+    if trip.update!(decided_plan_id: params[:plan_id])
+      flash[:notice] = "プランを決定しました"
+      redirect_to trip_path(trip)
+    else
+      flash[:alert] = "プランを選択することができませんでした。別のプランをお試しください"
+      redirect_back fallback_location: homes_path
+    end
+  end
+
   def show
     @trip = Trip.find(params[:id])
     @trip_users = @trip.trip_users.order(is_leader: :desc)
@@ -23,6 +34,8 @@ class TripsController < ApplicationController
     spot_votes = @trip.spot_votes.pluck(:spot_suggestion_id)
     ng_spot = spot_votes.group_by { |s| s }.select { |_, value| value.size >= 2 }.keys
     @voted_result = @spot_suggestions.reject { |spot| ng_spot.include?(spot.id) }
+    @plan = Plan.find_by(id: @trip.decided_plan_id)
+    @spots = @plan.spots
   end
 
   def suggestion

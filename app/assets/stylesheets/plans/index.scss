@@ -13,68 +13,19 @@
       text-align: center;
       font-size: 30px;
     }
-    .plans-container {
-      p {
-        font-size: 25px;
-        font-weight: bold;
-      } 
+    .decided {
+      width: 200px;
+      margin: 0 auto;
       text-align: center;
-      width: 600px;
-      margin: 0 auto;
+      margin-top: 50px;
       margin-bottom: 50px;
-      .spots-container {
-        display: flex;
-        justify-content: space-around;
-        margin: 0 auto;
-        width: 500px;
-        flex-wrap: wrap;
-        .spot {
-          border: 1px solid black;
-          border-radius: 10px;
-          width: 150px;
-        }
-        .image {
-          width: 100px;
-          height: 100px;
-        }
-      }
     }
-    .guide-book {
-      display: table;
-      width: 550px;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      border: 1px solid black;
-      border-radius: 10px 10px 0 0;
-      overflow: hidden;
-
-      .guide-headline {
-        display: table-row;
-        background-color: #d3d3d3;
-        text-align: center;
-        font-weight: bold;
-      }
-      .guide-row {
-        display: table-row;
-      }
-      .time-cell {
-        padding: 10px;
-        display: table-cell;
-        border-right: 1px solid black;
-        text-align: center;
-        width: 150px;
-        font-size: 20px;
-      }
-      .content-cell {
-        padding: 10px;
-        display: table-cell;
-        text-align: center;
-        width: 400px;
-        font-size: 20px;
-      }
-      .spot_link {
-        color: blue;
-      }
+    .decided-button {
+      font-size: 20px;
+      background-color: #007bff;
+      color: white;
+      border: 1px solid #007bff;
+      border-radius: 4px;
     }
   }
 }
