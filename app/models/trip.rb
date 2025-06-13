@@ -8,6 +8,7 @@ class Trip < ApplicationRecord
   has_many :spot_suggestions
   has_many :spots, through: :spot_suggestions, dependent: :destroy
   has_many :spot_votes
+  has_many :plans
   has_one_attached :image
 
   enum :status, { in_progress: 0, completed: 1 }

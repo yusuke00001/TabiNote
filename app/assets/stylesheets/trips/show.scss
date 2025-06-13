@@ -34,7 +34,6 @@
       display: flex;
       width: 500px;
       margin: auto;
-      margin-bottom: 50px;
       .suggestion-vote-card-style {
         width: 500px;
         border: 1px solid black;
@@ -138,6 +137,7 @@
       }
     }
     .member-container {
+      margin-top: 50px;
       display: flex;
       justify-content: center;
       margin-bottom: 100px;
@@ -153,7 +153,8 @@
           margin-bottom: 10px;
         }
         .member-list {
-          margin-left: 20px;
+          font-size: 20px;
+          margin-left: 50px;
           display: flex;
           align-items: center;
           width: 270px;
