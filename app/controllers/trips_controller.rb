@@ -35,7 +35,9 @@ class TripsController < ApplicationController
     ng_spot = spot_votes.group_by { |s| s }.select { |_, value| value.size >= 2 }.keys
     @voted_result = @spot_suggestions.reject { |spot| ng_spot.include?(spot.id) }
     @plan = Plan.find_by(id: @trip.decided_plan_id)
-    @spots = @plan.spots
+    if @plan.present?
+      @spots = @plan.spots
+    end
   end
 
   def suggestion

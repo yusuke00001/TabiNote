@@ -2,9 +2,6 @@
   <div class="card-style">
     <%= render "shared/trip_data", trip: @trip %>
     <p class="created-plan"><%= t('.created-plan') %></p>
-    <%= render "shared/plan", spots: @spots, trip: @trip, plan: @plan %>
-    <div class="decided">
-      <%= button_to t('.decide'), trip_decided_plan_path(id: @trip.id, plan_id: @plan.id), class:"decided-button" %>
-    </div>
+    <%= render "shared/plan", trip: @trip, plans: @plans %>
   </div>
 </div>
