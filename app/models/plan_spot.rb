@@ -2,8 +2,8 @@ class PlanSpot < ApplicationRecord
   belongs_to :spot
   belongs_to :plan
 
-  def self.create_plan_spots_insert_all_data(orderd_spots:, durations:, plan:)
-    orderd_spots.each_with_index.map do |spot, index|
+  def self.create_plan_spots_insert_all_data(ordered_spots:, durations:, plan:)
+    ordered_spots.each_with_index.map do |spot, index|
       {
         plan_id: plan.id,
         order: index + 1,

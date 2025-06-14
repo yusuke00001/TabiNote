@@ -37,21 +37,18 @@ class PlansController < ApplicationController
 
     spots_combination = (0..number_of_spots-1).to_a
     # 各スポットの組み合わせパターンを検討し、制限時間内に収まる最短ルートを取得
-    best_route, necessary_for_second_plans = Spot.spots_all_combination(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, total_hours: total_hours, spot_distance: spot_distance, travel_max_time: travel_max_time)
+    routes, must_include_spots = Spot.spots_all_combination_for_best_route(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, total_hours: total_hours, spot_distance: spot_distance, travel_max_time: travel_max_time)
 
-    other_routes = []
-    if necessary_for_second_plans.present?
-      other_routes = Spot.spots_all_combination_for_second_route(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, travel_max_time: travel_max_time, necessary_for_second_plans: necessary_for_second_plans)
+    if must_include_spots.present?
+      routes += Spot.spots_all_combination_for_other_routes(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, travel_max_time: travel_max_time, must_include_spots: must_include_spots)
     end
 
-    other_routes.unshift(best_route)
-
     ActiveRecord::Base.transaction do
-      other_routes.each_with_index do |other_route, index|
-        orderd_spots = other_route.map { |i| spots_data_sort[i] }
-        durations = other_route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
+      routes.each_with_index do |route, index|
+        ordered_spots = route.map { |i| spots_data_sort[i] }
+        durations = route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
         plan = Plan.create!(trip_id: trip.id, title: index + 1)
-        plan_spots_insert_all_data = PlanSpot.create_plan_spots_insert_all_data(orderd_spots: orderd_spots, durations: durations, plan: plan)
+        plan_spots_insert_all_data = PlanSpot.create_plan_spots_insert_all_data(ordered_spots: ordered_spots, durations: durations, plan: plan)
         PlanSpot.insert_all!(plan_spots_insert_all_data)
       end
       flash[:notice] = "プランを作成しました"
