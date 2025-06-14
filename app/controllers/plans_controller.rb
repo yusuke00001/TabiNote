@@ -5,23 +5,7 @@ class PlansController < ApplicationController
   end
   def create
     trip = Trip.find(params[:trip_id])
-    # spot_distance = DistanceMatrix.spot_distance(origins: params[:spot_unique_numbers], destinations: params[:spot_unique_numbers], mode: "driving")
-
-    spot_distance = { distance:
-      [ [ 0, 9163, 25420, 23551, 45356, 83406 ],
-      [ 8977, 0, 13174, 11305, 46306, 84356 ],
-      [ 24670, 16487, 0, 626, 53220, 91270 ],
-      [ 29158, 16465, 1139, 0, 53197, 91247 ],
-      [ 45180, 46025, 55571, 53703, 0, 42671 ],
-      [ 84157, 85002, 94548, 92680, 42872, 0 ] ],
-      duration:
-        [ [ 0, 16, 30, 29, 38, 83 ],
-        [ 15, 0, 22, 22, 42, 88 ],
-        [ 31, 25, 0, 1, 49, 95 ],
-        [ 32, 24, 4, 0, 49, 94 ],
-        [ 37, 41, 50, 50, 0, 53 ],
-        [ 83, 87, 96, 95, 52, 0 ] ]
-    }
+    spot_distance = DistanceMatrix.spot_distance(origins: params[:spot_unique_numbers], destinations: params[:spot_unique_numbers], mode: "driving")
 
     number_of_spots = spot_distance[:duration].size
 
