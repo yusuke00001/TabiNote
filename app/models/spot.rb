@@ -113,15 +113,15 @@ class Spot < ApplicationRecord
     (0..spots_combination.size - 1).each do |removed|
       total_hours, best_route, must_include_spots = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots, essential_spot: essential_spot)
       if total_hours < travel_max_time && must_include_spots.present?
-        return [ best_route, must_include_spots ]
+        return [ [ best_route ], must_include_spots ]
       end
     end
   end
 
   def self.spots_all_combination_for_other_routes(spots_combination:, category_ids:, category_stay_time_sort:, spot_distance:, travel_max_time:, must_include_spots:)
+    other_routes = []
     must_include_spots.each do |essential_spot|
       best_route = nil
-      other_routes = []
       total_hours = Float::INFINITY
       (0..spots_combination.size - 1).each do |removed|
         total_hours, best_route = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, essential_spot: essential_spot, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots)

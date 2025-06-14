@@ -5,8 +5,23 @@ class PlansController < ApplicationController
   end
   def create
     trip = Trip.find(params[:trip_id])
-    spot_distance = DistanceMatrix.spot_distance(origins: params[:spot_unique_numbers], destinations: params[:spot_unique_numbers], mode: "driving")
+    # spot_distance = DistanceMatrix.spot_distance(origins: params[:spot_unique_numbers], destinations: params[:spot_unique_numbers], mode: "driving")
 
+    spot_distance = { distance:
+      [ [ 0, 9163, 25420, 23551, 45356, 83406 ],
+      [ 8977, 0, 13174, 11305, 46306, 84356 ],
+      [ 24670, 16487, 0, 626, 53220, 91270 ],
+      [ 29158, 16465, 1139, 0, 53197, 91247 ],
+      [ 45180, 46025, 55571, 53703, 0, 42671 ],
+      [ 84157, 85002, 94548, 92680, 42872, 0 ] ],
+      duration:
+        [ [ 0, 16, 30, 29, 38, 83 ],
+        [ 15, 0, 22, 22, 42, 88 ],
+        [ 31, 25, 0, 1, 49, 95 ],
+        [ 32, 24, 4, 0, 49, 94 ],
+        [ 37, 41, 50, 50, 0, 53 ],
+        [ 83, 87, 96, 95, 52, 0 ] ]
+    }
     number_of_spots = spot_distance[:duration].size
 
     total_hours = Float::INFINITY
@@ -26,17 +41,23 @@ class PlansController < ApplicationController
     if must_include_spots.present?
       routes += Spot.spots_all_combination_for_other_routes(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, travel_max_time: travel_max_time, must_include_spots: must_include_spots)
     end
-
-    ActiveRecord::Base.transaction do
-      routes.each_with_index do |route, index|
-        ordered_spots = route.map { |i| spots_data_sort[i] }
-        durations = route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
-        plan = Plan.create!(trip_id: trip.id, title: index + 1)
-        plan_spots_insert_all_data = PlanSpot.create_plan_spots_insert_all_data(ordered_spots: ordered_spots, durations: durations, plan: plan)
-        PlanSpot.insert_all!(plan_spots_insert_all_data)
+    begin
+      ActiveRecord::Base.transaction do
+        routes.each_with_index do |route, index|
+          binding.pry
+          ordered_spots = route.map { |i| spots_data_sort[i] }
+          durations = route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
+          plan = Plan.create!(trip_id: trip.id, title: index + 1)
+          plan_spots_insert_all_data = PlanSpot.create_plan_spots_insert_all_data(ordered_spots: ordered_spots, durations: durations, plan: plan)
+          PlanSpot.insert_all!(plan_spots_insert_all_data)
+        end
+        flash[:notice] = "プランを作成しました"
+        redirect_to trip_plans_path(trip_id: trip.id)
       end
-      flash[:notice] = "プランを作成しました"
-      redirect_to trip_plans_path(trip_id: trip.id)
+    rescue => e
+      Rails.logger.error "プラン作成でエラー発生: #{e.class} - #{e.message}"
+      flash[:alert]  = "プランを生成することができませんでした"
+      redirect_back fallback_location: homes_path
     end
   end
 end
