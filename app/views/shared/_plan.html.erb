@@ -28,7 +28,16 @@
         </div>
         <% current_time += move_duration.minutes %>
       <% end %>
-      <%= render partial: "shared/schedule", locals: { spot: spot, i: i, current_time: current_time, trip: trip, plan_spots: plan.spots, plan: plan} %>
+      <div class="guide-row">
+        <div class="time-cell">
+          <%= current_time.strftime("%H:%M") %>
+        </div>
+        <div class="content-cell">
+          <%= link_to trip_spot_path(trip.id, spot.id), class:"spot_link" do %>
+            <%= spot.spot_name %>(滞在:<%= spot.category.stay_time %>分)
+          <% end %>
+        </div>
+      </div>
       <% current_time += spot.category.stay_time.minutes %>
       <% if i == plan.spots.length - 1 %>
         <div class="guide-row">
