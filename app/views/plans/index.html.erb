@@ -2,6 +2,10 @@
   <div class="card-style">
     <%= render "shared/trip_data", trip: @trip %>
     <p class="created-plan"><%= t('.created-plan') %></p>
-    <%= render "shared/plan", trip: @trip, plans: @plans %>
+    <div class="plans-container">
+      <% @plans.each do |plan| %>
+        <%= render partial: "shared/plan", :as => "plan", locals: { trip: @trip, plan: plan} %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,14 +1,9 @@
-<% plans.each do |plan|%>
-  <div class="plans-container">
-    <p>プラン<%= plan.title %></p>
-    <div class="spots-container">
-      <% plan.spots.order(order: :asc).each do |spot| %>
-        <div class="spot">
-          <%= link_to spot.spot_name.truncate(6, omission: "‥"), trip_spot_path(trip.id, spot.id) %>
-          <%= image_tag spot.image_url, class:"image" %>
-        </div>
-      <% end %>
-    </div>
+<div class="plan-container">
+  <p>プラン<%= plan.title %></p>
+  <div class="spots-container">
+    <% plan.spots.each do |spot| %>
+      <%= render partial: "shared/plan_spots", locals: { trip: trip, spot: spot } %>
+    <% end %>
   </div>
   <div class="guide-book">
     <div class="guide-headline">
@@ -33,16 +28,7 @@
         </div>
         <% current_time += move_duration.minutes %>
       <% end %>
-      <div class="guide-row">
-        <div class="time-cell">
-          <%= current_time.strftime("%H:%M") %>
-        </div>
-        <div class="content-cell">
-          <%= link_to trip_spot_path(trip.id, spot.id), class:"spot_link" do %>
-            <%= spot.spot_name %>(滞在:<%= spot.category.stay_time %>分)
-          <% end %>
-        </div>
-      </div>
+      <%= render partial: "shared/schedule", locals: { spot: spot, i: i, current_time: current_time, trip: trip, plan_spots: plan.spots, plan: plan} %>
       <% current_time += spot.category.stay_time.minutes %>
       <% if i == plan.spots.length - 1 %>
         <div class="guide-row">
@@ -56,4 +42,4 @@
       <% end %>
     <% end %>
   </div>
-<% end %>
+</div>
