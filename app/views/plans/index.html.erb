@@ -3,8 +3,8 @@
     <%= render "shared/trip_data", trip: @trip %>
     <p class="created-plan"><%= t('.created-plan') %></p>
     <div class="plans-container">
-      <% @plans.each do |plan| %>
-        <%= render partial: "shared/plan", :as => "plan", locals: { trip: @trip, plan: plan} %>
+      <% @plans.each_with_index do |plan, plan_index| %>
+        <%= render partial: "shared/plan", :as => "plan", locals: { trip: @trip, plan: plan, plan_index: plan_index, size: @plans.size} %>
       <% end %>
     </div>
   </div>
