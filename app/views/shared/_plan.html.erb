@@ -1,14 +1,9 @@
-<% plans.each do |plan|%>
-  <div class="plans-container">
-    <p>プラン<%= plan.title %></p>
-    <div class="spots-container">
-      <% plan.spots.order(order: :asc).each do |spot| %>
-        <div class="spot">
-          <%= link_to spot.spot_name.truncate(6, omission: "‥"), trip_spot_path(trip.id, spot.id) %>
-          <%= image_tag spot.image_url, class:"image" %>
-        </div>
-      <% end %>
-    </div>
+<div class="plan-container">
+  <p>プラン<%= plan.title %></p>
+  <div class="spots-container">
+    <% plan.spots.each do |spot| %>
+      <%= render partial: "shared/plan_spots", locals: { trip: trip, spot: spot } %>
+    <% end %>
   </div>
   <div class="guide-book">
     <div class="guide-headline">
@@ -56,4 +51,4 @@
       <% end %>
     <% end %>
   </div>
-<% end %>
+</div>
