@@ -51,4 +51,13 @@
       <% end %>
     <% end %>
   </div>
+  <div class="dot-icon">
+    <% size.times.each_with_index do |icon, icon_index| %>
+      <% if plan_index == icon_index %>
+        <i class="fa-solid fa-circle"></i>
+      <% else %>
+        <i class="fa-regular fa-circle"></i>
+      <% end %>
+    <% end %>
+  </div>
 </div>
