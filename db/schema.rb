@@ -212,6 +212,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_12_080343) do
   add_foreign_key "trip_transportations", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "trips", on_update: :cascade, on_delete: :cascade
   add_foreign_key "trip_users", "users", on_update: :cascade
-  add_foreign_key "trips", "plans", column: "decided_plan_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "trips", "plans", column: "decided_plan_id", on_update: :cascade
   add_foreign_key "trips", "users", column: "created_user_id", on_update: :cascade, on_delete: :cascade
 end
