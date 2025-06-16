@@ -18,7 +18,7 @@ class TripsController < ApplicationController
 
   def decided_plan
     trip = Trip.find(params[:id])
-    if trip.update!(decided_plan_id: params[:plan_id])
+    if trip.update!(decided_plan_id: params[:selected_plan_id])
       flash[:notice] = "プランを決定しました"
       redirect_to trip_path(trip)
     else

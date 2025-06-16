@@ -1,4 +1,7 @@
-<div class="plan-container">
+<div class="plan-container" data-plan-id="<%= plan.id %>">
+  <div class="selected">
+    <%= t('plans.index.selected')%>
+  </div>
   <p>プラン<%= plan.title %></p>
   <div class="spots-container">
     <% plan.spots.each do |spot| %>
@@ -51,13 +54,18 @@
       <% end %>
     <% end %>
   </div>
-  <div class="dot-icon">
-    <% size.times.each_with_index do |icon, icon_index| %>
-      <% if plan_index == icon_index %>
-        <i class="fa-solid fa-circle"></i>
-      <% else %>
-        <i class="fa-regular fa-circle"></i>
+  <% if plan_create %>
+    <div class="dot-icon">
+      <% size.times.each_with_index do |icon, icon_index| %>
+        <% if plan_index == icon_index %>
+          <i class="fa-solid fa-circle"></i>
+        <% else %>
+          <i class="fa-regular fa-circle"></i>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+    <div class="select-form">
+      <button type ="button" class="selected-button"><%= t('plans.index.selected-plan') %></button>
+    </div>
+  <% end %>
 </div>

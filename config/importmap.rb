@@ -10,3 +10,4 @@ pin "@rails/ujs", to: "@rails--ujs.js" # @7.1.3
 pin "flatpickr" # @4.6.13
 pin "flatpickr/calendarpickr", to: "flatpickr/calendarpickr.js"
 pin "flatpickr/timepickr", to: "flatpickr/timepickr.js"
+pin "selected_plan", to: "selected_plan.js"
