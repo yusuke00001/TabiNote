@@ -2,7 +2,7 @@
   <div class="card-style">
     <%= render "shared/trip_data", trip: @trip %>
     <% if @trip.decided_plan_id.present? %>
-      <%= render "shared/plan", trip: @trip, spots: @spots, plan: @plan %>
+      <%= render "shared/plan", trip: @trip, spots: @spots, plan: @plan, plan_create: false %>
     <% else%>
       <turbo-frame id="phase">
         <% if @trip.within_spot_vote_limit_date? %>

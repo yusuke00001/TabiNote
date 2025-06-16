@@ -11,8 +11,8 @@ class TripUser < ApplicationRecord
     end
   end
 
-  def current_user_is_leader?(trip:, current_user:)
-    TripUser.find_by!(trip_id: trip.id, user_id: current_user.id).is_leader
+  def self.current_user_is_leader?(trip:, current_user:)
+    find_by!(trip_id: trip.id, user_id: current_user.id).is_leader
   end
 
   def sort_leader_first
@@ -27,7 +27,7 @@ class TripUser < ApplicationRecord
   end
 
   def show_leader_change_link?(current_user:, trip:)
-    self.user_id != current_user.id && self.current_user_is_leader?(trip: trip, current_user: current_user)
+    self.user_id != current_user.id && TripUser.current_user_is_leader?(trip: trip, current_user: current_user)
   end
 
   def show_current_user_delete_link?(current_user:)

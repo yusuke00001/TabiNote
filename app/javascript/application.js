@@ -5,4 +5,5 @@ import "preview_image"
 import Rails from "@rails/ujs"
 import "flatpickr/calendarpickr"
 import "flatpickr/timepickr"
+import "selected_plan"
 Rails.start()

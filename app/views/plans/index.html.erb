@@ -1,11 +1,27 @@
 <div class="plans-index">
   <div class="card-style">
     <%= render "shared/trip_data", trip: @trip %>
-    <p class="created-plan"><%= t('.created-plan') %></p>
-    <div class="plans-container">
-      <% @plans.each_with_index do |plan, plan_index| %>
-        <%= render partial: "shared/plan", :as => "plan", locals: { trip: @trip, plan: plan, plan_index: plan_index, size: @plans.size} %>
+    <% if @trip_users.current_user_is_leader?(trip: @trip, current_user: current_user) %>
+      <p class="created-plan"><%= t('.created-plan') %></p>
+      <%= form_with url: trip_decided_plan_path(@trip.id), method: :post do |f| %>
+        <div class="plans-container">
+          <% @plans.each_with_index do |plan, plan_index| %>
+            <%= render partial: "shared/plan", :as => "plan", locals: { trip: @trip, plan: plan, plan_index: plan_index, size: @plans.size, plan_create: true} %>
+          <% end %>
+        </div>
+        <%= hidden_field_tag :selected_plan_id, nil, id: "selected_plan_id_field" %>
+        <div class="decided-form">
+          <%= f.submit t(".decided-button"), class:"decided-button" %>
+        </div>
       <% end %>
-    </div>
+    <% else %>
+      <div class="wait">
+        <%= t('.wait')%>
+      </div>
+      <div class="wait-detail">
+        <p><%= t('.wait-detail')%></p>
+        <p><%= t('.wait-detail2')%></p>
+      </div>
+    <% end %>
   </div>
 </div>

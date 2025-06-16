@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  post "trip/:id/:plan_id", to: "trips#decided_plan", as: "trip_decided_plan"
+  post "trip/:id/", to: "trips#decided_plan", as: "trip_decided_plan"
 
   root "homes#index"
 

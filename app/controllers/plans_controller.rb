@@ -2,6 +2,10 @@ class PlansController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @plans = @trip.plans
+    @trip_users = @trip.trip_users
+    if @trip.decided_plan_id.present?
+      redirect_to trip_path(@trip)
+    end
   end
   def create
     trip = Trip.find(params[:trip_id])
@@ -29,7 +33,6 @@ class PlansController < ApplicationController
     begin
       ActiveRecord::Base.transaction do
         routes.each_with_index do |route, index|
-          binding.pry
           ordered_spots = route.map { |i| spots_data_sort[i] }
           durations = route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
           plan = Plan.create!(trip_id: trip.id, title: index + 1)
