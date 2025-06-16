@@ -112,7 +112,7 @@ class Spot < ApplicationRecord
     essential_spot = nil
     (0..spots_combination.size - 1).each do |removed|
       total_hours, best_route, must_include_spots = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots, essential_spot: essential_spot)
-      if total_hours < travel_max_time && must_include_spots.present?
+      if total_hours < travel_max_time
         return [ [ best_route ], must_include_spots ]
       end
     end
