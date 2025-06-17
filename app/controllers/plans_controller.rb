@@ -6,6 +6,9 @@ class PlansController < ApplicationController
     if @trip.decided_plan_id.present?
       redirect_to trip_path(@trip)
     end
+
+    @elements = {}
+    Plan.plans_display_data_create(elements: @elements, plans: @plans, trip: @trip)
   end
   def create
     trip = Trip.find(params[:trip_id])
