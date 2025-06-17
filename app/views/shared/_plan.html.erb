@@ -17,38 +17,34 @@
         <%= t('plans.index.content') %>
       </div>
     </div>
-    <% current_time = trip.start_time %>
-    <% plan.spots.each_with_index do |spot, i| %>
-      <% if i > 0 %>
-        <% move_duration = plan.spots[i - 1].move_duration(plan) %>
+    <% elements.each_with_index do |element, index| %>
+      <% if index == elements.length - 1 %>
+          <div class="guide-row">
+            <div class="time-cell">
+              <%= element[:time] %>
+            </div>
+            <div class="content-cell">
+              <%= element[:content] %>
+            </div>
+          </div>
+          <% break %>
+        <% end %>
+      <% if index.even? %>
         <div class="guide-row">
           <div class="time-cell">
-            <%= current_time.strftime("%H:%M") %>
+            <%= element[:time] %>
           </div>
           <div class="content-cell">
-            <%= t('plans.index.move-time') %>(<%= move_duration %>分)
+            <%= link_to element[:spot_name], trip_spot_path(trip.id, element[:spot_id].to_i) %>(<%= t('plans.index.stay-time') %>:<%= element[:content]%>分)
           </div>
         </div>
-        <% current_time += move_duration.minutes %>
-      <% end %>
-      <div class="guide-row">
-        <div class="time-cell">
-          <%= current_time.strftime("%H:%M") %>
-        </div>
-        <div class="content-cell">
-          <%= link_to trip_spot_path(trip.id, spot.id), class:"spot_link" do %>
-            <%= spot.spot_name %>(滞在:<%= spot.category.stay_time %>分)
-          <% end %>
-        </div>
-      </div>
-      <% current_time += spot.category.stay_time.minutes %>
-      <% if i == plan.spots.length - 1 %>
+      <% else %>
         <div class="guide-row">
           <div class="time-cell">
-            <%= current_time.strftime("%H:%M") %>
+            <%= element[:time] %>
           </div>
           <div class="content-cell">
-            <%= t('plans.index.finish') %>
+            <%= t('plans.index.move-time') %>(<%= element[:content]%>分)
           </div>
         </div>
       <% end %>
