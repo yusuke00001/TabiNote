@@ -18,11 +18,17 @@ class TripsController < ApplicationController
 
   def decided_plan
     trip = Trip.find(params[:id])
-    if trip.update!(decided_plan_id: params[:selected_plan_id])
-      flash[:notice] = "プランを決定しました"
+    if params[:selected_plan_id].blank?
+      flash[:alert] = "プランが選択されていません"
+      redirect_back fallback_location: homes_path and return
+    end
+
+    begin
+      trip.update!(decided_plan_id: params[:selected_plan_id])
+      flash[:notice] = "プランを作成しました"
       redirect_to trip_path(trip)
-    else
-      flash[:alert] = "プランを選択することができませんでした。別のプランをお試しください"
+    rescue
+      flash[:alert] = "プランの選択ができませんでした。 別のプランをお試しください"
       redirect_back fallback_location: homes_path
     end
   end
