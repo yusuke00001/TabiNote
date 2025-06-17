@@ -3,20 +3,19 @@ class Plan < ApplicationRecord
   has_many :spots, through: :plan_spots
   belongs_to :trip
 
-
   def self.plans_display_data_create(elements:, plans:, trip:)
     plans.each do |plan|
       elements[plan.id] = []
-      Plan.plan_element_create(elements: elements, plan: plan, trip: trip)
+      plan.plan_element_create(elements: elements)
     end
   end
 
-  def self.plan_element_create(elements:, plan:, trip:)
-    current_time = trip.start_time
-    plan.spots.each_with_index do |spot, i|
+  def plan_element_create(elements:)
+    current_time = self.trip.start_time
+    self.spots.each_with_index do |spot, i|
       if i > 0
-        move_duration = plan.spots[i - 1].move_duration(plan)
-        elements[plan.id] << {
+        move_duration = self.spots[i - 1].move_duration(self)
+        elements[self.id] << {
           time: current_time.strftime("%H:%M"),
           content: move_duration,
           spot_name: spot.spot_name,
@@ -24,7 +23,7 @@ class Plan < ApplicationRecord
         }
         current_time += move_duration.minutes
       end
-      elements[plan.id] << {
+      elements[self.id] << {
         time: current_time.strftime("%H:%M"),
         content: spot.category.stay_time,
         spot_name: spot.spot_name,
@@ -32,7 +31,7 @@ class Plan < ApplicationRecord
       }
       current_time += spot.category.stay_time.minutes
     end
-    elements[plan.id] << {
+    elements[self.id] << {
       time: current_time.strftime("%H:%M"),
       content: "終了"
     }
