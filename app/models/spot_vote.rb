@@ -14,4 +14,17 @@ class SpotVote < ApplicationRecord
       end
     end
   end
+
+  def self.not_voted_spots(trip)
+    voted_spot_suggestion_ids = trip.spot_votes.pluck(:spot_suggestion_id).uniq
+    not_voted_spots_suggestion_ids = trip.spot_suggestions.ids - voted_spot_suggestion_ids
+    spot_suggestions = SpotSuggestion.where(id: not_voted_spots_suggestion_ids)
+    spot_suggestions
+  end
+
+  def self.voted_spot_suggestions(trip)
+    voted_spot_suggestion_ids = trip.spot_votes.pluck(:spot_suggestion_id).uniq
+    spot_suggestions = SpotSuggestion.where(id: voted_spot_suggestion_ids)
+    spot_suggestions
+  end
 end
