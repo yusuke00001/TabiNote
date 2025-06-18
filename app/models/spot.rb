@@ -106,31 +106,31 @@ class Spot < ApplicationRecord
     spots_unique_numbers.map { |s| spots_data[s] }
   end
 
-  def self.spots_all_combination_for_best_route(spots_combination:, category_ids:, category_stay_time_in_vote_order:, total_hours:, spot_distance:, travel_max_time:)
+  def self.spots_all_combination_for_best_route(spots_combination:, category_ids:, category_stay_time_sort:, total_hours:, spot_distance:, travel_max_time:)
     best_route = nil
     must_include_spots = nil
     essential_spot = nil
     self.removal_index_range(spots_combination).each do |removed|
-      total_hours, best_route, must_include_spots = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, category_ids: category_ids, category_stay_time_in_vote_order: category_stay_time_in_vote_order, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots, essential_spot: essential_spot)
+      total_hours, best_route, must_include_spots = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots, essential_spot: essential_spot)
       if total_hours < travel_max_time
         return [ [ best_route ], must_include_spots ]
       end
     end
   end
 
-  def self.spots_all_combination_for_other_routes(spots_combination:, category_ids:, category_stay_time_in_vote_order:, spot_distance:, travel_max_time:, must_include_spots:)
+  def self.spots_all_combination_for_other_routes(spots_combination:, category_ids:, category_stay_time_sort:, spot_distance:, travel_max_time:, must_include_spots:)
     other_routes = []
     must_include_spots.each do |essential_spot|
       best_route = nil
       total_hours = Float::INFINITY
-      total_hours, other_routes = self.exclude_spots_combination(spots_combination: spots_combination, travel_max_time: travel_max_time, other_routes: other_routes, total_hours: total_hours, best_route: best_route, essential_spot: essential_spot, must_include_spots:, category_ids:, spot_distance: spot_distance, category_stay_time_in_vote_order: category_stay_time_in_vote_order)
+      total_hours, other_routes = self.exclude_spots_combination(spots_combination: spots_combination, travel_max_time: travel_max_time, other_routes: other_routes, total_hours: total_hours, best_route: best_route, essential_spot: essential_spot, must_include_spots:, category_ids:, spot_distance: spot_distance, category_stay_time_sort: category_stay_time_sort)
     end
     other_routes
   end
 
-  def self.exclude_spots_combination(spots_combination:, travel_max_time:, other_routes:, total_hours:, best_route:, essential_spot:, category_ids:, category_stay_time_in_vote_order:, spot_distance:, must_include_spots:)
+  def self.exclude_spots_combination(spots_combination:, travel_max_time:, other_routes:, total_hours:, best_route:, essential_spot:, category_ids:, category_stay_time_sort:, spot_distance:, must_include_spots:)
     self.removal_index_range(spots_combination).each do |removed|
-      total_hours, best_route = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, essential_spot: essential_spot, category_ids: category_ids, category_stay_time_in_vote_order: category_stay_time_in_vote_order, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots)
+      total_hours, best_route = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, essential_spot: essential_spot, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots)
       if total_hours < travel_max_time
         other_routes << best_route
         break
@@ -139,14 +139,14 @@ class Spot < ApplicationRecord
     [ total_hours, other_routes ]
   end
 
-  def self.combinations_with_removal(spots_combination:, removed:, category_ids:, category_stay_time_in_vote_order:, total_hours:, best_route:, spot_distance:, must_include_spots:, essential_spot:)
+  def self.combinations_with_removal(spots_combination:, removed:, category_ids:, category_stay_time_sort:, total_hours:, best_route:, spot_distance:, must_include_spots:, essential_spot:)
     spots_combination.combination(removed).each do |removed_spot|
       if removed_spot.include?(essential_spot)
         next
       end
       spots_combination_new = spots_combination - removed_spot
       category_ids_new = self.exclude_removed_category_ids(category_ids: category_ids, removed_spot: removed_spot)
-      total_stay_time = self.calculate_total_stay_time(category_ids_new: category_ids_new, category_stay_time_in_vote_order: category_stay_time_in_vote_order)
+      total_stay_time = self.calculate_total_stay_time(category_ids_new: category_ids_new, category_stay_time_sort: category_stay_time_sort)
       total_hours, best_route, must_include_spots = self.spots_combination_permutation(spots_combination: spots_combination_new, total_hours: total_hours, best_route: best_route, total_stay_time: total_stay_time, spot_distance: spot_distance, removed_spot: removed_spot, must_include_spots: must_include_spots)
     end
     [ total_hours, best_route, must_include_spots ]
@@ -156,8 +156,8 @@ class Spot < ApplicationRecord
     category_ids.each_with_index.reject { |_, index| removed_spot.include?(index) }.map(&:first)
   end
 
-  def self.calculate_total_stay_time(category_ids_new:, category_stay_time_in_vote_order:)
-    category_ids_new.map { |id| category_stay_time_in_vote_order[id] }.sum
+  def self.calculate_total_stay_time(category_ids_new:, category_stay_time_sort:)
+    category_ids_new.map { |id| category_stay_time_sort[id] }.sum
   end
 
   def self.spots_combination_permutation(spots_combination:, total_hours:, best_route:, total_stay_time:, spot_distance:, removed_spot:, must_include_spots:)
