@@ -101,7 +101,7 @@ class Spot < ApplicationRecord
     end
   end
 
-  def self.spots_data_sort(spots_unique_numbers)
+  def self.spots_in_vote_order(spots_unique_numbers)
     spots_data = where(unique_number: spots_unique_numbers).index_by(&:unique_number)
     spots_unique_numbers.map { |s| spots_data[s] }
   end
@@ -110,7 +110,7 @@ class Spot < ApplicationRecord
     best_route = nil
     must_include_spots = nil
     essential_spot = nil
-    (0..spots_combination.size - 1).each do |removed|
+    self.removal_index_range(spots_combination).each do |removed|
       total_hours, best_route, must_include_spots = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots, essential_spot: essential_spot)
       if total_hours < travel_max_time
         return [ [ best_route ], must_include_spots ]
@@ -123,17 +123,21 @@ class Spot < ApplicationRecord
     must_include_spots.each do |essential_spot|
       best_route = nil
       total_hours = Float::INFINITY
-      (0..spots_combination.size - 1).each do |removed|
-        total_hours, best_route = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, essential_spot: essential_spot, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots)
-        if total_hours < travel_max_time
-          other_routes << best_route
-          break
-        end
-      end
+      total_hours, other_routes = self.exclude_spots_combination(spots_combination: spots_combination, travel_max_time: travel_max_time, other_routes: other_routes, total_hours: total_hours, best_route: best_route, essential_spot: essential_spot, must_include_spots:, category_ids:, spot_distance: spot_distance, category_stay_time_sort: category_stay_time_sort)
     end
     other_routes
   end
 
+  def self.exclude_spots_combination(spots_combination:, travel_max_time:, other_routes:, total_hours:, best_route:, essential_spot:, category_ids:, category_stay_time_sort:, spot_distance:, must_include_spots:)
+    self.removal_index_range(spots_combination).each do |removed|
+      total_hours, best_route = self.combinations_with_removal(spots_combination: spots_combination, removed: removed, essential_spot: essential_spot, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, total_hours: total_hours, best_route: best_route, must_include_spots: must_include_spots)
+      if total_hours < travel_max_time
+        other_routes << best_route
+        break
+      end
+    end
+    [ total_hours, other_routes ]
+  end
 
   def self.combinations_with_removal(spots_combination:, removed:, category_ids:, category_stay_time_sort:, total_hours:, best_route:, spot_distance:, must_include_spots:, essential_spot:)
     spots_combination.combination(removed).each do |removed_spot|
@@ -141,28 +145,48 @@ class Spot < ApplicationRecord
         next
       end
       spots_combination_new = spots_combination - removed_spot
-      category_ids_new = category_ids.each_with_index.reject { |_, index| removed_spot.include?(index) }.map(&:first)
-      total_stay_time = category_ids_new.map { |id| category_stay_time_sort[id] }.sum
+      category_ids_new = self.exclude_removed_category_ids(category_ids: category_ids, removed_spot: removed_spot)
+      total_stay_time = self.calculate_total_stay_time(category_ids_new: category_ids_new, category_stay_time_sort: category_stay_time_sort)
       total_hours, best_route, must_include_spots = self.spots_combination_permutation(spots_combination: spots_combination_new, total_hours: total_hours, best_route: best_route, total_stay_time: total_stay_time, spot_distance: spot_distance, removed_spot: removed_spot, must_include_spots: must_include_spots)
     end
     [ total_hours, best_route, must_include_spots ]
   end
 
+  def self.exclude_removed_category_ids(category_ids:, removed_spot:)
+    category_ids.each_with_index.reject { |_, index| removed_spot.include?(index) }.map(&:first)
+  end
+
+  def self.calculate_total_stay_time(category_ids_new:, category_stay_time_sort:)
+    category_ids_new.map { |id| category_stay_time_sort[id] }.sum
+  end
+
   def self.spots_combination_permutation(spots_combination:, total_hours:, best_route:, total_stay_time:, spot_distance:, removed_spot:, must_include_spots:)
-    spots_combination.permutation.each do |n|
+    spots_combination.permutation.each do |combination|
       total_move_time = 0
-      n.each_cons(2) { |a, b| total_move_time += spot_distance[:duration][a][b] }
+      total_move_time = self.move_time_between_spots(combination: combination, spot_distance: spot_distance).sum
       if total_move_time + total_stay_time < total_hours
-        total_hours = total_move_time + total_stay_time
-        best_route = n
-        must_include_spots = removed_spot
+        total_hours, best_route, must_include_spots = self.update_best_route(total_move_time: total_move_time, total_stay_time: total_stay_time, total_hours: total_hours, combination: combination, removed_spot: removed_spot)
       end
     end
     [ total_hours, best_route, must_include_spots ]
   end
 
+  def self.move_time_between_spots(combination:, spot_distance:)
+    combination.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
+  end
+
+  def self.update_best_route(total_move_time:, total_stay_time:, total_hours:, combination:, removed_spot:)
+    total_hours = total_move_time + total_stay_time
+    best_route = combination
+    must_include_spots = removed_spot
+    [ total_hours, best_route, must_include_spots ]
+  end
 
   def move_duration(plan)
     self.plan_spots.find_by(plan_id: plan.id).duration
+  end
+
+  def self.removal_index_range(spots_combination)
+    (0..spots_combination.size - 1)
   end
 end
