@@ -50,7 +50,7 @@ class TripsController < ApplicationController
   def vote
     trip = Trip.find(params[:id])
     voted_spot_suggestions = SpotVote.voted_spot_suggestions(trip)
-    not_voted_spot_suggestions = SpotVote.not_voted_spots(trip)
+    not_voted_spot_suggestions = SpotVote.not_voted_spot_suggestions(trip)
     render partial: "trips/vote", locals: { trip: trip, spot_suggestions: trip.spot_suggestions, voted_spot_suggestions: voted_spot_suggestions, not_voted_spot_suggestions: not_voted_spot_suggestions }
   end
 

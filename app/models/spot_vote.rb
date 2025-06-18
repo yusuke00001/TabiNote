@@ -15,16 +15,16 @@ class SpotVote < ApplicationRecord
     end
   end
 
-  def self.not_voted_spots(trip)
-    voted_spot_suggestion_ids = trip.spot_votes.pluck(:spot_suggestion_id).uniq
-    not_voted_spots_suggestion_ids = trip.spot_suggestions.ids - voted_spot_suggestion_ids
-    spot_suggestions = SpotSuggestion.where(id: not_voted_spots_suggestion_ids)
-    spot_suggestions
+  def self.voted_spot_suggestion_ids(trip)
+    trip.spot_votes.pluck(:spot_suggestion_id).uniq
+  end
+
+  def self.not_voted_spot_suggestions(trip)
+    not_voted_ids = trip.spot_suggestions.ids - self.voted_spot_suggestion_ids(trip)
+    SpotSuggestion.where(id: not_voted_ids)
   end
 
   def self.voted_spot_suggestions(trip)
-    voted_spot_suggestion_ids = trip.spot_votes.pluck(:spot_suggestion_id).uniq
-    spot_suggestions = SpotSuggestion.where(id: voted_spot_suggestion_ids)
-    spot_suggestions
+    SpotSuggestion.where(id: self.voted_spot_suggestion_ids(trip))
   end
 end
