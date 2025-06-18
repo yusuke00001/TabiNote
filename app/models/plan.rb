@@ -3,6 +3,8 @@ class Plan < ApplicationRecord
   has_many :spots, through: :plan_spots
   belongs_to :trip
 
+  SIXTY_MINUTES = 60
+
   def self.plans_display_data_create(elements:, plans:, trip:)
     plans.each do |plan|
       elements[plan.id] = []

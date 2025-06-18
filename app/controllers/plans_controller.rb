@@ -18,29 +18,26 @@ class PlansController < ApplicationController
 
     total_hours = Float::INFINITY
 
-    travel_max_time = (trip.finish_time - trip.start_time)/60
+    travel_max_time = (trip.finish_time - trip.start_time)/Plan::SIXTY_MINUTES
 
     spots_unique_numbers = params[:spot_unique_numbers]
-    spots_data_sort = Spot.spots_data_sort(spots_unique_numbers)
+    spots_in_vote_order = Spot.spots_in_vote_order(spots_unique_numbers)
 
-    category_ids = spots_data_sort.map(&:category_id)
-    category_stay_time_sort = Category.category_stay_time_sort(spots_data_sort: spots_data_sort, category_ids: category_ids)
+    category_ids = spots_in_vote_order.map(&:category_id)
+    category_stay_time_in_vote_order = Category.category_stay_time_in_vote_order(category_ids)
 
-    spots_combination = (0..number_of_spots-1).to_a
+    spots_combination = Spot.all_spot_index(number_of_spots)
     # 各スポットの組み合わせパターンを検討し、制限時間内に収まる最短ルートを取得
-    routes, must_include_spots = Spot.spots_all_combination_for_best_route(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, total_hours: total_hours, spot_distance: spot_distance, travel_max_time: travel_max_time)
+    routes, must_include_spots = Spot.spots_all_combination_for_best_route(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_in_vote_order: category_stay_time_in_vote_order, total_hours: total_hours, spot_distance: spot_distance, travel_max_time: travel_max_time)
 
     if must_include_spots.present?
-      routes += Spot.spots_all_combination_for_other_routes(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, travel_max_time: travel_max_time, must_include_spots: must_include_spots)
+      routes += Spot.spots_all_combination_for_other_routes(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_in_vote_order: category_stay_time_in_vote_order, spot_distance: spot_distance, travel_max_time: travel_max_time, must_include_spots: must_include_spots)
     end
     begin
       ActiveRecord::Base.transaction do
         routes.each_with_index do |route, index|
-          ordered_spots = route.map { |i| spots_data_sort[i] }
-          durations = route.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
           plan = Plan.create!(trip_id: trip.id, title: index + 1)
-          plan_spots_insert_all_data = PlanSpot.create_plan_spots_insert_all_data(ordered_spots: ordered_spots, durations: durations, plan: plan)
-          PlanSpot.insert_all!(plan_spots_insert_all_data)
+          PlanSpot.plan_spots_create(route: route, spots_in_vote_order: spots_in_vote_order, spot_distance: spot_distance, plan: plan)
         end
         flash[:notice] = "プランを作成しました"
         redirect_to trip_plans_path(trip_id: trip.id)
