@@ -24,20 +24,20 @@ class PlansController < ApplicationController
     spots_in_vote_order = Spot.spots_in_vote_order(spots_unique_numbers)
 
     category_ids = spots_in_vote_order.map(&:category_id)
-    category_stay_time_sort = Category.category_stay_time_sort(category_ids)
+    category_stay_time_in_vote_order = Category.category_stay_time_in_vote_order(category_ids)
 
-    spots_combination = (0..number_of_spots-1).to_a
+    spots_combination = Spot.all_spot_index(number_of_spots)
     # 各スポットの組み合わせパターンを検討し、制限時間内に収まる最短ルートを取得
-    routes, must_include_spots = Spot.spots_all_combination_for_best_route(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, total_hours: total_hours, spot_distance: spot_distance, travel_max_time: travel_max_time)
+    routes, must_include_spots = Spot.spots_all_combination_for_best_route(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_in_vote_order: category_stay_time_in_vote_order, total_hours: total_hours, spot_distance: spot_distance, travel_max_time: travel_max_time)
 
     if must_include_spots.present?
-      routes += Spot.spots_all_combination_for_other_routes(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_sort: category_stay_time_sort, spot_distance: spot_distance, travel_max_time: travel_max_time, must_include_spots: must_include_spots)
+      routes += Spot.spots_all_combination_for_other_routes(spots_combination: spots_combination, category_ids: category_ids, category_stay_time_in_vote_order: category_stay_time_in_vote_order, spot_distance: spot_distance, travel_max_time: travel_max_time, must_include_spots: must_include_spots)
     end
     begin
       ActiveRecord::Base.transaction do
         routes.each_with_index do |route, index|
           plan = Plan.create!(trip_id: trip.id, title: index + 1)
-          PlanSpot.plan_spots_create!(route: route, spots_in_vote_order: spots_in_vote_order, spot_distance: spot_distance, plan: plan)
+          PlanSpot.plan_spots_create(route: route, spots_in_vote_order: spots_in_vote_order, spot_distance: spot_distance, plan: plan)
         end
         flash[:notice] = "プランを作成しました"
         redirect_to trip_plans_path(trip_id: trip.id)
