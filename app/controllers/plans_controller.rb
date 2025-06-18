@@ -35,7 +35,10 @@ class PlansController < ApplicationController
     end
     begin
       ActiveRecord::Base.transaction do
-        PlanSpot.plan_spots_create(routes: routes, spots_in_vote_order: spots_in_vote_order, spot_distance: spot_distance, trip: trip)
+        routes.each_with_index do |route, index|
+          plan = Plan.create!(trip_id: trip.id, title: index + 1)
+          PlanSpot.plan_spots_create!(route: route, spots_in_vote_order: spots_in_vote_order, spot_distance: spot_distance, plan: plan)
+        end
         flash[:notice] = "プランを作成しました"
         redirect_to trip_plans_path(trip_id: trip.id)
       end
