@@ -202,7 +202,7 @@ class Spot < ApplicationRecord
     (total_spots.to_f / Spot::PER_PAGE).ceil
   end
 
-  def self.seach_reslut_by_page(spots:, current_page:)
+  def self.seach_reslut_by_current_page(spots:, current_page:)
     spots.offset((current_page - 1) * Spot::PER_PAGE).limit(Spot::PER_PAGE)
   end
 
