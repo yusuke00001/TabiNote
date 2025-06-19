@@ -7,7 +7,6 @@ class TripsController < ApplicationController
     @trip = Trip.new(trips_params)
     if @trip.save
       @trip.transportation_ids = params[:trip][:transportation_ids]
-
       flash[:notice] = "しおりを作成しました"
       redirect_to trip_path(@trip)
     else
@@ -37,8 +36,8 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip_users = @trip.trip_users.order(is_leader: :desc)
     spot_votes = @trip.spot_votes.pluck(:spot_suggestion_id)
-    ng_spot = spot_votes.group_by { |s| s }.select { |_, value| value.size >= 2 }.keys
-    @voted_result = @trip.spot_suggestions.reject { |spot| ng_spot.include?(spot.id) }
+    ng_spot = SpotVote.ng_spot_decided(spot_votes: spot_votes, trip_users: @trip_users)
+    @voted_result = SpotSuggestion.voted_result(trip: @trip, ng_spot: ng_spot)
     @plan = Plan.find_by(id: @trip.decided_plan_id)
   end
 
