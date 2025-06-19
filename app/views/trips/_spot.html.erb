@@ -1,13 +1,20 @@
-<div class="spot-image">
-  <% if show_check_box %>
-    <%= check_box_tag "spot_suggestion_ids[]", spot_suggestion.id, false  %>
-  <% end %>
-  <%= link_to spot_suggestion.spot.spot_name.truncate(6, omission: "‥"), trip_spot_path(trip, spot_suggestion.spot), data: { turbo_frame: "_top" } %><br>
-  <%= image_tag spot_suggestion.spot.image_url, class:"image" %>
-  <% if show_delete_link && spot_suggestion.created_by?(current_user) %>
-    <%= link_to trip_spot_suggestion_path(trip_id: params[:id], spot_id: spot_suggestion.spot.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"spot-delete-link" do %>
-      <i class="fa-solid fa-xmark"></i>
-      <%= t('trips.show.spot_delete')%>
+<div class="already-vote-spot-image">
+  <div class="spot-image">
+    <% if show_check_box %>
+      <%= check_box_tag "spot_suggestion_ids[]", spot_suggestion.id, false, id: "spot_suggestion_ids_#{spot_suggestion.id}" %>
     <% end %>
+    <%= link_to spot_suggestion.spot.spot_name.truncate(6, omission: "‥"), trip_spot_path(trip, spot_suggestion.spot), data: { turbo_frame: "_top" } %><br>
+    <%= image_tag spot_suggestion.spot.image_url, class:"image" %>
+    <% if show_delete_link && spot_suggestion.created_by?(current_user) %>
+      <%= link_to trip_spot_suggestion_path(trip_id: params[:id], spot_id: spot_suggestion.spot.id), method: :delete, data: { confirm: "本当に削除しますか？" }, class:"spot-delete-link" do %>
+        <i class="fa-solid fa-xmark"></i>
+        <%= t('trips.show.spot_delete')%>
+      <% end %>
+    <% end %>
+  </div>
+  <% if show_voted_state && spot_suggestion.current_user_voted?(current_user_voted_spot_suggestions) %>
+    <div class="already-voted">
+      <%= t('trips.show.already-vote')%>
+    </div>
   <% end %>
 </div>

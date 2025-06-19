@@ -21,7 +21,7 @@
               </div>
               <% if voted_spot_suggestions.present? %>
                 <div class="spot-image-container">
-                  <%= render partial: "spot", collection: voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false } %>
+                  <%= render partial: "spot", collection: voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false, show_voted_state: false } %>
                 </div>
               <% else %>
                 <div class="not-voted-spot">
@@ -35,7 +35,7 @@
               <%= t('trips.show.spot-suggestions') %>
             </div>
             <div class="spot-image-container">
-              <%= render partial: "spot", collection: not_voted_spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: true } %>
+              <%= render partial: "spot", collection: trip.spot_suggestions, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: true, show_voted_state: true, current_user_voted_spot_suggestions: current_user_voted_spot_suggestions } %>
             </div>
           </div>
           <div class="submit-form">

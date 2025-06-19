@@ -63,6 +63,7 @@ ja:
       vote-result: 投票結果
       vote-result-headline: 以下のスポットが選ばれました
       plan-create: プランの作成
+      already-vote: 投票済み
   spots:
     index:
       title: スポット検索ページ
