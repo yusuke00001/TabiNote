@@ -16,15 +16,15 @@ class SpotsController < ApplicationController
     # ページネーション
     keyword = Keyword.find_by(word: word)
     @keyword = params[:keyword]
-    @current_page = (params[:page].to_i > 0) ? params[:page].to_i : Spot::DEFAULT_PAGE
+    @current_page = Spot.safe_page(params)
     spots = keyword.spots
     total_spots = spots.count
-    @total_page = (total_spots.to_f / Spot::PER_PAGE).ceil
-    @search_results = spots.offset((@current_page - 1) * Spot::PER_PAGE).limit(Spot::PER_PAGE)
-    @next_page = @current_page * Spot::PER_PAGE < total_spots ? @current_page + 1 : nil
-    @previous_page = @current_page > 1 ? @current_page - 1 : nil
-    @first_page = @current_page > 1 ? Spot::MIN_PAGE : nil
-    @last_page = @current_page * Spot::PER_PAGE < total_spots ? @total_page : nil
+    @total_page = Spot.total_page_numbers(total_spots)
+    @search_results = Spot.search_result_by_current_page(spots: spots, current_page: @current_page)
+    @next_page = Spot.next_page_if_not_last(current_page: @current_page, total_spots: total_spots)
+    @previous_page = Spot.previous_page_if_not_first(@current_page)
+    @first_page = Spot.first_page_if_not_first(@current_page)
+    @last_page = Spot.last_page_if_not_last(current_page: @current_page, total_spots: total_spots, total_page: @total_page)
   end
 
   def show
