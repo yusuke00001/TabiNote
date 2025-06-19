@@ -13,4 +13,8 @@ class SpotSuggestion < ApplicationRecord
   def current_user_voted?(current_user_voted_spot_suggestions)
     current_user_voted_spot_suggestions.include?(self.id)
   end
+
+  def self.voted_result(trip:, ng_spot:)
+    trip.spot_suggestions.reject { |spot| ng_spot.include?(spot.id) }
+  end
 end
