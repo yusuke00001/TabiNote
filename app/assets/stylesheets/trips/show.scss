@@ -84,20 +84,26 @@
           justify-content: center;
           margin-bottom: 30px;
           gap: 20px;
-          .spot-image {
-            border: 1px solid black;
-            padding: 10px;
-            width: 120px;
-            text-align: center;
-            .image {
-              display: block;
-              width: 120px;
-              height: 120px;
-            }
-            .spot-delete-link {
-              text-decoration: none;
-              font-size: 10px;
+          .already-vote-spot-image {
+            .already-voted {
+              text-align: center;
               color: red;
+            }
+            .spot-image {
+              border: 1px solid black;
+              padding: 10px;
+              width: 120px;
+              text-align: center;
+              .image {
+                display: block;
+                width: 120px;
+                height: 120px;
+              }
+              .spot-delete-link {
+                text-decoration: none;
+                font-size: 10px;
+                color: red;
+              }
             }
           }
         }

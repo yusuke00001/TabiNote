@@ -14,4 +14,13 @@ class SpotVote < ApplicationRecord
       end
     end
   end
+
+  def self.current_user_voted_spot_suggestions(trip:, current_user:)
+    where(trip_id: trip.id, user_id: current_user.id).pluck(:spot_suggestion_id)
+  end
+
+  def self.voted_spot_suggestions(trip)
+    voted_ids = trip.spot_votes.pluck(:spot_suggestion_id).uniq
+    SpotSuggestion.where(id: voted_ids)
+  end
 end

@@ -58,11 +58,12 @@ ja:
       spot_delete: スポットの削除
       vote-limit: 投票期限まであと
       submit: 投票する
-      voted-spot: 現在投票しているスポット
-      not-voted-spot: まだ投票したスポットはありません
+      voted-spot: 現在投票されているスポット
+      not-voted-spot: まだ投票されていません
       vote-result: 投票結果
       vote-result-headline: 以下のスポットが選ばれました
       plan-create: プランの作成
+      already-vote: 投票済み
   spots:
     index:
       title: スポット検索ページ

@@ -8,7 +8,7 @@
     </div>
     <%= form_with url: trip_plans_path(trip), data: { turbo: false }, method: :post do |f| %>
       <div class="spot-image-container">
-        <%= render partial: "spot", collection: voted_result, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false} %>
+        <%= render partial: "spot", collection: voted_result, :as => "spot_suggestion", locals: { trip: trip, show_delete_link: false, show_check_box: false, show_voted_state: false } %>
       </div>
       <div class="submit-form">
         <%= f.submit t('trips.show.plan-create'), class:"submit-button" %>

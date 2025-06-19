@@ -9,4 +9,8 @@ class SpotSuggestion < ApplicationRecord
   def created_by?(current_user)
     self.user_id == current_user.id
   end
+
+  def current_user_voted?(current_user_voted_spot_suggestions)
+    current_user_voted_spot_suggestions.include?(self.id)
+  end
 end
