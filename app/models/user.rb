@@ -20,11 +20,11 @@ class User < ApplicationRecord
     avatar
   end
 
-  def trips_in_progress_in_first_row
+  def trips_in_progress_first_row
     trips.where(status: :in_progress).limit(3)
   end
 
-  def trips_in_progress_in_other_row
+  def trips_in_progress_other_row
     trips.where(status: :in_progress).offset(3)
   end
 
