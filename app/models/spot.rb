@@ -193,4 +193,32 @@ class Spot < ApplicationRecord
   def self.all_spot_index(number_of_spots)
     (0...number_of_spots).to_a
   end
+
+  def self.safe_page(params)
+    (params[:page].to_i > 0) ? params[:page].to_i : Spot::DEFAULT_PAGE
+  end
+
+  def self.total_page_numbers(total_spots)
+    (total_spots.to_f / Spot::PER_PAGE).ceil
+  end
+
+  def self.seach_reslut_by_page(spots:, current_page:)
+    spots.offset((current_page - 1) * Spot::PER_PAGE).limit(Spot::PER_PAGE)
+  end
+
+  def self.next_page_if_not_last(current_page:, total_spots:)
+    current_page * Spot::PER_PAGE < total_spots ? current_page + 1 : nil
+  end
+
+  def self.previous_page_if_not_first(current_page)
+    current_page > 1 ? current_page - 1 : nil
+  end
+
+  def self.first_page_if_not_first(current_page)
+    current_page > 1 ? Spot::MIN_PAGE : nil
+  end
+
+  def self.last_page_if_not_last(current_page:, total_spots:, total_page:)
+    current_page * Spot::PER_PAGE < total_spots ? total_page : nil
+  end
 end
