@@ -7,6 +7,8 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+    padding-left: 20px;
+    padding-right: 20px;
     .title {
       text-align: center;
     }
@@ -54,10 +56,14 @@
       display: flex;
       width: 600px;
       margin: 0 auto;
+      margin-bottom: 30px;
       gap: 10px;
       flex-wrap: wrap;
       .trips-card-style {
+        &.centering {
         margin: 0 auto;
+        }
+        padding-bottom: 10px;
         width: 190px;
         border: 1px solid black;
         box-shadow: 0 4px 9px rgba(0,0,0,0.1);
