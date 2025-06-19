@@ -20,7 +20,7 @@ class SpotsController < ApplicationController
     spots = keyword.spots
     total_spots = spots.count
     @total_page = Spot.total_page_numbers(total_spots)
-    @search_results = Spot.seach_reslut_by_current_page(spots: spots, current_page: @current_page)
+    @search_results = Spot.search_result_by_current_page(spots: spots, current_page: @current_page)
     @next_page = Spot.next_page_if_not_last(current_page: @current_page, total_spots: total_spots)
     @previous_page = Spot.previous_page_if_not_first(@current_page)
     @first_page = Spot.first_page_if_not_first(@current_page)
