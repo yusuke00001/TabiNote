@@ -73,7 +73,7 @@ ja:
       next_page: ">"
       last_page: ">>"
     show:
-      search_page_link: 検索ページに戻る
+      back-link: 前のページに戻る
       spot_suggestions_create: スポットを提案する
   trip_users:
     index:
