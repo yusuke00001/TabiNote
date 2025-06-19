@@ -1,0 +1,25 @@
+<div class="trips-card-style <%= "centering" if centering %>">
+  <%= link_to trip_path(trip_card), class:"trip-link" do %>
+    <div class="trip-title">
+      <%= trip_card.title %>
+    </div>
+    <% if trip_card.image.attached? %>
+      <%= image_tag trip_card.image.variant(resize_to_fill: [190,130]) %>
+    <% end %>
+    <div class="member">
+      <%= t('homes.index.member')%>
+    </div>
+    <% trip_card.trip_users_sort_by_leader.each do |trip_user| %>
+      <div class="member-list">
+        <% if trip_user.is_leader == true %>
+          <i class="fa-solid fa-crown crown-icon "></i>
+        <% elsif trip_user.user.id == current_user.id %>
+          <i class="fa-solid fa-user current-user-icon "></i>  
+        <% else %>
+          <i class="fa-solid fa-user user-icon "></i>
+        <% end %>
+        <%= trip_user.user.name %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

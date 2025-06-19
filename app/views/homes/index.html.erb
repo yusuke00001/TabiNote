@@ -23,36 +23,15 @@
       </div>
     </div>
     <h2 class="in-progress-trip-title"><%= t('.in-progress-trip-title') %></h2>
-      <% if @trips_in_progress.presence %>
+      <% if @trips_in_progress_first_row.present? %>
         <div class="trips-container">
-          <% @trips_in_progress.each do |t| %>
-            <div class="trips-card-style">
-              <%= link_to trip_path(t), class:"trip-link" do %>
-                <div class="trip-title">
-                  <%= t.title %>
-                </div>
-                <% if t.image.attached? %>
-                  <%= image_tag t.image.variant(resize_to_fill: [190,130]) %>
-                <% end %>
-                <div class="member">
-                  <%= t('.member')%>
-                </div>
-                <% t.trip_users_sort_by_leader.each do |trip_user| %>
-                  <div class="member-list">
-                    <% if trip_user.is_leader == true %>
-                      <i class="fa-solid fa-crown crown-icon "></i>
-                    <% elsif trip_user.user.id == current_user.id %>
-                      <i class="fa-solid fa-user current-user-icon "></i>  
-                    <% else %>
-                      <i class="fa-solid fa-user user-icon "></i>
-                    <% end %>
-                    <%= trip_user.user.name %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
+          <%= render partial: "trip_card", collection: @trips_in_progress_first_row, :as => "trip_card", locals: { trip_users: @trip_users, centering: true } %>
         </div>
+      <% if @trips_in_progress_other_row.present? %>
+        <div class="trips-container">
+          <%= render partial: "trip_card", collection: @trips_in_progress_other_row, :as => "trip_card", locals: { trip_users: @trip_users, centering: false } %>
+        </div>
+      <% end %>
       <% else %>
       <div class="no-in-progress-trip">
         <p><%= t('.no-in-progress-trip')%></p>
