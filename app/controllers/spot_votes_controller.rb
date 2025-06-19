@@ -1,6 +1,5 @@
 class SpotVotesController < ApplicationController
   def create
-    binding.pry
     suggestion_ids = params[:spot_suggestion_ids]
     begin
       SpotVote.register(trip_id: params[:trip_id], suggestion_ids: suggestion_ids, user_id: current_user.id)
