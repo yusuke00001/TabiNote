@@ -14,6 +14,7 @@ class PlanSpot < ApplicationRecord
       {
         plan_id: plan.id,
         order: index + 1,
+        stay_time: spot.category.stay_time,
         spot_id: spot.id,
         duration: durations[index] || 0
       }

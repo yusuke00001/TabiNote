@@ -4,6 +4,7 @@ class CreatePlanSpots < ActiveRecord::Migration[8.0]
       t.timestamps
       t.integer :order
       t.integer :duration
+      t.integer :stay_time
       t.references :spot, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
       t.references :plan, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
     end
