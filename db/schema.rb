@@ -76,6 +76,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_12_080343) do
     t.datetime "updated_at", null: false
     t.integer "order"
     t.integer "duration"
+    t.integer "stay_time"
     t.bigint "spot_id", null: false
     t.bigint "plan_id", null: false
     t.index ["plan_id"], name: "index_plan_spots_on_plan_id"

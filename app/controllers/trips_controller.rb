@@ -41,7 +41,7 @@ class TripsController < ApplicationController
     @decided_plan = Plan.find_by(id: @trip.decided_plan_id)
     if @decided_plan.present?
       @elements = {}
-      @decided_plan.plan_element_create(elements: @elements, plan: @decided_plan)
+      @decided_plan.plan_element_create(@elements)
     end
   end
 
