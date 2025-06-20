@@ -38,7 +38,11 @@ class TripsController < ApplicationController
     spot_votes = @trip.spot_votes.pluck(:spot_suggestion_id)
     ng_spot = SpotVote.ng_spot_decided(spot_votes: spot_votes, trip_users: @trip_users)
     @voted_result = SpotSuggestion.voted_result(trip: @trip, ng_spot: ng_spot)
-    @plan = Plan.find_by(id: @trip.decided_plan_id)
+    @decided_plan = Plan.find_by(id: @trip.decided_plan_id)
+    if @decided_plan.present?
+      @elements = {}
+      @decided_plan.plan_element_create(elements: @elements, plan: @decided_plan)
+    end
   end
 
   def suggestion
