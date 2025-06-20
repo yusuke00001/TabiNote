@@ -7,12 +7,12 @@ class Plan < ApplicationRecord
 
   def self.plans_display_data_create(elements:, plans:, trip:)
     plans.each do |plan|
-      elements[plan.id] = []
-      plan.plan_element_create(elements: elements)
+      plan.plan_element_create(elements: elements, plan: plan)
     end
   end
 
-  def plan_element_create(elements:)
+  def plan_element_create(elements:, plan:)
+    elements[plan.id] = []
     current_time = self.trip.start_time
     self.spots.each_with_index do |spot, i|
       if i > 0
