@@ -1,0 +1,62 @@
+<div class="plan-edit">
+  <div class="card-style">
+    <%= render "shared/trip_data", trip: @trip %>
+    <div class="plan-container">
+      <p>プラン<%= @plan.title %></p>
+      <div class="spots-container">
+        <% @plan.spots.each do |spot| %>
+          <%= render partial: "shared/plan_spots", locals: { trip: @trip, spot: spot } %>
+        <% end %>
+      </div>
+      <%= form_with url: trip_plan_path(@trip.id, @plan.id), method: :patch do |f| %>
+        <div class="guide-book">
+          <div class="guide-headline">
+            <div class="time-cell">
+              <%= t('plans.index.time')%>
+            </div>
+            <div class="content-cell">
+              <%= t('plans.index.content') %>
+            </div>
+          </div>
+          <% @elements[@plan.id].each_with_index do |element, index| %>
+            <% if index == @elements[@plan.id].length - 1 %>
+              <div class="guide-row">
+                <div class="time-cell">
+                  <%= element[:time] %>
+                </div>
+                <div class="content-cell">
+                  <%= element[:content] %>
+                </div>
+              </div>
+              <% break %>
+            <% end %>
+            <% if index.even? %>
+              <div class="guide-row">
+                <div class="time-cell">
+                  <%= element[:time] %>
+                </div>
+                <div class="content-cell">
+                  <%= element[:spot_name] %>(<%= t('plans.index.stay-time') %>:
+                  <%= hidden_field_tag "update_dates[][spot_id]", element[:spot_id] %>
+                  <%= number_field_tag "update_dates[][stay_time]", element[:content], class: "stay-time-form" %>分)
+                </div>
+              </div>
+            <% else %>
+              <div class="guide-row">
+                <div class="time-cell">
+                  <%= element[:time] %>
+                </div>
+                <div class="content-cell">
+                  <%= t('plans.index.move-time') %>(<%= element[:content]%>分)
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="update-form">
+          <%= f.submit t('.update'), class:"update-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

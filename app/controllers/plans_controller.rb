@@ -48,4 +48,36 @@ class PlansController < ApplicationController
       redirect_back fallback_location: homes_path
     end
   end
+
+  def edit
+    @trip = Trip.find(params[:trip_id])
+    @plan = Plan.find(params[:id])
+    @elements = {}
+    @plan.plan_element_create(@elements)
+  end
+
+  def update
+    plan = Plan.find(params[:id])
+    trip = plan.trip
+    begin
+      ActiveRecord::Base.transaction do
+        plan_params[:update_dates].each do |update_date|
+          spot_id = update_date["spot_id"].to_i
+          stay_time = update_date["stay_time"].to_i
+          plan_spot = PlanSpot.find_by!(spot_id: spot_id, plan_id: plan.id)
+          plan_spot.update!(stay_time: stay_time)
+        end
+        flash[:notice] = "更新に成功しました"
+        redirect_to edit_trip_plan_path(trip, plan)
+      end
+    rescue => e
+      Rails.logger.error "編集処理でエラー発生: #{e.class} - #{e.message}"
+      flash[:alert]  = "プランを更新することができませんでした"
+      render :edit
+    end
+  end
+
+  def plan_params
+    params.permit(update_dates: [ :spot_id, :stay_time ])
+  end
 end
