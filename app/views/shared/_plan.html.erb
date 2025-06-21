@@ -8,6 +8,13 @@
       <%= render partial: "shared/plan_spots", locals: { trip: trip, spot: spot } %>
     <% end %>
   </div>
+  <% if edit_icon %>
+    <div class="edit-icon">
+      <%= link_to edit_trip_plan_path(trip.id, plan.id) do %>
+        <i class="fa-solid fa-pen-to-square fa-2x"></i>
+      <% end %>
+    </div>
+  <% end %>
   <div class="guide-book">
     <div class="guide-headline">
       <div class="time-cell">
