@@ -48,7 +48,7 @@
                 <div class="content-cell">
                   <%= element[:spot_name] %>(<%= t('plans.index.stay-time') %>:
                   <%= hidden_field_tag "update_dates[][spot_id]", element[:spot_id] %>
-                  <%= number_field_tag "update_dates[][stay_time]", element[:content], class: "stay-time-form" %>分)
+                  <%= number_field_tag "update_dates[][stay_time]", element[:content], step: 15, class: "stay-time-form" %>分)
                 </div>
               </div>
             <% else %>
@@ -62,6 +62,9 @@
               </div>
             <% end %>
           <% end %>
+        </div>
+        <div class="stay-time-alert">
+          <%= t('.stay-time-alert')%>
         </div>
         <div class="update-form">
           <%= f.submit t('.update'), class:"update-button" %>

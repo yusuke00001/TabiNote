@@ -172,7 +172,7 @@ class Spot < ApplicationRecord
   end
 
   def self.move_time_between_spots(combination:, spot_distance:)
-    combination.each_cons(2).map { |a, b| spot_distance[:duration][a][b] }
+    combination.each_cons(2).map { |a, b| self.time_ceil_fifteen(spot_distance[:duration][a][b]) }
   end
 
   def self.update_best_route(total_move_time:, total_stay_time:, total_hours:, combination:, removed_spot:)
@@ -220,5 +220,9 @@ class Spot < ApplicationRecord
 
   def self.last_page_if_not_last(current_page:, total_spots:, total_page:)
     current_page * Spot::PER_PAGE < total_spots ? total_page : nil
+  end
+
+  def self.time_ceil_fifteen(duration)
+    (duration.to_f / 15).ceil * 15
   end
 end
