@@ -59,7 +59,6 @@
         display: table;
         width: 550px;
         margin: 0 auto;
-        margin-bottom: 30px;
         border: 1px solid black;
         border-radius: 10px 10px 0 0;
         overflow: hidden;
@@ -99,6 +98,10 @@
         .spot_link {
           color: blue;
         }
+      }
+      .stay-time-alert {
+        margin-bottom: 30px;
+        text-align: right;
       }
       .update-form {
         margin-bottom: 50px;
