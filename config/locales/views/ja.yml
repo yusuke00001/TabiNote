@@ -102,3 +102,5 @@ ja:
       finish: 終了
     edit:
       update: 変更する
+      trip-start-time: 観光開始時間
+      trip-finish-time: 観光終了時間

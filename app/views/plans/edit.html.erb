@@ -8,6 +8,16 @@
           <%= render partial: "shared/plan_spots", locals: { trip: @trip, spot: spot } %>
         <% end %>
       </div>
+      <div class="trip-time-container">
+        <div class="trip-start-time">
+          <%= t('.trip-start-time') %><br>
+          <%= @trip.start_time.strftime("%H:%M") %>
+        </div>
+        <div class="trip-finish-time">
+          <%= t('.trip-finish-time') %><br>
+          <%= @trip.finish_time.strftime("%H:%M") %>
+        </div>
+      </div>
       <%= form_with url: trip_plan_path(@trip.id, @plan.id), method: :patch do |f| %>
         <div class="guide-book">
           <div class="guide-headline">
