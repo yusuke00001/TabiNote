@@ -7,7 +7,6 @@
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
     .plan-container {
-      margin: 0 auto;
       p {
         font-size: 25px;
         font-weight: bold;
@@ -38,6 +37,22 @@
         .image {
           width: 100px;
           height: 100px;
+        }
+      }
+      .trip-time-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 50px;
+        font-size: 20px;
+        .trip-start-time {
+          width: 200px;
+          border: 1px solid black;
+          border-radius: 5px;
+        }
+        .trip-finish-time {
+          width: 200px;
+          border: 1px solid black;
+          border-radius: 5px;
         }
       }
       .guide-book {
