@@ -15,12 +15,12 @@
       <span class="body"><%= @spot.phone_number %></span>
     </div>
     <div class="spot-group">
-      <span class="label"><%= Spot.human_attribute_name(:opening_hours) %>
-      <span class="body"><%= @spot.opening_hours %></span>
+      <span class="label"><%= Spot.human_attribute_name(:opening_hours) %></span>
+      <span class="body"><%=  simple_format(@spot.opening_hours) %></span>
     </div>
     <div class="spot-group">
       <span class="label"><%= Spot.human_attribute_name(:genre) %></span>
-      <span class="body"><%= @spot.genre %></span>
+      <span class="body"><%= @spot.category.name %></span>
     </div>
     <div class="spot-group">
       <span class="label"><%= Spot.human_attribute_name(:spot_value) %></span>

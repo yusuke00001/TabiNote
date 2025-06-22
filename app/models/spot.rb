@@ -97,9 +97,11 @@ class Spot < ApplicationRecord
       {
       unique_number: spot_detail["id"],
       spot_name: spot_detail.dig("displayName", "text"),
+      phone_number: spot_detail.dig("internationalPhoneNumber")&.sub(/\A\+81\s?/, "0"),
+      opening_hours: spot_detail.dig("regularOpeningHours", "weekdayDescriptions")&.join("\n\n"),
       URL: spot_detail["websiteUri"],
       spot_value: spot_detail["rating"],
-      address: spot_detail["formattedAddress"],
+      address: spot_detail["formattedAddress"]&.sub(/\A日本、/, ""),
       image_url: "https://places.googleapis.com/v1/#{spot_detail.dig("photos", 0, "name")}/media?maxWidthPx=800&key=#{ENV["API_KEY"]}",
       category_id: category_id
       }
