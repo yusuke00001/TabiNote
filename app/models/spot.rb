@@ -1,10 +1,13 @@
 class Spot < ApplicationRecord
+  require "open-uri"
+
   has_many :spot_suggestions
   has_many :trips, through: :spot_suggestions, dependent: :destroy
   has_many :keyword_spots
   has_many :keywords, through: :keyword_spots, dependent: :destroy
   has_many :plan_spots
   has_many :plans, through: :plan_spots
+  has_one_attached :image
   belongs_to :category
 
   PER_PAGE = 10
@@ -39,6 +42,8 @@ class Spot < ApplicationRecord
     spots_insert_all_data = self.spots_insert_all_data(spot_details: spot_details, spot_category_hash: spot_category_hash)
 
     insert_all!(spots_insert_all_data)
+
+    Spot.image_save(spots_unique_numbers)
 
     spot_ids = where(unique_number: spots_unique_numbers).ids
 
@@ -224,5 +229,13 @@ class Spot < ApplicationRecord
 
   def self.time_ceil_fifteen(duration)
     (duration.to_f / 15).ceil * 15
+  end
+
+  def self.image_save(spots_unique_numbers)
+    spots = where(unique_number: spots_unique_numbers)
+    spots.each do |spot|
+      file = URI.open(spot.image_url)
+      spot.image.attach(io: file, filename: "#{spot.spot_name}.jpg")
+    end
   end
 end
