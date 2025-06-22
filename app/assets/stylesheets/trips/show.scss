@@ -46,10 +46,14 @@
         }
         .spot-suggestion-vote-headline {
           margin-top: 30px;
-          margin-bottom: 30px;
           text-align: center;
           font-size: 30px;
           font-weight: bold;
+        }
+        .ng-vote-description {
+          text-align: center;
+          font-weight: bold;
+          color: red;
         }
         .voted-spot-title {
           text-align: center;
@@ -82,6 +86,7 @@
           flex-wrap: wrap;
           width: 500px;
           justify-content: center;
+          margin-top: 30px;
           margin-bottom: 30px;
           gap: 20px;
           .already-vote-spot-image {

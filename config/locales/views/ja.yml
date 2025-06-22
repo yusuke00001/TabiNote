@@ -47,7 +47,7 @@ ja:
       submit: 作成
     show:
       suggestion-phase: 提案フェーズ
-      vote-phase: 投票フェーズ
+      vote-phase: NG投票フェーズ
       suggestion-limit: 提案期限まであと
       suggestion-end: 提案期間が終了しました
       no-spot-suggestions: スポットが提案されていません
@@ -58,12 +58,13 @@ ja:
       spot_delete: スポットの削除
       vote-limit: 投票期限まであと
       submit: 投票する
-      voted-spot: 現在投票されているスポット
+      voted-spot: 現在投票されているNGスポット
       not-voted-spot: まだ投票されていません
       vote-result: 投票結果
       vote-result-headline: 以下のスポットが選ばれました
       plan-create: プランの作成
       already-vote: 投票済み
+      ng-vote-description: ※「行きたくない」スポットに投票してください
   spots:
     index:
       title: スポット検索ページ
