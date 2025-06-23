@@ -12,6 +12,10 @@ class PlansController < ApplicationController
   end
   def create
     trip = Trip.find(params[:trip_id])
+    unless TripUser.current_user_is_leader?(trip: trip, current_user: current_user)
+      redirect_to trip_plans_path
+      return
+    end
     spot_distance = DistanceMatrix.spot_distance(origins: params[:spot_unique_numbers], destinations: params[:spot_unique_numbers], mode: "driving")
 
     number_of_spots = spot_distance[:duration].size
