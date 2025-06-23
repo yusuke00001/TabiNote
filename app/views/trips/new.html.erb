@@ -30,10 +30,10 @@
         <span class="required-button"><%= t('.required') %></span>
         <div class="icon-label">
           <i class="fa-solid fa-plane"></i>
-          <%= f.label :distination, class:"form-label" %>
+          <%= f.label :destination, class:"form-label" %>
         </div>
       </div>
-      <%= f.text_field :distination, class:"text-field" %>
+      <%= f.select :destination, Trip::DESTINATIONS, { prompt: "目的地を選択してください" }, class:"select-field" %>
     </div>
     <div class="icon-required-container">
       <span class="required-button"><%= t('.required') %></span>

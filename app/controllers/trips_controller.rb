@@ -60,6 +60,6 @@ class TripsController < ApplicationController
   private
 
   def trips_params
-    params.require(:trip).permit(:title, :date, :distination, :spot_suggestion_limit, :spot_vote_limit, :start_time, :finish_time, :image, :created_user_id)
+    params.require(:trip).permit(:title, :date, :destination, :spot_suggestion_limit, :spot_vote_limit, :start_time, :finish_time, :image, :created_user_id)
   end
 end

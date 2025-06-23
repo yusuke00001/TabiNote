@@ -13,7 +13,7 @@ ja:
       trip:
         title: しおりのタイトル
         date: 旅行日程
-        distination: 行き先
+        destination: 行き先
         spot_suggestion_limit: 提案の締切
         spot_vote_limit: 投票の締切
         start_time: 観光開始時間
