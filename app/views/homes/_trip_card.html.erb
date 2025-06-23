@@ -3,9 +3,7 @@
     <div class="trip-title">
       <%= trip_card.title %>
     </div>
-    <% if trip_card.image.attached? %>
-      <%= image_tag trip_card.image.variant(resize_to_fill: [190,130]) %>
-    <% end %>
+    <%= image_tag trip_card.get_trip_image.variant(resize_to_fill: [190,130]) %>
     <div class="member">
       <%= t('homes.index.member')%>
     </div>

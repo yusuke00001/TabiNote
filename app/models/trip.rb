@@ -42,4 +42,12 @@ class Trip < ApplicationRecord
   def trip_users_sort_by_leader
     self.trip_users.order(is_leader: :desc)
   end
+
+  def get_trip_image
+    unless image.attached?
+      file_path = Rails.root.join("app/assets/images/default_trip_image.webp")
+      image.attach(io: File.open(file_path), filename: "default_trip_image.webp", content_type: "image/webp")
+    end
+    image
+  end
 end
