@@ -45,6 +45,7 @@ ja:
       transportation-title: 交通手段(複数選択可)
       image: しおりの画像
       submit: 作成
+      required: 必須
     show:
       suggestion-phase: 提案フェーズ
       vote-phase: NG投票フェーズ

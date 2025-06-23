@@ -3,18 +3,29 @@
     margin: 0 auto;
     margin-top: 100px;
     margin-bottom: 100px;
-    padding: 40px;
+    padding: 20px;
     width: 400px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0,0,0,0.1);
     .form-group {
       margin-bottom: 50px;
-      .icon-label {
+      .icon-required-container {
         display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
+        gap: 20px;
+        .icon-label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        .required-button {
+          font-size: 20px;
+          background-color: red;
+          color: white;
+          border: 1px solid red;
+          border-radius: 4px;
+          padding: 5px;
+        }
       }
     }
     .form-label {
@@ -40,9 +51,23 @@
       font-size: 15px;
       margin-left: 20px;
     }
-    .spot-limit-title {
-      font-size: 20px;
-      font-weight: bold;
+    .icon-required-container {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 20px;
+      .spot-limit-title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .required-button {
+        font-size: 20px;
+        background-color: red;
+        color: white;
+        border: 1px solid red;
+        border-radius: 4px;
+        padding: 5px;
+      }
     }
     .spot-limit-sub-title {
       font-size: 10px;
@@ -74,9 +99,21 @@
         margin-top: 10px;
       }
     }
-    .spot-time-title {
-      font-size: 20px;
-      font-weight: bold;
+    .icon-required-container {
+      display: flex;
+      gap: 20px;
+      .spot-time-title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .required-button {
+        font-size: 20px;
+        background-color: red;
+        color: white;
+        border: 1px solid red;
+        border-radius: 4px;
+        padding: 5px;
+      }
     }
     .form-spot-time {
       display: flex;
@@ -98,9 +135,23 @@
         margin-top: 10px;
       }
     }
-    .transportation-title {
-      font-size: 20px;
-      font-weight: bold;
+    .icon-required-container {
+      display: flex;
+      .transportation-title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .required-form {
+        margin-left: 20px;
+        .required-button {
+          font-size: 20px;
+          background-color: red;
+          color: white;
+          border: 1px solid red;
+          border-radius: 4px;
+          padding: 5px;
+        }
+      }
     }
     .form-check-box {
       display: flex;
