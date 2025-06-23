@@ -33,7 +33,7 @@
           <%= f.label :distination, class:"form-label" %>
         </div>
       </div>
-      <%= f.select :distination, Trip::DESTINATION, { prompt: "目的地を選択してください" }, class:"select-field" %>
+      <%= f.select :distination, Trip::DESTINATIONS, { prompt: "目的地を選択してください" }, class:"select-field" %>
     </div>
     <div class="icon-required-container">
       <span class="required-button"><%= t('.required') %></span>
