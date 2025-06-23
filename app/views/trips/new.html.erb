@@ -2,32 +2,43 @@
   <div class="card-style">
     <%= form_with model: @trip do |f| %>
     <div class="form-group">
-      <div class="icon-label">
-        <div>
-          <i class="fa-solid fa-book-open"></i>
-        </div>
-        <div>
-          <%= f.label :title, class:"form-label" %>
+      <div class="icon-required-container">
+        <span class="required-button"><%= t('.required') %></span>
+        <div class="icon-label">
+          <div>
+            <i class="fa-solid fa-book-open"></i>
+          </div>
+          <div>
+            <%= f.label :title, class:"form-label" %>
+          </div>
         </div>
       </div>
       <%= f.text_field :title, class:"text-field" %>
     </div>
     <div class="form-group">
-      <div class="icon-label">
-        <i class="fa-solid fa-calendar-days"></i>
-        <%= f.label :date, class:"form-label" %>
-        <i class="date-sub-title"><%= t('.date-sub-title') %></i>
+      <div class="icon-required-container">
+        <div class="icon-label">
+          <i class="fa-solid fa-calendar-days"></i>
+          <%= f.label :date, class:"form-label" %>
+          <i class="date-sub-title"><%= t('.date-sub-title') %></i>
+        </div>
       </div>
       <%= f.text_field :date, class: "calendarpickr calendar-field", placeholder: "年/月/日" %>
     </div>
     <div class="form-group">
-      <div class="icon-label">
-        <i class="fa-solid fa-plane"></i>
-        <%= f.label :distination, class:"form-label" %>
+      <div class="icon-required-container">
+        <span class="required-button"><%= t('.required') %></span>
+        <div class="icon-label">
+          <i class="fa-solid fa-plane"></i>
+          <%= f.label :distination, class:"form-label" %>
+        </div>
       </div>
       <%= f.text_field :distination, class:"text-field" %>
     </div>
-    <p class="spot-limit-title"><%= t('.spot-limit-title') %></p>
+    <div class="icon-required-container">
+      <span class="required-button"><%= t('.required') %></span>
+      <span class="spot-limit-title"><%= t('.spot-limit-title') %></span>
+    </div>
     <div class="form-spot-limit">
       <div class="spot-suggestion-limit">
         <div class="icon-label">
@@ -44,7 +55,10 @@
         <%= f.text_field :spot_vote_limit, class: "calendarpickr calendar-field", placeholder: "年/月/日" %>
       </div>
     </div>
-    <p class="spot-time-title"><%= t('.spot-time-title') %> </p>
+    <div class="icon-required-container">
+      <span class="required-button"><%= t('.required') %></span>
+      <span class="spot-time-title"><%= t('.spot-time-title') %> </span>
+    </div>
     <div class="form-spot-time">
       <div class="start-time">
         <div class="icon-label">
@@ -61,7 +75,10 @@
         <%= f.text_field :finish_time, class: "timepickr time-field", placeholder: "--:--" %>
       </div>
     </div>
-    <p class="transportation-title"><%= t('.transportation-title') %></p>
+    <div class="icon-required-container">
+      <span class="required-button"><%= t('.required') %></span>
+      <span class="transportation-title"><%= t('.transportation-title') %></span>
+    </div>
     <div class="form-check-box">
       <% Transportation.all.each do |transportation| %>
         <div class="check-box-item">
