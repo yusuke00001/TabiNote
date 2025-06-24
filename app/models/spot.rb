@@ -43,7 +43,7 @@ class Spot < ApplicationRecord
 
     insert_all!(spots_insert_all_data)
 
-    Spot.image_save(spots_unique_numbers)
+    Spot.save_image(spots_unique_numbers)
 
     spot_ids = where(unique_number: spots_unique_numbers).ids
 
@@ -233,7 +233,7 @@ class Spot < ApplicationRecord
     (duration.to_f / 15).ceil * 15
   end
 
-  def self.image_save(spots_unique_numbers)
+  def self.save_image(spots_unique_numbers)
     spots = where(unique_number: spots_unique_numbers)
     spots.each do |spot|
       if spot.image_url.blank?
