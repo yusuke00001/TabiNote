@@ -3,9 +3,9 @@ class SpotsController < ApplicationController
     word = params[:keyword]
     return if word.blank?
 
+    trip = Trip.find(params[:trip_id])
     begin
       ActiveRecord::Base.transaction do
-        trip = Trip.find(params[:trip_id])
         Keyword.find_or_create_keyword_and_fetch_spots(word: word, trip: trip)
       end
     rescue => e
@@ -15,7 +15,7 @@ class SpotsController < ApplicationController
     end
 
     # ページネーション
-    keyword = Keyword.find_by(word: word)
+    keyword = Keyword.find_by(word: word, location_name: trip.destination)
     @keyword = params[:keyword]
     @current_page = Spot.safe_page(params)
     spots = keyword.spots
