@@ -5,10 +5,12 @@ class Plan < ApplicationRecord
 
   SIXTY_MINUTES = 60
 
-  def self.plans_display_data_create(elements:, plans:, trip:)
-    plans.each do |plan|
+  def self.plans_display_data_create(plans:, trip:)
+    elements = {}
+    Array(plans).each do |plan|
       plan.plan_element_create(elements)
     end
+    elements
   end
 
   def plan_element_create(elements)

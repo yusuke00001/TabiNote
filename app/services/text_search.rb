@@ -12,7 +12,7 @@ class TextSearch
 
       request = Net::HTTP::Post.new(uri)
       request["Content-Type"] = "application/json"
-      request["X-Goog-FieldMask"] = "places.displayName,places.id,nextPageToken"
+      request["X-Goog-FieldMask"] = "places.displayName,places.id"
       request["X-Goog-Api-Key"] = ENV["API_KEY"]
 
       body = {
