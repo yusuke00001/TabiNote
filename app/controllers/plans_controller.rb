@@ -6,7 +6,7 @@ class PlansController < ApplicationController
     if @trip.decided_plan_id.present?
       redirect_to trip_path(@trip)
     end
-    @elements = Plan.plans_display_data_create(plans: @plans, trip: @trip)
+    @elements = Plan.plans_display_data(plans: @plans, trip: @trip)
   end
   def create
     trip = Trip.find(params[:trip_id])
@@ -22,8 +22,7 @@ class PlansController < ApplicationController
 
     trip_max_time = trip.trip_max_time_calculation
 
-    spots_unique_numbers = params[:spot_unique_numbers]
-    spots_in_vote_order = Spot.spots_in_vote_order(spots_unique_numbers)
+    spots_in_vote_order = Spot.spots_in_vote_order(params[:spot_unique_numbers])
 
     category_ids = spots_in_vote_order.map(&:category_id)
     category_stay_time_in_vote_order = Category.category_stay_time_in_vote_order(category_ids)
@@ -54,13 +53,13 @@ class PlansController < ApplicationController
   def edit
     @trip = Trip.find(params[:trip_id])
     @plan = Plan.find(params[:id])
-    @elements = Plan.plans_display_data_create(plans: @plan, trip: @trip)
+    @elements = Plan.plans_display_data(plans: @plan, trip: @trip)
   end
 
   def update
     @plan = Plan.find(params[:id])
     @trip = @plan.trip
-    @elements = Plan.plans_display_data_create(plans: @plan, trip: @trip)
+    @elements = Plan.plans_display_data(plans: @plan, trip: @trip)
     trip_max_time = (@trip.finish_time - @trip.start_time)/Plan::SIXTY_MINUTES
     begin
       ActiveRecord::Base.transaction do

@@ -5,15 +5,15 @@ class Plan < ApplicationRecord
 
   SIXTY_MINUTES = 60
 
-  def self.plans_display_data_create(plans:, trip:)
+  def self.plans_display_data(plans:, trip:)
     elements = {}
     Array(plans).each do |plan|
-      plan.plan_element_create(elements)
+      plan.plan_element(elements)
     end
     elements
   end
 
-  def plan_element_create(elements)
+  def plan_element(elements)
     elements[self.id] = []
     current_time = self.trip.start_time
     plan_spots = PlanSpot.where(plan_id: self.id).index_by(&:spot_id)
