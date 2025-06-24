@@ -43,7 +43,7 @@ class Spot < ApplicationRecord
 
     insert_all!(spots_insert_all_data)
 
-    Spot.image_save(spots_unique_numbers)
+    Spot.save_image(spots_unique_numbers)
 
     spot_ids = where(unique_number: spots_unique_numbers).ids
 
@@ -233,11 +233,29 @@ class Spot < ApplicationRecord
     (duration.to_f / 15).ceil * 15
   end
 
-  def self.image_save(spots_unique_numbers)
+  def self.save_image(spots_unique_numbers)
     spots = where(unique_number: spots_unique_numbers)
     spots.each do |spot|
-      file = URI.open(spot.image_url)
-      spot.image.attach(io: file, filename: "#{spot.spot_name}.jpg")
+      if spot.image_url.blank?
+        spot.attach_default_image
+      else
+        begin
+          file = URI.open(spot.image_url)
+          spot.image.attach(io: file, filename: "#{spot.spot_name.parameterize}.jpg")
+        rescue => e
+          Rails.logger.warn("画像取得失敗: #{e.message}")
+          spot.attach_default_image
+        end
+      end
     end
+  end
+
+  def attach_default_image
+    default_image_path = Rails.root.join("app/assets/images/default_no_image.png")
+    self.image.attach(
+      io: File.open(default_image_path),
+      filename: "default_no_image.png",
+      content_type: "image/png"
+    )
   end
 end

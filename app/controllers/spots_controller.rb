@@ -5,7 +5,8 @@ class SpotsController < ApplicationController
 
     begin
       ActiveRecord::Base.transaction do
-        Keyword.find_or_create_keyword_and_fetch_spots(word: word)
+        trip = Trip.find(params[:trip_id])
+        Keyword.find_or_create_keyword_and_fetch_spots(word: word, trip: trip)
       end
     rescue => e
       Rails.logger.error "スポット検索でエラー発生: #{e.class} - #{e.message}"
