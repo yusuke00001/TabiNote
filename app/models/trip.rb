@@ -103,11 +103,15 @@ class Trip < ApplicationRecord
     self.trip_users.order(is_leader: :desc)
   end
 
-  def get_trip_image
+  def trip_image
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/default_trip_image.webp")
       image.attach(io: File.open(file_path), filename: "default_trip_image.webp", content_type: "image/webp")
     end
     image
+  end
+
+  def trip_max_time_calculation
+    (self.finish_time - self.start_time)/Plan::SIXTY_MINUTES
   end
 end

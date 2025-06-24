@@ -20,7 +20,7 @@ class PlansController < ApplicationController
 
     total_hours = Float::INFINITY
 
-    trip_max_time = (trip.finish_time - trip.start_time)/Plan::SIXTY_MINUTES
+    trip_max_time = trip.trip_max_time_calculation
 
     spots_unique_numbers = params[:spot_unique_numbers]
     spots_in_vote_order = Spot.spots_in_vote_order(spots_unique_numbers)
