@@ -39,8 +39,8 @@ class TripsController < ApplicationController
     ng_spot = SpotVote.ng_spot_decided(spot_votes: spot_votes, trip_users: @trip_users)
     @voted_result = SpotSuggestion.voted_result(trip: @trip, ng_spot: ng_spot)
     @decided_plan = Plan.find_by(id: @trip.decided_plan_id)
-    if @decided_plan.present?
-      @elements = Plan.plans_display_data_create(plans: @decided_plan, trip: @trip)
+    if @decided_plan
+      @elements = Plan.plans_display_data(plans: @decided_plan, trip: @trip)
     end
   end
 
