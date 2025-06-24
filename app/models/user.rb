@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :name, presence: :true
 
-  def get_user_avatar
+  def user_avatar
     unless avatar.attached?
       file_path = Rails.root.join("app/assets/images/default_image.jpg")
       avatar.attach(io: File.open(file_path), filename: "default_image.jpg", content_type: "image/jpeg")
