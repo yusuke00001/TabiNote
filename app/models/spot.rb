@@ -236,8 +236,26 @@ class Spot < ApplicationRecord
   def self.image_save(spots_unique_numbers)
     spots = where(unique_number: spots_unique_numbers)
     spots.each do |spot|
-      file = URI.open(spot.image_url)
-      spot.image.attach(io: file, filename: "#{spot.spot_name}.jpg")
+      if spot.image_url.blank?
+        spot.attach_default_image
+      else
+        begin
+          file = URI.open(spot.image_url)
+          spot.image.attach(io: file, filename: "#{spot.spot_name.parameterize}.jpg")
+        rescue => e
+          Rails.logger.warn("画像取得失敗: #{e.message}")
+          spot.attach_default_image
+        end
+      end
     end
+  end
+
+  def attach_default_image
+    default_image_path = Rails.root.join("app/assets/images/default_no_image.png")
+    self.image.attach(
+      io: File.open(default_image_path),
+      filename: "default_no_image.png",
+      content_type: "image/png"
+    )
   end
 end

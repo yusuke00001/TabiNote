@@ -4,7 +4,7 @@
       <%= @spot.spot_name %>
     </div>
     <div class="image">
-      <%= image_tag @spot.image, class:"image-size" if @spot.image.attached? %>
+      <%= image_tag @spot.image, class: "image-size" %>
     </div>
     <div class="spot-group">
       <span class="label"><%= Spot.human_attribute_name(:address) %></span>
