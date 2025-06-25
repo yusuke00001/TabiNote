@@ -1,111 +1,111 @@
 .homes-index {
   .card-style {
     margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    width: 600px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 9px rgba(0,0,0,0.1);
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    width: 38rem;
+    border: 0.06rem solid #ddd;
+    border-radius: 0.2rem;
+    box-shadow: 0 0.25rem 0.6rem rgba(0,0,0,0.1);
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     .title {
       text-align: center;
     }
     .image-user-data {
       display: flex;
+      justify-content: center;
+      gap: 3rem;
       align-items: center;
-      .image {
-        margin-right: 30px;
-        margin-left: 40px;
-      }
       .img {
         border-radius: 50%;
       }
       .user-data-card-style {
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        width: 300px;
+        border: 0.06rem solid #ddd;
+        border-radius: 0.25rem;
+        width: 19rem;
+        padding-left: 2rem;
         .user-data-title {
           text-align: center;
-          margin-bottom: 20px;
-          margin-top: 10px;
+          margin-bottom: 1.25rem;
+          margin-top: 0.6rem;
         }
         .user-title {
-          font-size: 25px;
+          font-size: 1.25rem;
         }
         .user-edit-icon {
-          margin-left: 10px;
+          margin-left: 0.6rem;
           color: #007bff
         }
         .user-name {
-          margin-bottom: 20px;
-          margin-left: 30px;
+          margin-bottom: 1.25rem;
         }
         .user-email {
-          margin-left: 30px;
-          margin-bottom: 20px;
+          margin-bottom: 1.25rem;
         }
       }
     }
     .in-progress-trip-title {
-      margin-left: 40px;
-      margin-top: 50px;
+      margin-top: 3rem;
     }
     .trips-container {
       display: flex;
-      width: 600px;
-      margin: 0 auto;
-      margin-bottom: 30px;
-      gap: 10px;
       flex-wrap: wrap;
+      width: 100%;
+      max-width: 59rem;
+      margin: 0 auto;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      &.centering {
+        justify-content: center;
+      }
+      &.left-align {
+        justify-content: flex-start;
+      }
       .trips-card-style {
-        &.centering {
-        margin: 0 auto;
-        }
-        padding-bottom: 10px;
-        width: 190px;
-        border: 1px solid black;
-        box-shadow: 0 4px 9px rgba(0,0,0,0.1);
+        padding-bottom: 0.6rem;
+        width: 12rem;
+        border: 0.06rem solid black;
+        box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
         .trip-link {
           text-decoration: none;
           color: inherit;
         }
         .trip-title {
           text-align: center;
-          font-size: 25px;
+          font-size: 1.6rem;
           font-weight: bold;
-          padding: 10px;
-          border-bottom: 1px solid black;
+          padding: 0.6px;
+          border-bottom: 0.06rem solid black;
           color: #007bff;
         }
         .member {
           text-align: center;
-          font-size: 20px;
+          font-size: 1.25rem;
           font-weight: bold;
         }
         .member-list {
-          margin-left: 20px;
+          margin-left: 1.25rem;
           display: flex;
           align-items: center;
-          width: 170px;
-          gap: 10px;
+          width: 10rem;
+          gap: 0.6rem;
           .crown-icon {
             color: yellow;
-            width: 20px;
+            width: 1.25rem;
             text-align: center;
             display: inline-block;
             flex-shrink: 0;
           }
           .current-user-icon {
-            width: 20px;
+            width: 1.25rem;
             text-align: center;
             display: inline-block;
             flex-shrink: 0;
             color: blue;
           }
           .user-icon {
-            width: 20px;
+            width: 1.25rem;
             text-align: center;
             display: inline-block;
             flex-shrink: 0;
@@ -115,49 +115,46 @@
     }
     .no-in-progress-trip {
       margin: 0 auto;
-      width: 520px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      height: 70px;
-      margin-top: 50px;
-      margin-bottom: 50px;
+      width: 32.5rem;
+      border: 0.06rem solid #ddd;
+      border-radius: 0.25rem;
+      height: 4.3rem;
+      margin-top: 3.2rem;
+      margin-bottom: 3.2rem;
       text-align: center;
-      font-size: 20px;
-    }
-    .past-trip-title {
-      margin-left: 40px;
+      font-size: 1.25rem;
     }
     .no-past-trip {
       margin: 0 auto;
-      width: 520px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      height: 70px;
-      margin-top: 50px;
-      margin-bottom: 50px;
+      width: 32.5rem;
+      border: 0.06rem solid #ddd;
+      border-radius: 0.25rem;
+      height: 4.4rem;
+      margin-top: 3.2rem;
+      margin-bottom: 3.2rem;
       text-align: center;
-      font-size: 20px;
+      font-size: 1.25rem;
     }
     .new-trip {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 20px;
+      margin-bottom: 1.9rem;
+      font-size: 1.25rem;
       .link-custom {
         color: #007bff
       }
       .add-icon {
-        margin-left: 10px;
+        margin-left: 0.6rem;
       }
     }
     .join-trip {
       text-align: center;
-      margin-bottom: 30px;
-      font-size: 20px;
+      margin-bottom: 1.9rem;
+      font-size: 1.25rem;
       .link-custom {
         color: #007bff
       }
       .user-icon {
-        margin-left: 50px;
+        margin-left: 3.2rem;
       }
     }
   }

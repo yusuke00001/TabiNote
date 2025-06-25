@@ -24,12 +24,12 @@
     </div>
     <h2 class="in-progress-trip-title"><%= t('.in-progress-trip-title') %></h2>
       <% if @trips_in_progress_first_row.present? %>
-        <div class="trips-container">
-          <%= render partial: "trip_card", collection: @trips_in_progress_first_row, :as => "trip_card", locals: { trip_users: @trip_users, centering: true } %>
+        <div class="trips-container centering">
+          <%= render partial: "trip_card", collection: @trips_in_progress_first_row, :as => "trip_card", locals: { trip_users: @trip_users } %>
         </div>
       <% if @trips_in_progress_other_row.present? %>
-        <div class="trips-container">
-          <%= render partial: "trip_card", collection: @trips_in_progress_other_row, :as => "trip_card", locals: { trip_users: @trip_users, centering: false } %>
+        <div class="trips-container left-align">
+          <%= render partial: "trip_card", collection: @trips_in_progress_other_row, :as => "trip_card", locals: { trip_users: @trip_users} %>
         </div>
       <% end %>
       <% else %>

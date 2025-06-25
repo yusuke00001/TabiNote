@@ -1,9 +1,9 @@
-<div class="trips-card-style <%= "centering" if centering %>">
+<div class="trips-card-style">
   <%= link_to trip_path(trip_card), class:"trip-link" do %>
     <div class="trip-title">
       <%= trip_card.title %>
     </div>
-    <%= image_tag trip_card.image.variant(resize_to_fill: [190,130]) %>
+    <%= image_tag trip_card.image.variant(resize_to_fill: [192,130]) %>
     <div class="member">
       <%= t('homes.index.member')%>
     </div>
