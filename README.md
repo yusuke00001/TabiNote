@@ -81,8 +81,7 @@
 ## 画面イメージ
 
 ### マイページ
-<img src="public/images/1" width="600" alt="マイページ">
-<img src="public/images/2" width="600" alt="マイページ">
+<img src="images/my_page.png" width="600" alt="マイページ">
 
 ### スポット提案画面
 <img src="images/spot_suggestion.png" width="600" alt="スポット提案画面">
