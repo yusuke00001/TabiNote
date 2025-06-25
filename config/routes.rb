@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   post "trip/:id/", to: "trips#decided_plan", as: "trip_decided_plan"
 
-  root "homes#index"
+  root "pages#index"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

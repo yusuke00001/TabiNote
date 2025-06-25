@@ -1,0 +1,108 @@
+<div class="lp">
+  <div class="header">
+    <h1 class="title">TabiNote</h1>
+    <p class="sub-title">旅のしおりを、みんなでスマートに作る</p>
+    <h1>旅の計画、もう迷わない</h1>
+    <p>提案・投票・自動ルート生成で誰もが納得の旅行プランを</p>
+    <%= link_to "今すぐ使ってみる", new_user_registration_path, class: "button" %>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title"> 旅行計画のこんな課題、ありませんか？</h2>
+    <ul>
+      <li><strong>「どこでもいいよ」</strong>と言われたのに、実際に提案すると否定されてしまう。</li>
+      <li><strong>幹事ばかりが調整・予約・調査を一手に引き受けて疲弊。</strong>楽しいはずの計画がストレスに。</li>
+      <li>LINEや口頭だけでは情報共有が煩雑で、<strong>「誰がいつ何を希望していたか」がわからなくなる。</strong></li>
+      <li>みんなが納得するプランを作るのに、<strong>時間と労力がかかりすぎる。</strong></li>
+    </ul>
+    <p class="conclusion">
+      このアプリは、<strong>旅行の計画段階の「面倒」や「すれ違い」を最小限にし</strong>、<strong>誰もが気持ちよく参加できる旅</strong>を実現するために生まれました。
+    </p>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">主な機能</h2>
+    <ul>
+        <li>ユーザー登録・ログイン（Devise）</li>
+        <li>スポット提案・NG投票</li>
+        <li>TSPによる最適ルートの自動生成</li>
+        <li>メンバー参加（招待URL）</li>
+        <li>複数プランの提示と決定</li>
+        <li>画像アップロード（AWS S3 + ActiveStorage）</li>
+    </ul>
+  </div>
+
+    <div class="group">
+    <h2 class="group-title">技術スタック</h2>
+    <ul>
+      <li>Rails 8 / Ruby 3.3 / MySQL</li>
+      <li>Google Maps API / Distance Matrix API</li>
+      <li>Heroku / AWS S3</li>
+      <li>JavaScript / SCSS </li>
+    </ul>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">アプリ画面イメージ</h2>
+    <div class="image-grid">
+      <div class="image-container">
+        <p class="image-title">ログイン画面</p>
+        <img src="./images/login.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">新規登録画面</p>
+        <img src="./images/sign_up.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">マイページ</p>
+        <img src="./images/my_page.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">しおり作成ページ</p>
+        <img src="./images/trip_new.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">スポット提案ページ</p>
+        <img src="./images/spot_suggestion.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">NG投票ページ</p>
+        <img src="./images/spot_vote.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">スポット検索ページ</p>
+        <img src="./images/spot_search.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">投票結果ページ</p>
+        <img src="./images/vote_result.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">プラン作成ページ</p>
+        <img src="./images/plan_create.png">
+      </div>
+      <div class="image-container">
+        <p class="image-title">プラン編集ページ</p>
+        <img src="./images/plan_edit.png">
+      </div>
+    </div>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title"> GitHub / テストユーザー</h2>
+    <p>GitHub: <%= link_to "https://github.com/yusuke00001/TabiNote", "https://github.com/yusuke00001/TabiNote", target: "_blank" %></p>
+    <ul>
+      <li>メールアドレス: player@1 </li>
+      <li>パスワード: 123456 </li>
+    </ul>
+  </div>
+
+  <div class="group">
+    <h2 class="group-title">今後の展望</h2>
+    <ul>
+      <li>スポット提案が一つもなかった場合でも、旅の条件に応じた自動プランの提案</li>
+      <li>現在の都道府県単位の選択に加えて、市区町村レベルでの目的地指定にも対応予定</li>
+      <li>車移動だけでなく、電車や飛行機など他の交通手段にも順次対応</li>
+      <li>安心して使っていただけるよう、今後は自動テストによる品質も強化していきます</li>
+  </div>
+</div>
