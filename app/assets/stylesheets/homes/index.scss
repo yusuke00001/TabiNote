@@ -51,10 +51,9 @@
     .trips-container {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      max-width: 59rem;
+      width: 37rem;
       margin: 0 auto;
-      gap: 1rem;
+      gap: 0.4rem;
       margin-bottom: 2rem;
       &.centering {
         justify-content: center;
@@ -144,17 +143,6 @@
       }
       .add-icon {
         margin-left: 0.6rem;
-      }
-    }
-    .join-trip {
-      text-align: center;
-      margin-bottom: 1.9rem;
-      font-size: 1.25rem;
-      .link-custom {
-        color: #007bff
-      }
-      .user-icon {
-        margin-left: 3.2rem;
       }
     }
   }

@@ -28,10 +28,13 @@
   </head>
 
   <body>
-    <% unless controller_name == 'pages' && action_name == 'index' %>
+    <% unless controller_name == "pages" && action_name == "index"|| (controller_name == "trip_users" && action_name == "join_page")%>
       <%= render "shared/header"%>
     <% end %>
-    <%= render "shared/flash_messages"%>
+
+    <% unless params[:from] == "join_page" %>
+      <%= render "shared/flash_messages"%>
+    <% end %>
     <%= yield %>
   </body>
 </html>

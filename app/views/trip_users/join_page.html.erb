@@ -1,0 +1,12 @@
+<div class="join-page">
+  <%= form_with url: join_trip_path(@trip.id), method: :post do |f|%>
+    <div class="card-style">
+      <h2>しおり名：<%= @trip.title %></h2>
+      <p class="join-count">※現在<%= @trip.trip_users.count %>人が参加しています</p>
+      <p>このしおりに参加しますか？</p>
+      <div class="submit-form">
+        <%= f.submit "参加する", class:"submit-button" %>
+      </div>
+    </div>
+  <% end %>
+</div>

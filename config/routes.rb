@@ -20,6 +20,8 @@ Rails.application.routes.draw do
       end
     end
   end
+  get "/trips/:trip_id/join_page", to: "trip_users#join_page", as: "join_trip_page"
+  post "/trips/:trip_id/join", to: "trip_users#create", as: "join_trip"
   post "trip/:id/", to: "trips#decided_plan", as: "trip_decided_plan"
 
   root "pages#index"

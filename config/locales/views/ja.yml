@@ -32,7 +32,7 @@ ja:
       past-trip-title: 過去のしおり一覧
       no-past-trip: まだしおりが作成されていません
       new-trip: 新しい旅を作成する
-      join-trip: 旅行に参加する
+      join-trip-link: しおり参加リンク
       member: 参加メンバー
   trips:
     new:

@@ -1,0 +1,29 @@
+.join-page {
+  .card-style {
+    background: #fff;
+    padding: 2rem;
+    max-width: 38rem;
+    margin: 6rem auto;
+    border: 0.06px solid #ddd;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  .join-count {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: #555;
+  }
+  .submit-form {
+    width: 6rem;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+  .submit-button {
+    font-size: 20px;
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+  }
+}
