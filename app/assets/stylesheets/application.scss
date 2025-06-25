@@ -1,5 +1,5 @@
 /*
- * This is a manifest file that'll be compiled into application.css.
+ * This is a manifest file that"ll be compiled into application.css.
  *
  * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
  * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
@@ -27,3 +27,4 @@
 @use "pages/index.scss" as pages_index;
 @use "shared/header.scss" as shared_header;
 @use "users/passwords/new.scss" as passwords_new;
+@use "trip_users/join_page.scss" as join_page;
