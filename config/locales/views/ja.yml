@@ -10,6 +10,10 @@ ja:
         back: マイページに戻る
         delete: 削除
         password-restriction: 文字以上で入力してください
+    passwords:
+      new:
+        title: パスワードを忘れてしまったら
+        submit: 送信
     sessions:
       new:
         title: ログイン画面
