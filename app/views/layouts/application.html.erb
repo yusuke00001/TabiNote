@@ -28,6 +28,9 @@
   </head>
 
   <body>
+    <% unless controller_name == 'pages' && action_name == 'index' %>
+      <%= render "shared/header"%>
+    <% end %>
     <%= render "shared/flash_messages"%>
     <%= yield %>
   </body>
