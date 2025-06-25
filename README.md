@@ -81,16 +81,19 @@
 ## 画面イメージ
 
 ### マイページ
-<img src="images/my_page.png" width="600" alt="マイページ">
+<img src="public/images/my_page.png" width="600" alt="マイページ">
+
+### しおり作成画面
+<img src="public/images/trip_new.png" width="600" alt="マイページ">
 
 ### スポット提案画面
-<img src="images/spot_suggestion.png" width="600" alt="スポット提案画面">
+<img src="public/images/spot_suggestion.png" width="600" alt="スポット提案画面">
 
 ### スポット投票画面
-<img src="images/spot_vote.png" width="600" alt="スポット投票画面">
+<img src="public/images/spot_vote.png" width="600" alt="スポット投票画面">
 
 ### 投票結果画面
-<img src="images/vote_result.png" width="600" alt="投票結果画面">
+<img src="public/images/vote_result.png" width="600" alt="投票結果画面">
 
 
 
