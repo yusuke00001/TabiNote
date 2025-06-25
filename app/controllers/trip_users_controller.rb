@@ -1,5 +1,4 @@
 class TripUsersController < ApplicationController
-  before_action :store_location, only: [ :join_page ]
   skip_before_action :authenticate_user!, only: [ :join_page ]
 
   def index
@@ -42,9 +41,5 @@ class TripUsersController < ApplicationController
       flash[:alert] = "退会できませんでした"
       redirect_back fallback_location: homes_path
     end
-  end
-
-  def store_location
-    store_location_for(:user, request.fullpath)
   end
 end
