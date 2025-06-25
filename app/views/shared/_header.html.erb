@@ -1,0 +1,15 @@
+<div class="shared-header">
+  <div class="header-left">
+    <%= link_to "TabiNote", root_path, class: "link" %>
+  </div>
+  <div class="header-right">
+    <% if user_signed_in? %>
+      <%= link_to "マイページ", homes_path, class: "link" %>
+      <%= link_to "しおり作成", new_trip_path, class: "link" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { confirm: "本当にログアウトしますか？" }, class: "link" %>
+    <% else %>
+      <%= link_to "ログイン", new_user_session_path, class: "link" %>
+      <%= link_to "サインアップ", new_user_registration_path, class: "link" %>
+    <% end %>
+  </div>
+</div>
