@@ -42,6 +42,7 @@ class TripsController < ApplicationController
     if @decided_plan
       @elements = Plan.plans_display_data(plans: @decided_plan, trip: @trip)
     end
+    @current_user_is_leader = TripUser.current_user_is_leader?(trip: @trip, current_user: current_user)
   end
 
   def suggestion

@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  before_action :current_user_leader?, only: [ :edit, :update ]
   def index
     @trip = Trip.find(params[:trip_id])
     @plans = @trip.plans
@@ -87,6 +88,14 @@ class PlansController < ApplicationController
       Rails.logger.error "編集処理でエラー発生: #{e.class} - #{e.message}"
       flash.now[:alert] = "プランを更新することができませんでした"
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def current_user_leader?
+    trip = Trip.find(params[:trip_id])
+    unless TripUser.current_user_is_leader?(trip: trip, current_user: current_user)
+      flash[:alert] = "プランの編集画面にアクセスする権限がありません"
+      redirect_to homes_path
     end
   end
 
