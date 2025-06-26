@@ -1,11 +1,11 @@
 .trips-new {
   .card-style {
     margin: 0 auto;
+    max-width: 25rem;
+    width: 90%;
     margin-top: 6.3rem;
     margin-bottom: 6.3rem;
-    padding: 1.25rem;
-    width: 100%;
-    max-width: 25rem;
+    padding: 0.8rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0,0,0,0.1);
@@ -56,8 +56,7 @@
       padding: 0.6rem;
     }
     .date-sub-title {
-      font-size: 0.9rem;
-      margin-left: 1.25rem;
+      font-size: 0.9rem;;
     }
     .icon-required-container {
       display: flex;
