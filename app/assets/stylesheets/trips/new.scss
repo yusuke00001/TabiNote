@@ -1,179 +1,187 @@
 .trips-new {
   .card-style {
     margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    padding: 20px;
-    width: 400px;
+    margin-top: 6.3rem;
+    margin-bottom: 6.3rem;
+    padding: 1.25rem;
+    width: 100%;
+    max-width: 25rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0,0,0,0.1);
     .form-group {
-      margin-bottom: 50px;
+      margin-bottom: 3.1rem;
       .icon-required-container {
         display: flex;
-        gap: 20px;
+        gap: 1.25rem;
         .icon-label {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 0.6rem;
         }
         .required-button {
-          font-size: 20px;
+          font-size: 1.25rem;
           background-color: red;
           color: white;
           border: 1px solid red;
           border-radius: 4px;
-          padding: 5px;
+          padding: 0.3rem;
         }
       }
     }
     .form-label {
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
     }
     .text-field {
-      width: 380px; 
-      height: 25px;
+      width: 90%;
+      max-width: 23.8rem; 
+      line-height: 1.5;
       border: 1px solid #ddd;
       border-radius: 4px;
-      padding: 10px;
-      margin-top: 10px;
+      padding: 0.6rem;
+      margin-top: 0.6rem;
     }
     .select-field {
-      padding: 5px;
-      width: 300px;
-      font-size: 20px;
+      padding: 0.3rem;
+      width: 90%;
+      max-width: 19rem;
+      font-size: 1.25rem;
     }
     .calendar-field {
-      font-size: 20px;
-      height: 20px;
+      font-size: 1.25rem;
+      line-height: 1.5;
       border: 1px solid #ddd;
       border-radius: 4px;
-      padding: 10px;
+      padding: 0.6rem;
     }
     .date-sub-title {
-      font-size: 15px;
-      margin-left: 20px;
+      font-size: 0.9rem;
+      margin-left: 1.25rem;
     }
     .icon-required-container {
       display: flex;
-      gap: 20px;
+      gap: 1.25rem;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
       .spot-limit-title {
-        font-size: 20px;
+        overflow-wrap: break-word;
+        font-size: 1.25rem;
         font-weight: bold;
       }
       .required-button {
-        font-size: 20px;
+        font-size: 1.25rem;
         background-color: red;
         color: white;
         border: 1px solid red;
         border-radius: 4px;
-        padding: 5px;
+        padding: 0.3rem;
       }
     }
     .spot-limit-sub-title {
-      font-size: 10px;
+      font-size: 0.6rem;
     }
     .form-spot-limit {
       display: flex;
-      width: 400px;
+      width: 90%;
+      max-width: 25rem;
       justify-content: space-between;
-      margin-bottom:50px;
+      margin-bottom: 3.1rem;
       .icon-label {
         display: flex;
         align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
+        gap: 0.6rem;
+        margin-bottom: 0.6rem;
       }
       .calendar-field {
-        width: 150px;
-        font-size: 20px;
-        height: 20px;
+        width: 90%;
+        max-width: 9.4rem;
+        font-size: 1.25rem;
+        height: 1.25rem;
         border: 1px solid #ddd;
         border-radius: 4px;
-        padding: 10px;
+        padding: 0.6rem;
       }
       .spot-field {
-        width: 150px;
-        height: 30px;
+        width: 90%;
+        max-width: 9.4rem;
+        line-height: 1.5;
         border: 1px solid #ddd;
         border-radius: 4px;
-        margin-top: 10px;
+        margin-top: 0.6rem;
       }
     }
     .icon-required-container {
       display: flex;
-      gap: 20px;
+      gap: 1.25rem;
       .spot-time-title {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: bold;
       }
       .required-button {
-        font-size: 20px;
+        font-size: 1.25rem;
         background-color: red;
         color: white;
         border: 1px solid red;
         border-radius: 4px;
-        padding: 5px;
+        padding: 0.3rem;
       }
     }
     .form-spot-time {
       display: flex;
-      width: 400px;
+      width: 90%;
+      max-width: 25rem;
       justify-content: space-between;
-      margin-bottom: 50px;
+      margin-bottom: 3.1rem;
       .icon-label {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 0.6rem;
       }
       .time-field {
-        width: 150px;
-        height: 20px;
-        font-size: 20px;
+        width: 9.4rem;
+        height: 1.25rem;
+        font-size: 1.25rem;
         border: 1px solid #ddd;
         border-radius: 4px;
-        padding: 10px;
-        margin-top: 10px;
+        padding: 0.6rem;
+        margin-top: 0.5rem;
       }
     }
     .icon-required-container {
       display: flex;
       .transportation-title {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: bold;
       }
       .required-form {
-        margin-left: 20px;
+        margin-left: 1.25rem;
         .required-button {
-          font-size: 20px;
+          font-size: 1.25rem;
           background-color: red;
           color: white;
           border: 1px solid red;
           border-radius: 4px;
-          padding: 5px;
+          padding: 0.3rem;
         }
       }
     }
     .form-check-box {
       display: flex;
       justify-content: space-around;
-      margin-bottom: 50px;
+      margin-bottom: 3.1rem;
       .check-box-car,
       .check-box-train,
       .check-box-bicycle {
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: 0.38rem;
       }
       input[type="checkbox"] {
         appearance: none;
         vertical-align: middle;
-        width: 15px;
-        height: 15px;
+        width: 0.9rem;
+        height: 0.9rem;
         border: 1px solid gray;
         border-radius: 50%;
         position: relative;
@@ -185,17 +193,17 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 15px;
-        height: 15px;
+        width: 0.9rem;
+        height: 0.9rem;
         background: #555;
         border-radius: 50%;
       }
       .check-box-label {
-        font-size: 20px;
+        font-size: 1.25rem;
       }
     }
     .preview-avatar {
-      width: 200px;
+      width: 12.5rem;
       height: auto;
       border-radius: 50%;
     }
@@ -203,12 +211,25 @@
       text-align: center;
     }
     .submit-botton {
-      font-size: 20px;
+      font-size: 1.25rem;
       background-color: #007bff;
       color: white;
       border: 1px solid #007bff;
       border-radius: 4px;
     }
-
+  }
+}
+@media (max-width: 768px) {
+  .trips-new {
+    .card-style {
+      .form-spot-limit {
+        flex-direction: column;
+        align-items: center;
+      }
+      .form-spot-time {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
   }
 }
