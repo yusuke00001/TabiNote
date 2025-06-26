@@ -151,6 +151,8 @@
 @media (max-width: 768px) {
   .homes-index {
     .card-style {
+      width: 90%;
+      margin: 0 auto;
       padding: 1rem;
       .image-user-data {
         flex-direction: column;
