@@ -3,14 +3,16 @@
     margin: 0 auto;
     margin-top: 6.25rem;
     margin-bottom: 6.25rem;
-    width: 37.5rem;
+    width: 100%;
+    max-width: 37.5rem;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
     .label-container {
       display: flex;
       text-align: center;
-      width: 31rem;
+      width: 100%;
+      max-width: 31rem;
       margin: auto;
       margin-top: 4.4rem;
       .suggestion-vote-link {
@@ -32,10 +34,12 @@
     }
     .suggestion-vote-container {
       display: flex;
-      width: 31rem;
+      width: 100%;
+      max-width: 31rem;
       margin: auto;
       .suggestion-vote-card-style {
-        width: 31rem;
+        width: 100%;
+        max-width: 31rem;
         border: 1px solid black;
         .suggestion-vote-limit {
           margin-top: 1.9rem;
@@ -84,7 +88,8 @@
           display: flex;
           white-space: nowrap;
           flex-wrap: wrap;
-          width: 31rem;
+          width: 100%;
+          max-width: 31rem;
           justify-content: center;
           margin-top: 1.9rem;
           margin-bottom: 1.9rem;
@@ -202,9 +207,11 @@
       }
     }
     .join-trip {
+      padding: 0.5rem;
       text-align: center;
       margin-bottom: 1.9rem;
       font-size: 1.25rem;
+      overflow-wrap: break-word;
     }
   }
 }
