@@ -3,7 +3,8 @@
     margin: 0 auto;
     margin-top: 6rem;
     margin-bottom: 6rem;
-    width: 38rem;
+    width: 100%;
+    max-width: 38rem;
     border: 0.06rem solid #ddd;
     border-radius: 0.2rem;
     box-shadow: 0 0.25rem 0.6rem rgba(0,0,0,0.1);
@@ -73,6 +74,10 @@
           border-bottom: 0.06rem solid black;
           color: #007bff;
         }
+        .trip-image {
+          width: 12rem;
+          height: 8.125rem;
+        }
         .member {
           text-align: center;
           font-size: 1.25rem;
@@ -138,6 +143,43 @@
       }
       .add-icon {
         margin-left: 0.6rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .homes-index {
+    .card-style {
+      padding: 1rem;
+      .image-user-data {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .user-data-card-style {
+        width: 100%;
+        padding-left: 1rem;
+      }
+      .trips-container {
+        flex-direction: column;
+        width: 100%;
+        .trips-card-style {
+          width: 100%;
+          max-width: 90%;
+          margin: 0 auto 1rem;
+          .trip-image {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+      .no-in-progress-trip,
+      .no-past-trip {
+        width: 90%;
+        font-size: 1rem;
+      }
+      .new-trip {
+        font-size: 1rem;
       }
     }
   }
