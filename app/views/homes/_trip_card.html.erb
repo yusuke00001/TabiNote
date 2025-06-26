@@ -3,7 +3,7 @@
     <div class="trip-title">
       <%= trip_card.title %>
     </div>
-    <%= image_tag trip_card.image.variant(resize_to_fill: [192,130]) %>
+    <%= image_tag trip_card.image.variant(resize_to_fill: [192,130]),  class: "trip-image" %>
     <div class="member">
       <%= t('homes.index.member')%>
     </div>
