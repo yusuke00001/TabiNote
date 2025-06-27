@@ -8,6 +8,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
     .label-container {
       display: flex;
       text-align: center;
@@ -158,7 +159,8 @@
       justify-content: center;
       margin-bottom: 6.25rem;
       .member-card-style {
-        width: 18.8rem;
+        max-width: 18.8rem;
+        width: 90%;
         border: 1px solid black;
         border-radius: 8px;
         padding: 0.6rem;
