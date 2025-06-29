@@ -17,11 +17,11 @@
     .plans-container {
       display: flex;
       overflow-x: auto;
-      gap: 3.1rem;
       scroll-snap-type: x mandatory;
       width: 90%;
-      max-width: 36.2rem;
+      max-width: 34rem;
       margin: 0 auto;
+      gap: 2rem;
     }
     .decided-form {
       width: 90%;
