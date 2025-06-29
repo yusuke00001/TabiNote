@@ -1,17 +1,16 @@
 .plan-container {
-  margin: 0 auto;
+  max-width: 95%;
+  min-width: 95%;
   p {
     font-size: 1.6rem;
     font-weight: bold;
     padding-top: 0.6rem;
+    margin-top: 3rem;
   } 
   position: relative;
-  border:1px solid black;
+  border: 1px solid black;
   border-radius: 5px;
-  scroll-snap-align: start;
-  max-width: 34.4rem;
-  width: 90%;
-  padding: 0.6rem;
+  scroll-snap-align: center;
   text-align: center;
     .selected {
     display: none;
@@ -22,8 +21,7 @@
       position: absolute;
       top: 0;
       left: 0;
-      max-width: 6.3rem;
-      width: 90%;
+      width: 6.25rem;
       text-align: center;
       background-color: #4CAF50;
       color: white;
@@ -37,7 +35,7 @@
     justify-content: space-around;
     margin: 0 auto;
     max-width: 31rem;
-    width: 90%;
+    width: 100%;
     flex-wrap: wrap;
     margin-bottom: 3.1rem;
     .spot {
@@ -46,8 +44,8 @@
       width: 9.4rem;
     }
     .image {
-      width: 6.3rem;
-      height: 6.3rem;
+      width: 6.25rem;
+      height: 6.25rem;
     }
   }
   .edit-icon {
@@ -55,10 +53,10 @@
   }
   .guide-book {
     display: table;
-    max-width: 34.3rem;
+    max-width: 34.4rem;
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 9.4rem;
+    margin-bottom: 150px;
     border: 1px solid black;
     border-radius: 10px 10px 0 0;
     overflow: hidden;
@@ -93,7 +91,7 @@
   .dot-icon {
     width: 100%;
     position: absolute;
-    bottom: 1.35rem;
+    bottom: 1.25rem;
   }
   .select-form {
     position: absolute;
