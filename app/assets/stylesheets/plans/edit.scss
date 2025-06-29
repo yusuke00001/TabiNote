@@ -1,23 +1,27 @@
 .plan-edit{
   .card-style {
     margin: 0 auto;
-    margin-bottom: 100px;
-    width: 600px;
+    margin-bottom: 6.3rem;
+    margin-top: 6.3rem;
+    max-width: 37.5rem;
+    width: 90%;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
     .plan-container {
       p {
-        font-size: 25px;
+        font-size: 1.6rem;
         font-weight: bold;
-        padding-top: 10px;
+        padding-top: 0.6rem;
       } 
       position: relative;
       border:1px solid black;
       border-radius: 5px;
       scroll-snap-align: start;
-      width: 550px;
-      padding: 10px;
+      max-width: 34.4rem;
+      width: 90%;
+      padding: 0.6rem;
       text-align: center;
         .selected {
         display: none;
@@ -26,38 +30,40 @@
         display: flex;
         justify-content: space-around;
         margin: 0 auto;
-        width: 500px;
+        max-width: 31rem;
+        width: 90%;
         flex-wrap: wrap;
-        margin-bottom: 50px;
+        margin-bottom: 3.1rem;
         .spot {
           border: 1px solid black;
           border-radius: 10px;
-          width: 150px;
+          width: 9.4rem;
         }
         .image {
-          width: 100px;
-          height: 100px;
+          width: 6.25rem;
+          height: 6.25rem;
         }
       }
       .trip-time-container {
         display: flex;
         justify-content: space-around;
-        margin-bottom: 50px;
-        font-size: 20px;
+        margin-bottom: 3.1rem;
+        font-size: 1.25rem;
         .trip-start-time {
-          width: 200px;
+          width: 12.5rem;
           border: 1px solid black;
           border-radius: 5px;
         }
         .trip-finish-time {
-          width: 200px;
+          width: 12.5rem;
           border: 1px solid black;
           border-radius: 5px;
         }
       }
       .guide-book {
         display: table;
-        width: 550px;
+        max-width: 34.4rem;
+        width: 90%;
         margin: 0 auto;
         border: 1px solid black;
         border-radius: 10px 10px 0 0;
@@ -72,46 +78,60 @@
           display: table-row;
           width: 100%;
           .stay-time-form {
-            width:50px;
+            max-width: 31rem;
+            width: 90%;
             text-align: center;
             color: blue;
-            font-size: 20px;
+            font-size: 1.25rem;
             border: 1px solid black;
             border-radius: 4px;
           }
         }
         .time-cell {
-          padding: 10px;
+          padding: 0.6rem;
           display: table-cell;
           border-right: 1px solid black;
           text-align: center;
-          width: 150px;
-          font-size: 20px;
+          width: 9.4rem;
+          font-size: 1.25rem;
         }
         .content-cell {
-          padding: 10px;
+          padding: 0.6rem;
           display: table-cell;
           text-align: center;
-          width: 400px;
-          font-size: 20px;
+          width: 25rem;
+          font-size: 1.25rem;
         }
         .spot_link {
           color: blue;
         }
       }
       .stay-time-alert {
-        margin-bottom: 30px;
+        margin-bottom: 1.9rem;
         text-align: right;
       }
       .update-form {
-        margin-bottom: 50px;
+        margin-bottom: 3.1rem;
       }
       .update-button {
-        font-size: 25px;
+        font-size: 1.6rem;
         background-color: #007bff;
         color: white;
         border: 1px solid #007bff;
         border-radius: 4px;
+      }
+    }
+  }
+}
+@media (max-width: 768px) {
+  .plan-edit{
+    .card-style {
+      .trip-time-container {
+        flex-direction: column;
+        .trip-start-time,
+        .trip-finish-time {
+          margin: 0 auto;
+        }
       }
     }
   }
