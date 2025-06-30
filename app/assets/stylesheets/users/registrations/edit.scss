@@ -1,10 +1,10 @@
 .user-registration-edit {
   .card-style {
     margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 100px;
-    padding: 20px;
-    width: 400px;
+    margin-top: 6.25rem;
+    padding: 1.25rem;
+    max-width: 25rem;
+    width: 90%;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 9px rgba(0,0,0,0.1);
@@ -12,54 +12,55 @@
       text-align: center;
     }
     .icon {
-      margin-right: 10px;
+      margin-right: 0.6rem;
     }
     .form-group {
-      margin-bottom: 30px;
+      margin-bottom: 1.9rem;
     }
     .form-label {
       font-weight: bold;
     }
     .text-field {
-      margin-top: 10px;
+      margin-top: 0.5rem;
       width: 100%; 
-      height: 35px;
+      line-height: 2;
       border: 1px solid #ddd;
       border-radius: 4px;
-      padding: 5px;
+      padding: 0.3rem;
     }
     .preview-avatar {
-      width: 200px;
+      max-width: 12.5rem;
+      width: 100%;
       height: auto;
       border-radius: 50%;
 
     }
     .password-restriction {
-      font-size: 13px;
+      font-size: 0.8rem;
     }
     .submit-mypage {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       .submit {
-        margin-left: 165px;
-        margin-bottom: 10px;
+        margin-bottom: 0.6rem;
       }
       .submit-button {
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: bold;
         padding: 5px 10px;
         background-color: #007bff;
         color: white;
         border-radius: 4px;
       }
-      .mypage-link {
-        font-size: 13px;
-        margin-top: 15px;
-      }
     }
-    .link {
-      text-align: center;
-      margin-top: 10px;
-    }
+  }
+  .mypage-link {
+    font-size: 0.8rem;
+    max-width: 26.25rem;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    text-align: right
   }
 }
