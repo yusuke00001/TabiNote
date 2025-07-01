@@ -22,10 +22,10 @@ class User < ApplicationRecord
   end
 
   def trips_in_progress
-    trips.where(status: :in_progress)
+    trips.in_progress
   end
 
   def trips_past
-    trips.where(status: :completed)
+    trips.completed
   end
 end
