@@ -4,7 +4,7 @@ class PlansController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @plans = @trip.plans
     @trip_users = @trip.trip_users
-    if @trip.decided_plan_id.present?
+    if @trip.decided_plan_id
       redirect_to trip_path(@trip)
     end
     @elements = Plan.plans_display_data(plans: @plans, trip: @trip)
