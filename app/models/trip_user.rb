@@ -15,13 +15,6 @@ class TripUser < ApplicationRecord
     find_by!(trip_id: trip.id, user_id: current_user.id).is_leader
   end
 
-  def sort_leader_first
-    trip_users = trip.trip_users.to_a
-    leader = trip_users.find { |trip_user| trip_user.is_leader }
-    trip_users.delete(leader)
-    trip_users.unshift(leader)
-  end
-
   def current_user?(current_user)
     self.user_id == current_user.id
   end
