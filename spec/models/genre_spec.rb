@@ -14,7 +14,7 @@ RSpec.describe Genre, type: :model do
     ]
   end
   describe "バリデーションテスト" do
-    it "レコードを作成する際に名前が存在しなかったら作成失敗" do
+    it "名前がnilだったら無効" do
       genre = Genre.new(
         name: nil,
         category_id: category1.id
@@ -22,7 +22,7 @@ RSpec.describe Genre, type: :model do
       expect(genre).not_to be_valid
       expect(genre.errors[:name]).to include("を入力してください")
     end
-    it "レコードを作成する際にすでに名前が存在していたら作成失敗" do
+    it "名前が重複していたら無効" do
       genre = Genre.new(
         name: "museum",
         category_id: category1.id
@@ -30,7 +30,7 @@ RSpec.describe Genre, type: :model do
       expect(genre).not_to be_valid
       expect(genre.errors[:name]).to include("はすでに存在します")
     end
-    it "レコードを作成する際に重複しない名前が存在していたら作成成功" do
+    it "名前が重複していなければ有効" do
       genre = Genre.new(
         name: "park",
         category_id: category1.id
