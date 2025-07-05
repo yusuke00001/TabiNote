@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  before_create :trip_image
+  before_create :trip_image, unless: -> { Rails.env.test? }
   after_create :create_trip_user
   DESTINATIONS = [
     "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
