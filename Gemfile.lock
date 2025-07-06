@@ -212,7 +212,6 @@ GEM
     msgpack (1.8.0)
     multi_xml (0.7.2)
       bigdecimal (~> 3.1)
-    mysql2 (0.5.6)
     net-imap (0.5.6)
       date
       net-protocol
@@ -250,6 +249,7 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
+    pg (1.5.9)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -465,7 +465,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
-  mysql2 (~> 0.5)
+  pg
   propshaft
   pry
   pry-byebug
