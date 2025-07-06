@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Genre, type: :model do
-  let!(:category1) { Category.create!(name: "sightseeing") }
-  let!(:category2) { Category.create!(name: "leisure_land") }
+  let!(:category1) { Category.create!(name: "sightseeing", stay_time: 90) }
+  let!(:category2) { Category.create!(name: "leisure_land", stay_time: 300) }
 
   let!(:genre1) { Genre.create!(name: "museum", category: category1) }
   let!(:genre2) { Genre.create!(name: "amusement_park", category: category2) }
