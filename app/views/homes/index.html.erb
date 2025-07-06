@@ -23,7 +23,7 @@
       </div>
     </div>
     <h2 class="in-progress-trip-title"><%= t('.in-progress-trip-title') %></h2>
-      <% if @trips_in_progress %>
+      <% if @trips_in_progress.present? %>
         <div class="trips-container">
           <%= render partial: "trip_card", collection: @trips_in_progress, :as => "trip_card", locals: { trip_users: @trip_users } %>
         </div>
@@ -34,7 +34,7 @@
       <% end %>
     <h2 class="past-trip-title"><%= t('.past-trip-title') %></h2>
     <div class="no-past-trip">
-      <% if @trips_past.presence %>
+      <% if @trips_past.present? %>
       <% else%>
         <p><%= t('.no-past-trip') %></p>
       <% end %>
