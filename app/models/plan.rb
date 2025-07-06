@@ -16,6 +16,7 @@ class Plan < ApplicationRecord
   def plan_element(elements)
     elements[self.id] = []
     lunch_inserted = false
+    lunch_break = Spot.find_by!(spot_name: "お昼休憩")
     current_time = self.trip.start_time
     plan_spots = PlanSpot.where(plan_id: self.id).index_by(&:spot_id)
     self.spots.each_with_index do |spot, i|
@@ -37,9 +38,9 @@ class Plan < ApplicationRecord
       if lunch_inserted == false && current_time.hour >= 11 && current_time.hour < 14
         elements[self.id] << {
           time: current_time.strftime("%H:%M"),
-          content: "90",
-          spot_name: "お昼休憩",
-          spot_id: nil
+          content: lunch_break.category.stay_time,
+          spot_name: lunch_break.spot_name,
+          spot_id: lunch_break.id
         }
         current_time += 90.minutes
         lunch_inserted = true

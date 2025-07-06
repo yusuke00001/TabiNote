@@ -30,4 +30,4 @@ CSV.foreach("db/seed_files/genres.csv") do |row|
   Genre.create(name: row[0], category_id: row[1])
 end
 
-Spot.create(spot_name: "お昼休憩用", category_id: lunch_category.id)
+Spot.create(spot_name: "お昼休憩", category_id: lunch_category.id)
