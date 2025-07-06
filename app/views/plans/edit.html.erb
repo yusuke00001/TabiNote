@@ -40,7 +40,16 @@
               </div>
               <% break %>
             <% end %>
-            <% if index.even? %>
+            <% if element[:spot_name] == "お昼休憩用" %>
+              <div class="guide-row lunch-break">
+                <div class="time-cell">
+                  <%= element[:time] %>
+                </div>
+                <div class="content-cell">
+                  お昼休憩(<%= element[:content] %>分)
+                </div>
+              </div>
+            <% elsif element[:spot_id].present? %>
               <div class="guide-row">
                 <div class="time-cell">
                   <%= element[:time] %>

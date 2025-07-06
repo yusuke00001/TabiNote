@@ -113,6 +113,6 @@ class Trip < ApplicationRecord
   end
 
   def trip_max_time_calculation
-    (self.finish_time - self.start_time)/Plan::SIXTY_MINUTES
+    (self.finish_time - self.start_time - Spot::LUNCH_BREAKE_TIME)/Plan::SIXTY_MINUTES
   end
 end

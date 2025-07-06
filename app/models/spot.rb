@@ -14,6 +14,7 @@ class Spot < ApplicationRecord
   DEFAULT_PAGE = 1
   MIN_PAGE = 1
   OTHER_CATEGORY_ID = 6
+  LUNCH_BREAKE_TIME = 5400
 
   def self.register_spots(spots_data:, keyword:)
     spots_unique_numbers = spots_data.map { |spot_data| spot_data["id"] }

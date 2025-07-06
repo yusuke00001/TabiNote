@@ -16,6 +16,7 @@ Category.create(name: "leisure_land", stay_time: 300)
 Category.create(name: "nature", stay_time: 45)
 Category.create(name: "restaurant", stay_time: 60)
 Category.create(name: "other", stay_time: 60)
+lunch_category = Category.create(name: "lunch_break", stay_time: 90)
 
 Transportation.create(name: "車")
 Transportation.create(name: "電車")
@@ -28,3 +29,5 @@ User.create(name: "player3", email: "player@3", password: 123456, password_confi
 CSV.foreach("db/seed_files/genres.csv") do |row|
   Genre.create(name: row[0], category_id: row[1])
 end
+
+Spot.create(spot_name: "お昼休憩", category_id: lunch_category.id)

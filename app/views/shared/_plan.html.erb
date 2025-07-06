@@ -36,8 +36,17 @@
           </div>
           <% break %>
         <% end %>
-      <% if index.even? %>
-        <div class="guide-row">
+      <% if element[:spot_name] == "お昼休憩" %>
+        <div class="guide-row lunch-break">
+          <div class="time-cell">
+            <%= element[:time] %>
+          </div>
+          <div class="content-cell">
+            <%= element[:spot_name] %>(<%= element[:content] %>分)
+          </div>
+        </div>
+      <% elsif element[:spot_id].present? %>
+        <div class="guide-row spot">
           <div class="time-cell">
             <%= element[:time] %>
           </div>
@@ -46,7 +55,7 @@
           </div>
         </div>
       <% else %>
-        <div class="guide-row">
+        <div class="guide-row move">
           <div class="time-cell">
             <%= element[:time] %>
           </div>
