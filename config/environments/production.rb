@@ -48,6 +48,7 @@ Rails.application.configure do
 
   # Replace the default in-process memory cache store with a durable alternative.
   config.cache_store = :memory_store
+  config.active_support.cache_format_version = 7.0
 
   # Replace the default in-process and non-durable queuing backend for Active Job.
 
