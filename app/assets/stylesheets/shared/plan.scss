@@ -69,6 +69,17 @@
     .guide-row {
       display: table-row;
     }
+    .guide-row.lunch-break {
+      background-color: #fffbe6;
+      font-weight: bold;
+      color: #d48806;
+    }
+    .guide-row.spot {
+      background-color: #f0fdfa;
+    }
+    .guide-row.move {
+      background-color: #f9f9f9;
+    }
     .time-cell {
       padding: 0.6rem;
       display: table-cell;
