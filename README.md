@@ -159,7 +159,7 @@ must_include_spots が存在する場合、それらのスポットを1つずつ
 
 ### インフラ
 - Heroku（本番環境）
-- MySQL
+- postgresql
 - AWS S3（画像アップロード）
 
 ### 外部API
