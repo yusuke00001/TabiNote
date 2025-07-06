@@ -23,21 +23,21 @@ RSpec.describe Category, type: :model do
     [ category1.id, category2.id, category0.id ]
   }
   describe "バリデーションテスト" do
-    it "名前がnilだったら無効" do
+    it "名前がnilの場合は無効" do
       category = Category.new(name: nil, stay_time: 90)
       expect(category).not_to be_valid
       expect(category.errors[:name]).to include("を入力してください")
     end
-    it "名前が重複していたら無効" do
+    it "名前が重複している場合は無効" do
       category = Category.new(name: "sightseeing", stay_time: 90)
       expect(category).not_to be_valid
       expect(category.errors[:name]).to include("はすでに存在します")
     end
-    it "名前が重複していなければ有効" do
+    it "名前が重複していない場合は有効" do
       category = Category.new(name: "restaurant", stay_time: 60)
       expect(category).to be_valid
     end
-    it "滞在時間がnilだったら無効" do
+    it "滞在時間がnilの場合は無効" do
       category = Category.new(name: "restaurant", stay_time: nil)
       expect(category).not_to be_valid
       expect(category.errors[:stay_time]).to include("を入力してください")
