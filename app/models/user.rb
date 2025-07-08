@@ -20,12 +20,4 @@ class User < ApplicationRecord
     end
     avatar
   end
-
-  def trips_in_progress
-    trips.in_progress
-  end
-
-  def trips_past
-    trips.completed
-  end
 end
