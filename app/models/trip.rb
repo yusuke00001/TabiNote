@@ -1,5 +1,5 @@
 class Trip < ApplicationRecord
-  before_create :trip_image, unless: -> { Rails.env.test? }
+  before_create :attach_default_image, unless: -> { Rails.env.test? }
   after_create :create_trip_user
   DESTINATIONS = [
     "北海道", "青森県", "岩手県", "宮城県", "秋田県", "山形県", "福島県",
@@ -104,7 +104,7 @@ class Trip < ApplicationRecord
     self.trip_users.order(is_leader: :desc)
   end
 
-  def trip_image
+  def attach_default_image
     unless image.attached?
       file_path = Rails.root.join("app/assets/images/default_trip_image.webp")
       image.attach(io: File.open(file_path), filename: "default_trip_image.webp", content_type: "image/webp")
