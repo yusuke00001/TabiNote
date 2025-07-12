@@ -2,11 +2,11 @@ class PlansController < ApplicationController
   before_action :current_user_leader?, only: [ :edit, :update ]
   def index
     @trip = Trip.find(params[:trip_id])
+    if @trip.decided_plan_id
+      redirect_to trip_path(@trip) and return
+    end
     @plans = @trip.plans
     @trip_users = @trip.trip_users
-    if @trip.decided_plan_id
-      redirect_to trip_path(@trip)
-    end
     @elements = Plan.plans_display_data(plans: @plans, trip: @trip)
   end
   def create
